@@ -1,24 +1,30 @@
-.container
-  .masthead
-    .navbar
-      .navbar-inner
-        .container
-          %ul.nav
-            %li.active
-              %a{:href => "#"} Home
-            %li
-              %a{:href => "#"} Projects
-            %li
-              %a{:href => "#"} Services
-            %li
-              %a{:href => "#"} About
-            %li
-              %a{:href => "#"} Contact
-  .jumbotron
-    %h2 NAGANO
-    %h1 COMFORT INN
-    %a.btn.btn-large.btn-success{:href => "#"} RÉSERVATION
-
-  %hr/
-  .footer
-    %p © Semiweb 2018
+.site-wrapper
+  .site-wrapper-inner
+    .cover-container
+      .masthead.clearfix
+        .inner
+          %h3.masthead-brand Cover
+          %nav
+            %ul.nav.masthead-nav
+              %li.active
+                %a{:href => "#"} Home
+              %li
+                %a{:href => "#"} images
+              %li
+                - if !user_signed_in?
+                  = link_to "Sign In", new_user_session_path
+                -else
+                  = link_to "Sign Out", destroy_user_session_path, method: :delete, data:{ confirm: "You sure?"}
+      .inner.cover
+        %h1.cover-heading NAGANO INN
+        %p.lead Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.
+        %p.lead
+          = link_to "S'enregistrer?", new_user_registration_path, class: "btn btn-lg btn-success"
+      .mastfoot
+        .inner
+          %p
+            Cover template for
+            = succeed "," do
+              %a{:href => "https://getbootstrap.com"} Bootstrap
+            = succeed "." do
+              %a{:href => "https://twitter.com/mdo"} @mdo
