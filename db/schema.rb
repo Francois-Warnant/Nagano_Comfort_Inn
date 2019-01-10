@@ -11,7 +11,51 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20190110160206) do
+ActiveRecord::Schema.define(:version => 20190110213111) do
+
+  create_table "personal_infos", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "address"
+    t.string   "country"
+    t.string   "phone_no"
+    t.string   "postal_code"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "reservations", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "room_id"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.string   "client_demands"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  add_index "reservations", ["created_at"], :name => "index_reservations_on_created_at"
+  add_index "reservations", ["room_id", "created_at"], :name => "index_reservations_on_room_id_and_created_at"
+  add_index "reservations", ["room_id", "end_date"], :name => "index_reservations_on_room_id_and_end_date"
+  add_index "reservations", ["room_id", "start_date"], :name => "index_reservations_on_room_id_and_start_date"
+  add_index "reservations", ["user_id", "created_at"], :name => "index_reservations_on_user_id_and_created_at"
+  add_index "reservations", ["user_id", "end_date"], :name => "index_reservations_on_user_id_and_end_date"
+  add_index "reservations", ["user_id", "start_date"], :name => "index_reservations_on_user_id_and_start_date"
+
+  create_table "room_types", :force => true do |t|
+    t.string   "type"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "rooms", :force => true do |t|
+    t.integer  "type_id"
+    t.integer  "view_id"
+    t.integer  "floor_no"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "role_id"
@@ -31,5 +75,11 @@ ActiveRecord::Schema.define(:version => 20190110160206) do
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
+  create_table "views", :force => true do |t|
+    t.string   "type"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
 end

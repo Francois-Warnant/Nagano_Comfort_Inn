@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  type_id: 1
+  view_id: 1
+  floor_no: 1
+
+two:
+  type_id: 1
+  view_id: 1
+  floor_no: 1
