@@ -6,12 +6,16 @@
     %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
     %meta{:content => "", :name => "description"}/
     %meta{:content => "", :name => "author"}/
-    %title Template · NaganoComfortInn
+    %title Nagano Comfort Inn
     = stylesheet_link_tag    "application", :media => "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
 
   %body.text-center
-    %p.notice= notice
-    %p.alert= alert
+    = render 'layouts/header'
+    /
+      .container.deviseMessages
+        %p.notice= notice
+        %p.alert= alert
+
     = yield
