@@ -3,10 +3,9 @@
     .cover-container
       .inner.cover
 
+        %h1.cover-heading NAGANO INN
         - if !user_signed_in?
-          %h1.cover-heading NAGANO INN
           %p.lead
             = link_to "Reservation", new_user_registration_path, class: "btn btn-lg btn-success"
         - else
-          %h1.cover-heading NAGANO INN
           = render "pages_generale/reservation_form"

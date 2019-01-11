@@ -1,0 +1,11 @@
+%body
+  = form_for(@room) do |f|
+    = f.label :FLOOR
+    = f.text_field :floor_no, size: 3
+    = f.label :ROOM
+    = f.text_field :room_no, size: 3
+    = f.label :VIEW
+    = f.text_field :view_id, size: 3
+    = f.label :TYPE
+    = f.text_field :type_id, size: 3
+    = f.submit "Create"

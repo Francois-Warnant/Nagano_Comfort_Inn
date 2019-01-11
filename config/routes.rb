@@ -1,6 +1,10 @@
 NaganoComfortInn::Application.routes.draw do
   devise_for :users
 
+  resources :users, only: [:show]
+
+  resources :rooms
+
   root to: 'pages_generale#index'
 
 
