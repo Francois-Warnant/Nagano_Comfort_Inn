@@ -4,6 +4,7 @@ NaganoComfortInn::Application.routes.draw do
   resources :users, only: [:show]
 
   resources :rooms
+  resources :reservations
 
   root to: 'pages_generale#index'
 
