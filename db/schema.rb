@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20190111155024) do
+ActiveRecord::Schema.define(:version => 20190114143832) do
 
   create_table "personal_infos", :force => true do |t|
     t.integer  "user_id"
@@ -26,7 +26,6 @@ ActiveRecord::Schema.define(:version => 20190111155024) do
   end
 
   create_table "reservations", :force => true do |t|
-    t.integer  "user_id"
     t.integer  "room_id"
     t.datetime "start_date"
     t.datetime "end_date"
@@ -36,12 +35,12 @@ ActiveRecord::Schema.define(:version => 20190111155024) do
   end
 
   add_index "reservations", ["created_at"], :name => "index_reservations_on_created_at"
+  add_index "reservations", ["created_at"], :name => "index_reservations_on_user_id_and_created_at"
+  add_index "reservations", ["end_date"], :name => "index_reservations_on_user_id_and_end_date"
   add_index "reservations", ["room_id", "created_at"], :name => "index_reservations_on_room_id_and_created_at"
   add_index "reservations", ["room_id", "end_date"], :name => "index_reservations_on_room_id_and_end_date"
   add_index "reservations", ["room_id", "start_date"], :name => "index_reservations_on_room_id_and_start_date"
-  add_index "reservations", ["user_id", "created_at"], :name => "index_reservations_on_user_id_and_created_at"
-  add_index "reservations", ["user_id", "end_date"], :name => "index_reservations_on_user_id_and_end_date"
-  add_index "reservations", ["user_id", "start_date"], :name => "index_reservations_on_user_id_and_start_date"
+  add_index "reservations", ["start_date"], :name => "index_reservations_on_user_id_and_start_date"
 
   create_table "room_types", :force => true do |t|
     t.string   "type"

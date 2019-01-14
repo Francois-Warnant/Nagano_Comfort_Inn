@@ -29,7 +29,6 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
 
   has_one :personal_info
-  has_many :rooms, through: :reservations
 
   #before_save :assign_role
 

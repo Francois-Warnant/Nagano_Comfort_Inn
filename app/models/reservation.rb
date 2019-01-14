@@ -16,8 +16,6 @@ class Reservation < ActiveRecord::Base
   attr_accessible :client_demands, :end_date, :start_date, :user_id
 
   belongs_to :user
-  belongs_to :room
 
   validates :user_id, presence: true
-  validates :room_id, presence: true
 end

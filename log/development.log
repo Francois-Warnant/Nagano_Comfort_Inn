@@ -10175,3 +10175,263 @@ Served asset /views.js - 304 Not Modified (0ms)
 
 Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2019-01-11 15:14:35 -0500
 Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-01-14 08:47:58 -0500
+Processing by PagesGeneraleController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  Rendered pages_generale/_reservation_form.haml (0.1ms)
+  Rendered pages_generale/index.haml within layouts/application (43.3ms)
+  Rendered layouts/_header.haml (0.5ms)
+Completed 200 OK in 54.5ms (Views: 53.2ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2019-01-14 08:47:59 -0500
+Served asset /application.css - 304 Not Modified (7ms)
+
+
+Started GET "/assets/bootstrap-theme.min.css?body=1" for 127.0.0.1 at 2019-01-14 08:47:59 -0500
+Served asset /bootstrap-theme.min.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/custom.css?body=1" for 127.0.0.1 at 2019-01-14 08:47:59 -0500
+Served asset /custom.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/pages_generale.css?body=1" for 127.0.0.1 at 2019-01-14 08:47:59 -0500
+Served asset /pages_generale.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/personal_infos.css?body=1" for 127.0.0.1 at 2019-01-14 08:47:59 -0500
+Served asset /personal_infos.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2019-01-14 08:47:59 -0500
+Served asset /bootstrap.min.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/reservations.css?body=1" for 127.0.0.1 at 2019-01-14 08:47:59 -0500
+Served asset /reservations.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/room_types.css?body=1" for 127.0.0.1 at 2019-01-14 08:47:59 -0500
+Served asset /room_types.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/rooms.css?body=1" for 127.0.0.1 at 2019-01-14 08:47:59 -0500
+Served asset /rooms.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2019-01-14 08:47:59 -0500
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/views.css?body=1" for 127.0.0.1 at 2019-01-14 08:47:59 -0500
+Served asset /views.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2019-01-14 08:47:59 -0500
+Served asset /jquery.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2019-01-14 08:47:59 -0500
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.min.js?body=1" for 127.0.0.1 at 2019-01-14 08:47:59 -0500
+Served asset /bootstrap.min.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2019-01-14 08:47:59 -0500
+Served asset /turbolinks.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/pages_generale.js?body=1" for 127.0.0.1 at 2019-01-14 08:47:59 -0500
+Served asset /pages_generale.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/personal_infos.js?body=1" for 127.0.0.1 at 2019-01-14 08:47:59 -0500
+Served asset /personal_infos.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/reservations.js?body=1" for 127.0.0.1 at 2019-01-14 08:47:59 -0500
+Served asset /reservations.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/room_types.js?body=1" for 127.0.0.1 at 2019-01-14 08:47:59 -0500
+Served asset /room_types.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/rooms.js?body=1" for 127.0.0.1 at 2019-01-14 08:47:59 -0500
+Served asset /rooms.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2019-01-14 08:47:59 -0500
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/views.js?body=1" for 127.0.0.1 at 2019-01-14 08:47:59 -0500
+Served asset /views.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2019-01-14 08:47:59 -0500
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2019-01-14 08:49:34 -0500
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"X92Rs+wZ2tvp9ZVzE3qWPwoy3IzpO/zhiboJ7+ZxXjs="}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 30.6ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-01-14 08:49:34 -0500
+Processing by PagesGeneraleController#index as HTML
+  Rendered pages_generale/index.haml within layouts/application (0.9ms)
+  Rendered layouts/_header.haml (0.4ms)
+Completed 200 OK in 12.2ms (Views: 12.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2019-01-14 08:49:35 -0500
+Served asset /application.css - 304 Not Modified (7ms)
+
+
+Started GET "/assets/bootstrap-theme.min.css?body=1" for 127.0.0.1 at 2019-01-14 08:49:35 -0500
+Served asset /bootstrap-theme.min.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2019-01-14 08:49:35 -0500
+Served asset /bootstrap.min.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/custom.css?body=1" for 127.0.0.1 at 2019-01-14 08:49:35 -0500
+Served asset /custom.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/pages_generale.css?body=1" for 127.0.0.1 at 2019-01-14 08:49:35 -0500
+Served asset /pages_generale.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/personal_infos.css?body=1" for 127.0.0.1 at 2019-01-14 08:49:35 -0500
+Served asset /personal_infos.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/reservations.css?body=1" for 127.0.0.1 at 2019-01-14 08:49:35 -0500
+Served asset /reservations.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/room_types.css?body=1" for 127.0.0.1 at 2019-01-14 08:49:35 -0500
+Served asset /room_types.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/rooms.css?body=1" for 127.0.0.1 at 2019-01-14 08:49:35 -0500
+Served asset /rooms.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2019-01-14 08:49:35 -0500
+Served asset /users.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/views.css?body=1" for 127.0.0.1 at 2019-01-14 08:49:35 -0500
+Served asset /views.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2019-01-14 08:49:35 -0500
+Served asset /jquery.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2019-01-14 08:49:35 -0500
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.min.js?body=1" for 127.0.0.1 at 2019-01-14 08:49:35 -0500
+Served asset /bootstrap.min.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2019-01-14 08:49:35 -0500
+Served asset /turbolinks.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/pages_generale.js?body=1" for 127.0.0.1 at 2019-01-14 08:49:35 -0500
+Served asset /pages_generale.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/personal_infos.js?body=1" for 127.0.0.1 at 2019-01-14 08:49:35 -0500
+Served asset /personal_infos.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/reservations.js?body=1" for 127.0.0.1 at 2019-01-14 08:49:35 -0500
+Served asset /reservations.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/room_types.js?body=1" for 127.0.0.1 at 2019-01-14 08:49:35 -0500
+Served asset /room_types.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/rooms.js?body=1" for 127.0.0.1 at 2019-01-14 08:49:35 -0500
+Served asset /rooms.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2019-01-14 08:49:35 -0500
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/views.js?body=1" for 127.0.0.1 at 2019-01-14 08:49:35 -0500
+Served asset /views.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2019-01-14 08:49:35 -0500
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2019-01-14 09:26:41 -0500
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.2ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (3.4ms)
+  Rendered layouts/_header.haml (0.7ms)
+Completed 200 OK in 35.9ms (Views: 35.0ms | ActiveRecord: 0.0ms)
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (0.8ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to DeviseCreateUsers (20190108190549)
+Migrating to RemoveNameFromUsers (20190110160206)
+Migrating to CreateReservations (20190110193829)
+Migrating to CreateRooms (20190110204015)
+Migrating to CreateRoomTypes (20190110211911)
+Migrating to CreateViews (20190110212500)
+Migrating to CreatePersonalInfos (20190110213111)
+Migrating to AddRoomNoToRooms (20190111155024)
+Migrating to RemoveColumnUserIdFromReservations (20190114143832)
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TEMPORARY TABLE "altered_reservations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "room_id" integer, "start_date" datetime, "end_date" datetime, "client_demands" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mCREATE INDEX "temp_index_altered_reservations_on_user_id_and_start_date" ON "altered_reservations" ("user_id", "start_date")[0m
+  [1m[35m (0.1ms)[0m  CREATE INDEX "temp_index_altered_reservations_on_user_id_and_end_date" ON "altered_reservations" ("user_id", "end_date")
+  [1m[36m (0.1ms)[0m  [1mCREATE INDEX "temp_index_altered_reservations_on_user_id_and_created_at" ON "altered_reservations" ("user_id", "created_at")[0m
+  [1m[35m (0.1ms)[0m  CREATE INDEX "temp_index_altered_reservations_on_room_id_and_start_date" ON "altered_reservations" ("room_id", "start_date")
+  [1m[36m (0.1ms)[0m  [1mCREATE INDEX "temp_index_altered_reservations_on_room_id_and_end_date" ON "altered_reservations" ("room_id", "end_date")[0m
+  [1m[35m (0.1ms)[0m  CREATE INDEX "temp_index_altered_reservations_on_room_id_and_created_at" ON "altered_reservations" ("room_id", "created_at")
+  [1m[36m (0.1ms)[0m  [1mCREATE INDEX "temp_index_altered_reservations_on_created_at" ON "altered_reservations" ("created_at")[0m
+  [1m[35m (0.0ms)[0m  SELECT * FROM "reservations"
+  [1m[36m (0.2ms)[0m  [1mDROP TABLE "reservations"[0m
+  [1m[35m (0.1ms)[0m  CREATE TABLE "reservations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "room_id" integer, "start_date" datetime, "end_date" datetime, "client_demands" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mCREATE INDEX "index_reservations_on_created_at" ON "reservations" ("created_at")[0m
+  [1m[35m (0.1ms)[0m  CREATE INDEX "index_reservations_on_room_id_and_created_at" ON "reservations" ("room_id", "created_at")
+  [1m[36m (0.1ms)[0m  [1mCREATE INDEX "index_reservations_on_room_id_and_end_date" ON "reservations" ("room_id", "end_date")[0m
+  [1m[35m (0.1ms)[0m  CREATE INDEX "index_reservations_on_room_id_and_start_date" ON "reservations" ("room_id", "start_date")
+  [1m[36m (0.1ms)[0m  [1mCREATE INDEX "index_reservations_on_user_id_and_created_at" ON "reservations" ("created_at")[0m
+  [1m[35m (0.1ms)[0m  CREATE INDEX "index_reservations_on_user_id_and_end_date" ON "reservations" ("end_date")
+  [1m[36m (0.1ms)[0m  [1mCREATE INDEX "index_reservations_on_user_id_and_start_date" ON "reservations" ("start_date")[0m
+  [1m[35m (0.0ms)[0m  SELECT * FROM "altered_reservations"
+  [1m[36m (0.2ms)[0m  [1mDROP TABLE "altered_reservations"[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20190114143832')
+  [1m[36m (88.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml

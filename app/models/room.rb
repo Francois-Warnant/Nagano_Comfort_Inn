@@ -14,6 +14,4 @@
 class Room < ActiveRecord::Base
   attr_accessible :floor_no, :type_id, :view_id, :room_no
 
-  has_many :user, through: :reservations
-
 end
