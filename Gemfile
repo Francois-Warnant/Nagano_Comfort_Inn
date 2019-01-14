@@ -6,6 +6,7 @@ gem 'haml-rails'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem 'devise'
+gem 'faker', '1.0.1'
 
 group :development, :test do
   gem 'sqlite3'

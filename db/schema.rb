@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20190114165411) do
+ActiveRecord::Schema.define(:version => 20190114222109) do
 
   create_table "personal_infos", :force => true do |t|
     t.integer  "user_id"
@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(:version => 20190114165411) do
   add_index "room_room_types", ["room_id", "room_type_id"], :name => "index_room_room_types_on_room_id_and_room_type_id"
 
   create_table "room_types", :force => true do |t|
-    t.string   "type"
+    t.string   "room_type"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -97,7 +97,7 @@ ActiveRecord::Schema.define(:version => 20190114165411) do
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
   create_table "view_types", :force => true do |t|
-    t.string   "type"
+    t.string   "view_type"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

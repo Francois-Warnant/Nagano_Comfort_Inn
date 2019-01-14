@@ -9,7 +9,7 @@
 #
 
 class RoomType < ActiveRecord::Base
-  attr_accessible :type
+  attr_accessible :room_type
 
   has_many :room_room_types
   has_many :rooms, through: :room_room_types
