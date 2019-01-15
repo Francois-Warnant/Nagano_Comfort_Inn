@@ -45071,3 +45071,172 @@ Connecting to database specified by database.yml
   [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:23:04 UTC +00:00], ["floor_no", 8], ["room_no", 825], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:23:04 UTC +00:00], ["view_type_id", 4]]
   [1m[35m (51.8ms)[0m  commit transaction
 Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (0.8ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to DeviseCreateUsers (20190108190549)
+Migrating to RemoveNameFromUsers (20190110160206)
+Migrating to CreateReservations (20190110193829)
+Migrating to CreateRooms (20190110204015)
+Migrating to CreateRoomTypes (20190110211911)
+Migrating to CreatePersonalInfos (20190110213111)
+Migrating to AddRoomNoToRooms (20190111155024)
+Migrating to CreateRoomReservations (20190114145344)
+Migrating to CreateViewTypes (20190114150418)
+Migrating to RemoveRoomIdIndexesFromReservations (20190114151600)
+Migrating to RemoveTypeIdAndViewIdFromRooms (20190114160144)
+Migrating to RemoveRoomIdFromReservations (20190114165411)
+Migrating to ChangeColumnsFromNameType (20190114222109)
+Migrating to DropAssociationTablesForRoomTypeAndViewType (20190115205448)
+Migrating to AddViewTypeRoomTypeToRoom (20190115210737)
+Migrating to DropPersonalInformationTable (20190115213116)
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  DROP TABLE "personal_infos"
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20190115213116')[0m
+  [1m[35m (112.5ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (0.8ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to DeviseCreateUsers (20190108190549)
+Migrating to RemoveNameFromUsers (20190110160206)
+Migrating to CreateReservations (20190110193829)
+Migrating to CreateRooms (20190110204015)
+Migrating to CreateRoomTypes (20190110211911)
+Migrating to CreatePersonalInfos (20190110213111)
+Migrating to AddRoomNoToRooms (20190111155024)
+Migrating to CreateRoomReservations (20190114145344)
+Migrating to CreateViewTypes (20190114150418)
+Migrating to RemoveRoomIdIndexesFromReservations (20190114151600)
+Migrating to RemoveTypeIdAndViewIdFromRooms (20190114160144)
+Migrating to RemoveRoomIdFromReservations (20190114165411)
+Migrating to ChangeColumnsFromNameType (20190114222109)
+Migrating to DropAssociationTablesForRoomTypeAndViewType (20190115205448)
+Migrating to AddViewTypeRoomTypeToRoom (20190115210737)
+Migrating to DropPersonalInformationTable (20190115213116)
+Migrating to AjoutInfosPersoTableUsers (20190115213434)
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "users" ADD "first_name" integer
+  [1m[36m (0.1ms)[0m  [1mALTER TABLE "users" ADD "last_name" integer[0m
+  [1m[35m (0.1ms)[0m  ALTER TABLE "users" ADD "address" integer
+  [1m[36m (0.1ms)[0m  [1mALTER TABLE "users" ADD "city" integer[0m
+  [1m[35m (0.1ms)[0m  ALTER TABLE "users" ADD "country" integer
+  [1m[36m (0.1ms)[0m  [1mALTER TABLE "users" ADD "postal_code" integer[0m
+  [1m[35m (0.1ms)[0m  ALTER TABLE "users" ADD "phone_number" integer
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20190115213434')[0m
+  [1m[35m (58.5ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (0.8ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.1ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Migrating to AjoutInfosPersoTableUsers (20190115213434)
+  [1m[36m (0.0ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mCREATE TEMPORARY TABLE "altered_users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "role_id" varchar(255), "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(255) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "first_name" integer, "last_name" integer, "address" integer, "city" integer, "country" integer, "postal_code" integer, "phone_number" integer) [0m
+  [1m[35m (0.1ms)[0m  CREATE UNIQUE INDEX "temp_index_altered_users_on_reset_password_token" ON "altered_users" ("reset_password_token")
+  [1m[36m (0.1ms)[0m  [1mCREATE UNIQUE INDEX "temp_index_altered_users_on_email" ON "altered_users" ("email")[0m
+  [1m[35m (0.1ms)[0m  SELECT * FROM "users"
+  [1m[36m (0.2ms)[0m  [1mDROP TABLE "users"[0m
+  [1m[35m (0.1ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "role_id" varchar(255), "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(255) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "first_name" integer, "last_name" integer, "address" integer, "city" integer, "country" integer, "postal_code" integer) 
+  [1m[36m (0.1ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m  CREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")
+  [1m[36m (0.1ms)[0m  [1mSELECT * FROM "altered_users"[0m
+  [1m[35m (0.1ms)[0m  DROP TABLE "altered_users"
+  [1m[36m (0.1ms)[0m  [1mCREATE TEMPORARY TABLE "altered_users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "role_id" varchar(255), "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(255) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "first_name" integer, "last_name" integer, "address" integer, "city" integer, "country" integer, "postal_code" integer) [0m
+  [1m[35m (0.1ms)[0m  CREATE UNIQUE INDEX "temp_index_altered_users_on_reset_password_token" ON "altered_users" ("reset_password_token")
+  [1m[36m (0.1ms)[0m  [1mCREATE UNIQUE INDEX "temp_index_altered_users_on_email" ON "altered_users" ("email")[0m
+  [1m[35m (0.1ms)[0m  SELECT * FROM "users"
+  [1m[36m (0.1ms)[0m  [1mDROP TABLE "users"[0m
+  [1m[35m (0.1ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "role_id" varchar(255), "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(255) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "first_name" integer, "last_name" integer, "address" integer, "city" integer, "country" integer) 
+  [1m[36m (0.1ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m  CREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")
+  [1m[36m (0.1ms)[0m  [1mSELECT * FROM "altered_users"[0m
+  [1m[35m (0.1ms)[0m  DROP TABLE "altered_users"
+  [1m[36m (0.1ms)[0m  [1mCREATE TEMPORARY TABLE "altered_users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "role_id" varchar(255), "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(255) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "first_name" integer, "last_name" integer, "address" integer, "city" integer, "country" integer) [0m
+  [1m[35m (0.1ms)[0m  CREATE UNIQUE INDEX "temp_index_altered_users_on_reset_password_token" ON "altered_users" ("reset_password_token")
+  [1m[36m (0.1ms)[0m  [1mCREATE UNIQUE INDEX "temp_index_altered_users_on_email" ON "altered_users" ("email")[0m
+  [1m[35m (0.1ms)[0m  SELECT * FROM "users"
+  [1m[36m (0.1ms)[0m  [1mDROP TABLE "users"[0m
+  [1m[35m (0.1ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "role_id" varchar(255), "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(255) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "first_name" integer, "last_name" integer, "address" integer, "city" integer) 
+  [1m[36m (0.1ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m  CREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")
+  [1m[36m (0.1ms)[0m  [1mSELECT * FROM "altered_users"[0m
+  [1m[35m (0.1ms)[0m  DROP TABLE "altered_users"
+  [1m[36m (0.1ms)[0m  [1mCREATE TEMPORARY TABLE "altered_users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "role_id" varchar(255), "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(255) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "first_name" integer, "last_name" integer, "address" integer, "city" integer) [0m
+  [1m[35m (0.1ms)[0m  CREATE UNIQUE INDEX "temp_index_altered_users_on_reset_password_token" ON "altered_users" ("reset_password_token")
+  [1m[36m (0.1ms)[0m  [1mCREATE UNIQUE INDEX "temp_index_altered_users_on_email" ON "altered_users" ("email")[0m
+  [1m[35m (0.1ms)[0m  SELECT * FROM "users"
+  [1m[36m (0.1ms)[0m  [1mDROP TABLE "users"[0m
+  [1m[35m (0.1ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "role_id" varchar(255), "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(255) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "first_name" integer, "last_name" integer, "address" integer) 
+  [1m[36m (0.1ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m  CREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")
+  [1m[36m (0.1ms)[0m  [1mSELECT * FROM "altered_users"[0m
+  [1m[35m (0.1ms)[0m  DROP TABLE "altered_users"
+  [1m[36m (0.1ms)[0m  [1mCREATE TEMPORARY TABLE "altered_users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "role_id" varchar(255), "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(255) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "first_name" integer, "last_name" integer, "address" integer) [0m
+  [1m[35m (0.1ms)[0m  CREATE UNIQUE INDEX "temp_index_altered_users_on_reset_password_token" ON "altered_users" ("reset_password_token")
+  [1m[36m (0.1ms)[0m  [1mCREATE UNIQUE INDEX "temp_index_altered_users_on_email" ON "altered_users" ("email")[0m
+  [1m[35m (0.1ms)[0m  SELECT * FROM "users"
+  [1m[36m (0.1ms)[0m  [1mDROP TABLE "users"[0m
+  [1m[35m (0.1ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "role_id" varchar(255), "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(255) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "first_name" integer, "last_name" integer) 
+  [1m[36m (0.1ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m  CREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")
+  [1m[36m (0.1ms)[0m  [1mSELECT * FROM "altered_users"[0m
+  [1m[35m (0.1ms)[0m  DROP TABLE "altered_users"
+  [1m[36m (0.1ms)[0m  [1mCREATE TEMPORARY TABLE "altered_users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "role_id" varchar(255), "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(255) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "first_name" integer, "last_name" integer) [0m
+  [1m[35m (0.1ms)[0m  CREATE UNIQUE INDEX "temp_index_altered_users_on_reset_password_token" ON "altered_users" ("reset_password_token")
+  [1m[36m (0.1ms)[0m  [1mCREATE UNIQUE INDEX "temp_index_altered_users_on_email" ON "altered_users" ("email")[0m
+  [1m[35m (0.1ms)[0m  SELECT * FROM "users"
+  [1m[36m (0.1ms)[0m  [1mDROP TABLE "users"[0m
+  [1m[35m (0.2ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "role_id" varchar(255), "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(255) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "first_name" integer) 
+  [1m[36m (0.1ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m  CREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")
+  [1m[36m (0.1ms)[0m  [1mSELECT * FROM "altered_users"[0m
+  [1m[35m (0.1ms)[0m  DROP TABLE "altered_users"
+  [1m[36m (0.1ms)[0m  [1mCREATE TEMPORARY TABLE "altered_users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "role_id" varchar(255), "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(255) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "first_name" integer) [0m
+  [1m[35m (0.1ms)[0m  CREATE UNIQUE INDEX "temp_index_altered_users_on_reset_password_token" ON "altered_users" ("reset_password_token")
+  [1m[36m (0.1ms)[0m  [1mCREATE UNIQUE INDEX "temp_index_altered_users_on_email" ON "altered_users" ("email")[0m
+  [1m[35m (0.0ms)[0m  SELECT * FROM "users"
+  [1m[36m (0.1ms)[0m  [1mDROP TABLE "users"[0m
+  [1m[35m (0.1ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "role_id" varchar(255), "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(255) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m  CREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")
+  [1m[36m (0.0ms)[0m  [1mSELECT * FROM "altered_users"[0m
+  [1m[35m (0.1ms)[0m  DROP TABLE "altered_users"
+  [1m[36m (0.1ms)[0m  [1mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = '20190115213434'[0m
+  [1m[35m (49.5ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Connecting to database specified by database.yml
+  [1m[36m (0.8ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to DeviseCreateUsers (20190108190549)
+Migrating to RemoveNameFromUsers (20190110160206)
+Migrating to CreateReservations (20190110193829)
+Migrating to CreateRooms (20190110204015)
+Migrating to CreateRoomTypes (20190110211911)
+Migrating to CreatePersonalInfos (20190110213111)
+Migrating to AddRoomNoToRooms (20190111155024)
+Migrating to CreateRoomReservations (20190114145344)
+Migrating to CreateViewTypes (20190114150418)
+Migrating to RemoveRoomIdIndexesFromReservations (20190114151600)
+Migrating to RemoveTypeIdAndViewIdFromRooms (20190114160144)
+Migrating to RemoveRoomIdFromReservations (20190114165411)
+Migrating to ChangeColumnsFromNameType (20190114222109)
+Migrating to DropAssociationTablesForRoomTypeAndViewType (20190115205448)
+Migrating to AddViewTypeRoomTypeToRoom (20190115210737)
+Migrating to DropPersonalInformationTable (20190115213116)
+Migrating to AjoutInfosPersoTableUsers (20190115213434)
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "users" ADD "first_name" varchar(255)
+  [1m[36m (0.1ms)[0m  [1mALTER TABLE "users" ADD "last_name" varchar(255)[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "users" ADD "address" varchar(255)
+  [1m[36m (0.1ms)[0m  [1mALTER TABLE "users" ADD "city" varchar(255)[0m
+  [1m[35m (0.1ms)[0m  ALTER TABLE "users" ADD "country" varchar(255)
+  [1m[36m (0.1ms)[0m  [1mALTER TABLE "users" ADD "postal_code" varchar(255)[0m
+  [1m[35m (0.1ms)[0m  ALTER TABLE "users" ADD "phone_number" varchar(255)
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20190115213434')[0m
+  [1m[35m (91.0ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Connecting to database specified by database.yml
