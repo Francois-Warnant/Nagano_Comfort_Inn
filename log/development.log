@@ -36393,3 +36393,515 @@ Connecting to database specified by database.yml
   [1m[36m (5.1ms)[0m  [1mcommit transaction[0m
   [1m[35mRoomViewType Load (0.2ms)[0m  SELECT "room_view_types".* FROM "room_view_types" WHERE "room_view_types"."room_id" = 200 LIMIT 1
 Connecting to database specified by database.yml
+
+
+Started GET "/" for 127.0.0.1 at 2019-01-14 20:38:11 -0500
+Processing by PagesGeneraleController#index as HTML
+  Rendered pages_generale/index.haml within layouts/application (14.4ms)
+Compiled personal_infos.css  (8ms)  (pid 4452)
+Compiled reservations.css  (3ms)  (pid 4452)
+Compiled room_types.css  (3ms)  (pid 4452)
+Compiled rooms.css  (4ms)  (pid 4452)
+Compiled users.css  (3ms)  (pid 4452)
+Compiled view_types.css  (4ms)  (pid 4452)
+Compiled personal_infos.js  (577ms)  (pid 4452)
+Compiled reservations.js  (188ms)  (pid 4452)
+Compiled room_types.js  (211ms)  (pid 4452)
+Compiled rooms.js  (203ms)  (pid 4452)
+Compiled users.js  (182ms)  (pid 4452)
+Compiled view_types.js  (207ms)  (pid 4452)
+Compiled application.js  (1649ms)  (pid 4452)
+  Rendered layouts/_header.haml (5.3ms)
+Completed 200 OK in 1931.2ms (Views: 1930.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/bootstrap-theme.min.css?body=1" for 127.0.0.1 at 2019-01-14 20:38:14 -0500
+Served asset /bootstrap-theme.min.css - 200 OK (10ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2019-01-14 20:38:14 -0500
+Served asset /application.css - 200 OK (46ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2019-01-14 20:38:14 -0500
+Served asset /bootstrap.min.css - 200 OK (10ms)
+
+
+Started GET "/assets/personal_infos.css?body=1" for 127.0.0.1 at 2019-01-14 20:38:14 -0500
+Served asset /personal_infos.css - 200 OK (4ms)
+
+
+Started GET "/assets/pages_generale.css?body=1" for 127.0.0.1 at 2019-01-14 20:38:14 -0500
+Served asset /pages_generale.css - 200 OK (1ms)
+
+
+Started GET "/assets/custom.css?body=1" for 127.0.0.1 at 2019-01-14 20:38:14 -0500
+Served asset /custom.css - 200 OK (22ms)
+
+
+Started GET "/assets/reservations.css?body=1" for 127.0.0.1 at 2019-01-14 20:38:14 -0500
+Served asset /reservations.css - 200 OK (1ms)
+
+
+Started GET "/assets/room_types.css?body=1" for 127.0.0.1 at 2019-01-14 20:38:14 -0500
+Served asset /room_types.css - 200 OK (54ms)
+
+
+Started GET "/assets/rooms.css?body=1" for 127.0.0.1 at 2019-01-14 20:38:14 -0500
+Served asset /rooms.css - 200 OK (1ms)
+
+
+Started GET "/assets/view_types.css?body=1" for 127.0.0.1 at 2019-01-14 20:38:14 -0500
+Served asset /view_types.css - 200 OK (12ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2019-01-14 20:38:14 -0500
+Served asset /users.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/bootstrap.min.js?body=1" for 127.0.0.1 at 2019-01-14 20:38:14 -0500
+Served asset /bootstrap.min.js - 200 OK (4ms)
+
+
+Started GET "/assets/pages_generale.js?body=1" for 127.0.0.1 at 2019-01-14 20:38:14 -0500
+Served asset /pages_generale.js - 200 OK (1ms)
+
+
+Started GET "/assets/personal_infos.js?body=1" for 127.0.0.1 at 2019-01-14 20:38:14 -0500
+Served asset /personal_infos.js - 200 OK (1ms)
+
+
+Started GET "/assets/reservations.js?body=1" for 127.0.0.1 at 2019-01-14 20:38:14 -0500
+Served asset /reservations.js - 200 OK (1ms)
+
+
+Started GET "/assets/room_types.js?body=1" for 127.0.0.1 at 2019-01-14 20:38:14 -0500
+Served asset /room_types.js - 200 OK (9ms)
+
+
+Started GET "/assets/rooms.js?body=1" for 127.0.0.1 at 2019-01-14 20:38:14 -0500
+Served asset /rooms.js - 200 OK (1ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2019-01-14 20:38:14 -0500
+Served asset /jquery.js - 200 OK (22ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2019-01-14 20:38:14 -0500
+Served asset /jquery_ujs.js - 200 OK (12ms)
+
+
+Started GET "/assets/view_types.js?body=1" for 127.0.0.1 at 2019-01-14 20:38:14 -0500
+Served asset /view_types.js - 200 OK (8ms)
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2019-01-14 20:38:14 -0500
+Served asset /turbolinks.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2019-01-14 20:38:14 -0500
+Served asset /users.js - 304 Not Modified (6ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2019-01-14 20:38:14 -0500
+Served asset /application.js - 200 OK (40ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-01-14 20:38:17 -0500
+Processing by PagesGeneraleController#index as HTML
+  Rendered pages_generale/index.haml within layouts/application (6.8ms)
+  Rendered layouts/_header.haml (4.7ms)
+Completed 200 OK in 27.0ms (Views: 26.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-01-14 20:38:22 -0500
+Processing by PagesGeneraleController#index as HTML
+  Rendered pages_generale/index.haml within layouts/application (0.8ms)
+  Rendered layouts/_header.haml (0.6ms)
+Completed 200 OK in 34.2ms (Views: 33.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2019-01-14 20:38:22 -0500
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/bootstrap-theme.min.css?body=1" for 127.0.0.1 at 2019-01-14 20:38:22 -0500
+Served asset /bootstrap-theme.min.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/personal_infos.css?body=1" for 127.0.0.1 at 2019-01-14 20:38:22 -0500
+Served asset /personal_infos.css - 200 OK (0ms)
+
+
+Started GET "/assets/reservations.css?body=1" for 127.0.0.1 at 2019-01-14 20:38:22 -0500
+Served asset /reservations.css - 200 OK (0ms)
+
+
+Started GET "/assets/room_types.css?body=1" for 127.0.0.1 at 2019-01-14 20:38:22 -0500
+Served asset /room_types.css - 200 OK (0ms)
+
+
+Started GET "/assets/rooms.css?body=1" for 127.0.0.1 at 2019-01-14 20:38:22 -0500
+Served asset /rooms.css - 200 OK (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2019-01-14 20:38:22 -0500
+Served asset /users.css - 200 OK (0ms)
+
+
+Started GET "/assets/view_types.css?body=1" for 127.0.0.1 at 2019-01-14 20:38:22 -0500
+Served asset /view_types.css - 200 OK (0ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2019-01-14 20:38:22 -0500
+Served asset /bootstrap.min.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/custom.css?body=1" for 127.0.0.1 at 2019-01-14 20:38:22 -0500
+Served asset /custom.css - 200 OK (0ms)
+
+
+Started GET "/assets/pages_generale.css?body=1" for 127.0.0.1 at 2019-01-14 20:38:22 -0500
+Served asset /pages_generale.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/personal_infos.js?body=1" for 127.0.0.1 at 2019-01-14 20:38:22 -0500
+Served asset /personal_infos.js - 200 OK (0ms)
+
+
+Started GET "/assets/reservations.js?body=1" for 127.0.0.1 at 2019-01-14 20:38:22 -0500
+Served asset /reservations.js - 200 OK (0ms)
+
+
+Started GET "/assets/room_types.js?body=1" for 127.0.0.1 at 2019-01-14 20:38:22 -0500
+Served asset /room_types.js - 200 OK (0ms)
+
+
+Started GET "/assets/rooms.js?body=1" for 127.0.0.1 at 2019-01-14 20:38:22 -0500
+Served asset /rooms.js - 200 OK (8ms)
+
+
+Started GET "/assets/view_types.js?body=1" for 127.0.0.1 at 2019-01-14 20:38:22 -0500
+Served asset /view_types.js - 200 OK (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2019-01-14 20:38:22 -0500
+Served asset /users.js - 200 OK (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2019-01-14 20:38:23 -0500
+Served asset /jquery.js - 304 Not Modified (27ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2019-01-14 20:38:23 -0500
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2019-01-14 20:38:23 -0500
+Served asset /turbolinks.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/pages_generale.js?body=1" for 127.0.0.1 at 2019-01-14 20:38:23 -0500
+Served asset /pages_generale.js - 200 OK (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2019-01-14 20:38:23 -0500
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/bootstrap.min.js?body=1" for 127.0.0.1 at 2019-01-14 20:38:23 -0500
+Served asset /bootstrap.min.js - 304 Not Modified (0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2019-01-14 20:39:16 -0500
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (3.8ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (210.6ms)
+  Rendered layouts/_header.haml (0.8ms)
+Completed 200 OK in 260.4ms (Views: 230.7ms | ActiveRecord: 4.8ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2019-01-14 20:39:23 -0500
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.6ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (6.6ms)
+  Rendered layouts/_header.haml (0.8ms)
+Completed 200 OK in 26.5ms (Views: 25.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2019-01-14 20:39:32 -0500
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"BnBOW6s6eokp9fj3GAjPuedNkO6JyKabMnoAtBzFPCo=", "user"=>{"email"=>"frank@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."email" = 'frank@mail.com' LIMIT 1
+Binary data inserted for `string` type on column `encrypted_password`
+  [1m[36mSQL (2.3ms)[0m  [1mINSERT INTO "users" ("created_at", "current_sign_in_at", "current_sign_in_ip", "email", "encrypted_password", "last_sign_in_at", "last_sign_in_ip", "remember_created_at", "reset_password_sent_at", "reset_password_token", "role_id", "sign_in_count", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 01:39:32 UTC +00:00], ["current_sign_in_at", nil], ["current_sign_in_ip", nil], ["email", "frank@mail.com"], ["encrypted_password", "$2a$10$REO2HzZFvqh.qo2OEmvSTeXyBzyooVRifiD6v824XsdKSk3iHC/Ge"], ["last_sign_in_at", nil], ["last_sign_in_ip", nil], ["remember_created_at", nil], ["reset_password_sent_at", nil], ["reset_password_token", nil], ["role_id", nil], ["sign_in_count", 0], ["updated_at", Tue, 15 Jan 2019 01:39:32 UTC +00:00]]
+  [1m[35m (6.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  UPDATE "users" SET "last_sign_in_at" = '2019-01-15 01:39:33.008165', "current_sign_in_at" = '2019-01-15 01:39:33.008165', "last_sign_in_ip" = '127.0.0.1', "current_sign_in_ip" = '127.0.0.1', "sign_in_count" = 1, "updated_at" = '2019-01-15 01:39:33.009695' WHERE "users"."id" = 1
+  [1m[36m (4.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "reservations" WHERE "reservations"."user_id" = 1
+Redirected to http://localhost:3000/reservations/new
+Completed 302 Found in 283.6ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/reservations/new" for 127.0.0.1 at 2019-01-14 20:39:33 -0500
+Processing by ReservationsController#new as HTML
+  Rendered reservations/new.haml within layouts/application (7.8ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  Rendered layouts/_header.haml (35.3ms)
+Completed 200 OK in 68.7ms (Views: 59.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2019-01-14 20:39:33 -0500
+Served asset /application.css - 304 Not Modified (5ms)
+
+
+Started GET "/assets/bootstrap-theme.min.css?body=1" for 127.0.0.1 at 2019-01-14 20:39:33 -0500
+Served asset /bootstrap-theme.min.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2019-01-14 20:39:33 -0500
+Served asset /bootstrap.min.css - 304 Not Modified (16ms)
+
+
+Started GET "/assets/custom.css?body=1" for 127.0.0.1 at 2019-01-14 20:39:33 -0500
+Served asset /custom.css - 304 Not Modified (5ms)
+
+
+Started GET "/assets/pages_generale.css?body=1" for 127.0.0.1 at 2019-01-14 20:39:33 -0500
+Served asset /pages_generale.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/personal_infos.css?body=1" for 127.0.0.1 at 2019-01-14 20:39:33 -0500
+Served asset /personal_infos.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/reservations.css?body=1" for 127.0.0.1 at 2019-01-14 20:39:33 -0500
+Served asset /reservations.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/room_types.css?body=1" for 127.0.0.1 at 2019-01-14 20:39:33 -0500
+Served asset /room_types.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/rooms.css?body=1" for 127.0.0.1 at 2019-01-14 20:39:33 -0500
+Served asset /rooms.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2019-01-14 20:39:33 -0500
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2019-01-14 20:39:33 -0500
+Served asset /jquery.js - 304 Not Modified (7ms)
+
+
+Started GET "/assets/view_types.css?body=1" for 127.0.0.1 at 2019-01-14 20:39:33 -0500
+Served asset /view_types.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/bootstrap.min.js?body=1" for 127.0.0.1 at 2019-01-14 20:39:33 -0500
+Served asset /bootstrap.min.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2019-01-14 20:39:33 -0500
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2019-01-14 20:39:33 -0500
+Served asset /turbolinks.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2019-01-14 20:39:33 -0500
+Served asset /application.js - 304 Not Modified (9ms)
+
+
+Started POST "/reservations" for 127.0.0.1 at 2019-01-14 20:40:15 -0500
+Processing by ReservationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"BnBOW6s6eokp9fj3GAjPuedNkO6JyKabMnoAtBzFPCo=", "reservation"=>{"start_date(1i)"=>"2019", "start_date(2i)"=>"1", "start_date(3i)"=>"15", "end_date(1i)"=>"2019", "end_date(2i)"=>"1", "end_date(3i)"=>"18", "client_demands"=>"hajimari no kaze yo"}, "commit"=>"Create"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (6.9ms)[0m  INSERT INTO "reservations" ("client_demands", "created_at", "end_date", "start_date", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?, ?)  [["client_demands", "hajimari no kaze yo"], ["created_at", Tue, 15 Jan 2019 01:40:15 UTC +00:00], ["end_date", Fri, 18 Jan 2019 05:00:00 UTC +00:00], ["start_date", Tue, 15 Jan 2019 05:00:00 UTC +00:00], ["updated_at", Tue, 15 Jan 2019 01:40:15 UTC +00:00], ["user_id", 1]]
+  [1m[36m (11.5ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 31.8ms (ActiveRecord: 18.6ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2019-01-14 20:40:15 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", "1"]]
+  [1m[36mReservation Load (0.1ms)[0m  [1mSELECT "reservations".* FROM "reservations" WHERE "reservations"."user_id" = 1[0m
+  Rendered users/show.haml within layouts/application (2.7ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  Rendered layouts/_header.haml (1.8ms)
+Completed 200 OK in 21.0ms (Views: 19.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2019-01-14 20:40:15 -0500
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/bootstrap-theme.min.css?body=1" for 127.0.0.1 at 2019-01-14 20:40:15 -0500
+Served asset /bootstrap-theme.min.css - 304 Not Modified (11ms)
+
+
+Started GET "/assets/pages_generale.css?body=1" for 127.0.0.1 at 2019-01-14 20:40:15 -0500
+Served asset /pages_generale.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/custom.css?body=1" for 127.0.0.1 at 2019-01-14 20:40:15 -0500
+Served asset /custom.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2019-01-14 20:40:15 -0500
+Served asset /bootstrap.min.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/personal_infos.css?body=1" for 127.0.0.1 at 2019-01-14 20:40:15 -0500
+Served asset /personal_infos.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/reservations.css?body=1" for 127.0.0.1 at 2019-01-14 20:40:15 -0500
+Served asset /reservations.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/room_types.css?body=1" for 127.0.0.1 at 2019-01-14 20:40:15 -0500
+Served asset /room_types.css - 304 Not Modified (32ms)
+
+
+Started GET "/assets/rooms.css?body=1" for 127.0.0.1 at 2019-01-14 20:40:16 -0500
+Served asset /rooms.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2019-01-14 20:40:16 -0500
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2019-01-14 20:40:16 -0500
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/view_types.css?body=1" for 127.0.0.1 at 2019-01-14 20:40:16 -0500
+Served asset /view_types.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2019-01-14 20:40:16 -0500
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2019-01-14 20:40:16 -0500
+Served asset /application.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2019-01-14 20:40:16 -0500
+Served asset /turbolinks.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.min.js?body=1" for 127.0.0.1 at 2019-01-14 20:40:16 -0500
+Served asset /bootstrap.min.js - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-01-14 20:54:39 -0500
+Processing by PagesGeneraleController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  Rendered pages_generale/_reservation_form.haml (0.7ms)
+  Rendered pages_generale/index.haml within layouts/application (14.3ms)
+  Rendered layouts/_header.haml (0.7ms)
+Completed 200 OK in 44.4ms (Views: 43.9ms | ActiveRecord: 0.2ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2019-01-14 20:55:56 -0500
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"BnBOW6s6eokp9fj3GAjPuedNkO6JyKabMnoAtBzFPCo="}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+Redirected to http://localhost:3000/
+Completed 302 Found in 21.9ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-01-14 20:55:56 -0500
+Processing by PagesGeneraleController#index as HTML
+  Rendered pages_generale/index.haml within layouts/application (0.7ms)
+  Rendered layouts/_header.haml (0.9ms)
+Completed 200 OK in 34.2ms (Views: 33.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2019-01-14 20:55:56 -0500
+Served asset /application.css - 304 Not Modified (5ms)
+
+
+Started GET "/assets/bootstrap-theme.min.css?body=1" for 127.0.0.1 at 2019-01-14 20:55:56 -0500
+Served asset /bootstrap-theme.min.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/pages_generale.css?body=1" for 127.0.0.1 at 2019-01-14 20:55:56 -0500
+Served asset /pages_generale.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/custom.css?body=1" for 127.0.0.1 at 2019-01-14 20:55:56 -0500
+Served asset /custom.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2019-01-14 20:55:56 -0500
+Served asset /bootstrap.min.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/personal_infos.css?body=1" for 127.0.0.1 at 2019-01-14 20:55:56 -0500
+Served asset /personal_infos.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/room_types.css?body=1" for 127.0.0.1 at 2019-01-14 20:55:56 -0500
+Served asset /room_types.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/reservations.css?body=1" for 127.0.0.1 at 2019-01-14 20:55:56 -0500
+Served asset /reservations.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/rooms.css?body=1" for 127.0.0.1 at 2019-01-14 20:55:56 -0500
+Served asset /rooms.css - 304 Not Modified (7ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2019-01-14 20:55:56 -0500
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2019-01-14 20:55:56 -0500
+Served asset /jquery.js - 304 Not Modified (11ms)
+
+
+Started GET "/assets/view_types.css?body=1" for 127.0.0.1 at 2019-01-14 20:55:56 -0500
+Served asset /view_types.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.min.js?body=1" for 127.0.0.1 at 2019-01-14 20:55:56 -0500
+Served asset /bootstrap.min.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2019-01-14 20:55:56 -0500
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2019-01-14 20:55:56 -0500
+Served asset /turbolinks.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/view_types.js?body=1" for 127.0.0.1 at 2019-01-14 20:55:56 -0500
+Served asset /view_types.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2019-01-14 20:55:56 -0500
+Served asset /application.js - 304 Not Modified (5ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2019-01-14 20:55:58 -0500
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.3ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (9.6ms)
+  Rendered layouts/_header.haml (5.1ms)
+Completed 200 OK in 39.0ms (Views: 37.6ms | ActiveRecord: 0.0ms)
+Connecting to database specified by database.yml
+  [1m[36m (2.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
