@@ -17,17 +17,9 @@ namespace :db do
       end
 
       room = makeRoomNo n, current_floor
-      Room.create!(floor_no: current_floor, room_no: room)
-    end
-
-    total_rooms.times do |n|
-      room = Room.find(n+1)
-
-      no= (((n) % 4) + 1)
-      room.create_room_room_type(room_type_id: no)
-
-      no= (((n) % 2) + 1)
-      room.create_room_view_type(view_type_id: no)
+      view_id= (((n) % 4) + 1)
+      room_id= (((n) % 2) + 1)
+      Room.create!(floor_no: current_floor, room_no: room, view_type_id: view_id, room_type_id: room_id)
     end
   end
 end

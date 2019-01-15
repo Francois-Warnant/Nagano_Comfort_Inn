@@ -44343,3 +44343,731 @@ Connecting to database specified by database.yml
 Connecting to database specified by database.yml
 Connecting to database specified by database.yml
 Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (0.8ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to DeviseCreateUsers (20190108190549)
+Migrating to RemoveNameFromUsers (20190110160206)
+Migrating to CreateReservations (20190110193829)
+Migrating to CreateRooms (20190110204015)
+Migrating to CreateRoomTypes (20190110211911)
+Migrating to CreatePersonalInfos (20190110213111)
+Migrating to AddRoomNoToRooms (20190111155024)
+Migrating to CreateRoomReservations (20190114145344)
+Migrating to CreateViewTypes (20190114150418)
+Migrating to RemoveRoomIdIndexesFromReservations (20190114151600)
+Migrating to RemoveTypeIdAndViewIdFromRooms (20190114160144)
+Migrating to CreateRoomRoomTypes (20190114161820)
+Migrating to CreateRoomViewTypes (20190114162129)
+Migrating to RemoveRoomIdFromReservations (20190114165411)
+Migrating to ChangeColumnsFromNameType (20190114222109)
+Migrating to DropAssociationTablesForRoomTypeAndViewType (20190115205448)
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  DROP TABLE "room_room_types"
+  [1m[36m (0.2ms)[0m  [1mDROP TABLE "room_view_types"[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20190115205448')
+  [1m[36m (51.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (0.8ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to DeviseCreateUsers (20190108190549)
+Migrating to RemoveNameFromUsers (20190110160206)
+Migrating to CreateReservations (20190110193829)
+Migrating to CreateRooms (20190110204015)
+Migrating to CreateRoomTypes (20190110211911)
+Migrating to CreatePersonalInfos (20190110213111)
+Migrating to AddRoomNoToRooms (20190111155024)
+Migrating to CreateRoomReservations (20190114145344)
+Migrating to CreateViewTypes (20190114150418)
+Migrating to RemoveRoomIdIndexesFromReservations (20190114151600)
+Migrating to RemoveTypeIdAndViewIdFromRooms (20190114160144)
+Migrating to RemoveRoomIdFromReservations (20190114165411)
+Migrating to ChangeColumnsFromNameType (20190114222109)
+Migrating to DropAssociationTablesForRoomTypeAndViewType (20190115205448)
+Migrating to AddViewTypeRoomTypeToRoom (20190115210737)
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "rooms" ADD "room_type_id" integer
+  [1m[36m (0.1ms)[0m  [1mALTER TABLE "rooms" ADD "view_type_id" integer[0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20190115210737')
+  [1m[36m (87.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Connecting to database specified by database.yml
+  [1m[36m (1.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (80.6ms)[0m  CREATE TABLE "personal_infos" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "first_name" varchar(255), "last_name" varchar(255), "address" varchar(255), "country" varchar(255), "phone_no" varchar(255), "postal_code" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (64.3ms)[0m  [1mCREATE TABLE "reservations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "start_date" datetime, "end_date" datetime, "client_demands" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "user_id" integer) [0m
+  [1m[35m (63.9ms)[0m  CREATE INDEX "index_reservations_on_created_at" ON "reservations" ("created_at")
+  [1m[36m (63.9ms)[0m  [1mCREATE INDEX "index_reservations_on_user_id_and_created_at" ON "reservations" ("created_at")[0m
+  [1m[35m (64.9ms)[0m  CREATE INDEX "index_reservations_on_user_id_and_end_date" ON "reservations" ("end_date")
+  [1m[36m (63.5ms)[0m  [1mCREATE INDEX "index_reservations_on_user_id_and_start_date" ON "reservations" ("start_date")[0m
+  [1m[35m (64.7ms)[0m  CREATE TABLE "room_reservations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "reservation_id" integer, "room_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (63.4ms)[0m  [1mCREATE TABLE "room_types" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "room_type" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (64.6ms)[0m  CREATE TABLE "rooms" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "floor_no" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "room_no" integer, "room_type_id" integer, "view_type_id" integer) 
+  [1m[36m (75.0ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "role_id" varchar(255), "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(255) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (63.6ms)[0m  CREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")
+  [1m[36m (65.0ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (63.4ms)[0m  CREATE TABLE "view_types" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "view_type" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (65.2ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (64.2ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.1ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (51.2ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20190115210737')
+  [1m[36m (60.2ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20190111155024')[0m
+  [1m[35m (52.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20190110211911')
+  [1m[36m (52.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20190108190549')[0m
+  [1m[35m (52.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20190114150418')
+  [1m[36m (52.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20190114151600')[0m
+  [1m[35m (52.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20190110213111')
+  [1m[36m (51.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20190114145344')[0m
+  [1m[35m (52.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20190110193829')
+  [1m[36m (53.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20190114165411')[0m
+  [1m[35m (50.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20190110160206')
+  [1m[36m (60.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20190114160144')[0m
+  [1m[35m (51.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20190115205448')
+  [1m[36m (52.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20190110204015')[0m
+  [1m[35m (91.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20190114222109')
+  [1m[36m (2.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Connecting to database specified by database.yml
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (3.6ms)[0m  INSERT INTO "room_types" ("created_at", "room_type", "updated_at") VALUES (?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:22:32 UTC +00:00], ["room_type", "Simple"], ["updated_at", Tue, 15 Jan 2019 21:22:32 UTC +00:00]]
+  [1m[36m (117.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "room_types" ("created_at", "room_type", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:22:33 UTC +00:00], ["room_type", "Double"], ["updated_at", Tue, 15 Jan 2019 21:22:33 UTC +00:00]]
+  [1m[35m (58.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "room_types" ("created_at", "room_type", "updated_at") VALUES (?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:22:33 UTC +00:00], ["room_type", "Deluxe"], ["updated_at", Tue, 15 Jan 2019 21:22:33 UTC +00:00]]
+  [1m[36m (50.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "room_types" ("created_at", "room_type", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:22:33 UTC +00:00], ["room_type", "Presidential"], ["updated_at", Tue, 15 Jan 2019 21:22:33 UTC +00:00]]
+  [1m[35m (49.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "view_types" ("created_at", "updated_at", "view_type") VALUES (?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:22:33 UTC +00:00], ["updated_at", Tue, 15 Jan 2019 21:22:33 UTC +00:00], ["view_type", "Ocean"]]
+  [1m[36m (49.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "view_types" ("created_at", "updated_at", "view_type") VALUES (?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:22:33 UTC +00:00], ["updated_at", Tue, 15 Jan 2019 21:22:33 UTC +00:00], ["view_type", "Jungle"]]
+  [1m[35m (50.3ms)[0m  commit transaction
+Connecting to database specified by database.yml
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (3.5ms)[0m  INSERT INTO "room_types" ("created_at", "room_type", "updated_at") VALUES (?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:22:53 UTC +00:00], ["room_type", "Simple"], ["updated_at", Tue, 15 Jan 2019 21:22:53 UTC +00:00]]
+  [1m[36m (93.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "room_types" ("created_at", "room_type", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:22:53 UTC +00:00], ["room_type", "Double"], ["updated_at", Tue, 15 Jan 2019 21:22:53 UTC +00:00]]
+  [1m[35m (49.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "room_types" ("created_at", "room_type", "updated_at") VALUES (?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:22:53 UTC +00:00], ["room_type", "Deluxe"], ["updated_at", Tue, 15 Jan 2019 21:22:53 UTC +00:00]]
+  [1m[36m (58.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "room_types" ("created_at", "room_type", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:22:53 UTC +00:00], ["room_type", "Presidential"], ["updated_at", Tue, 15 Jan 2019 21:22:53 UTC +00:00]]
+  [1m[35m (50.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "view_types" ("created_at", "updated_at", "view_type") VALUES (?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:22:53 UTC +00:00], ["updated_at", Tue, 15 Jan 2019 21:22:53 UTC +00:00], ["view_type", "Ocean"]]
+  [1m[36m (48.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "view_types" ("created_at", "updated_at", "view_type") VALUES (?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:22:53 UTC +00:00], ["updated_at", Tue, 15 Jan 2019 21:22:53 UTC +00:00], ["view_type", "Jungle"]]
+  [1m[35m (50.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:22:53 UTC +00:00], ["floor_no", 1], ["room_no", 101], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:22:53 UTC +00:00], ["view_type_id", 1]]
+  [1m[36m (50.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:22:53 UTC +00:00], ["floor_no", 1], ["room_no", 102], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:22:53 UTC +00:00], ["view_type_id", 2]]
+  [1m[35m (49.6ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:22:53 UTC +00:00], ["floor_no", 1], ["room_no", 103], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:22:53 UTC +00:00], ["view_type_id", 3]]
+  [1m[36m (50.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:22:53 UTC +00:00], ["floor_no", 1], ["room_no", 104], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:22:53 UTC +00:00], ["view_type_id", 4]]
+  [1m[35m (50.6ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:22:53 UTC +00:00], ["floor_no", 1], ["room_no", 105], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:22:53 UTC +00:00], ["view_type_id", 1]]
+  [1m[36m (49.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:22:53 UTC +00:00], ["floor_no", 1], ["room_no", 106], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:22:53 UTC +00:00], ["view_type_id", 2]]
+  [1m[35m (48.3ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:22:53 UTC +00:00], ["floor_no", 1], ["room_no", 107], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:22:53 UTC +00:00], ["view_type_id", 3]]
+  [1m[36m (48.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:22:54 UTC +00:00], ["floor_no", 1], ["room_no", 108], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:22:54 UTC +00:00], ["view_type_id", 4]]
+  [1m[35m (46.8ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:22:54 UTC +00:00], ["floor_no", 1], ["room_no", 109], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:22:54 UTC +00:00], ["view_type_id", 1]]
+  [1m[36m (48.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:22:54 UTC +00:00], ["floor_no", 1], ["room_no", 110], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:22:54 UTC +00:00], ["view_type_id", 2]]
+  [1m[35m (48.1ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:22:54 UTC +00:00], ["floor_no", 1], ["room_no", 111], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:22:54 UTC +00:00], ["view_type_id", 3]]
+  [1m[36m (46.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:22:54 UTC +00:00], ["floor_no", 1], ["room_no", 112], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:22:54 UTC +00:00], ["view_type_id", 4]]
+  [1m[35m (48.1ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:22:54 UTC +00:00], ["floor_no", 1], ["room_no", 113], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:22:54 UTC +00:00], ["view_type_id", 1]]
+  [1m[36m (48.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:22:54 UTC +00:00], ["floor_no", 1], ["room_no", 114], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:22:54 UTC +00:00], ["view_type_id", 2]]
+  [1m[35m (48.3ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:22:54 UTC +00:00], ["floor_no", 1], ["room_no", 115], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:22:54 UTC +00:00], ["view_type_id", 3]]
+  [1m[36m (47.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:22:54 UTC +00:00], ["floor_no", 1], ["room_no", 116], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:22:54 UTC +00:00], ["view_type_id", 4]]
+  [1m[35m (60.2ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:22:54 UTC +00:00], ["floor_no", 1], ["room_no", 117], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:22:54 UTC +00:00], ["view_type_id", 1]]
+  [1m[36m (48.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:22:54 UTC +00:00], ["floor_no", 1], ["room_no", 118], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:22:54 UTC +00:00], ["view_type_id", 2]]
+  [1m[35m (48.1ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:22:54 UTC +00:00], ["floor_no", 1], ["room_no", 119], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:22:54 UTC +00:00], ["view_type_id", 3]]
+  [1m[36m (46.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:22:54 UTC +00:00], ["floor_no", 1], ["room_no", 120], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:22:54 UTC +00:00], ["view_type_id", 4]]
+  [1m[35m (48.1ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:22:54 UTC +00:00], ["floor_no", 1], ["room_no", 121], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:22:54 UTC +00:00], ["view_type_id", 1]]
+  [1m[36m (48.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:22:54 UTC +00:00], ["floor_no", 1], ["room_no", 122], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:22:54 UTC +00:00], ["view_type_id", 2]]
+  [1m[35m (55.2ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:22:54 UTC +00:00], ["floor_no", 1], ["room_no", 123], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:22:54 UTC +00:00], ["view_type_id", 3]]
+  [1m[36m (48.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:22:54 UTC +00:00], ["floor_no", 1], ["room_no", 124], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:22:54 UTC +00:00], ["view_type_id", 4]]
+  [1m[35m (48.3ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:22:54 UTC +00:00], ["floor_no", 1], ["room_no", 125], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:22:54 UTC +00:00], ["view_type_id", 1]]
+  [1m[36m (47.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:22:54 UTC +00:00], ["floor_no", 2], ["room_no", 201], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:22:54 UTC +00:00], ["view_type_id", 2]]
+  [1m[35m (48.3ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:22:54 UTC +00:00], ["floor_no", 2], ["room_no", 202], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:22:54 UTC +00:00], ["view_type_id", 3]]
+  [1m[36m (48.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:22:55 UTC +00:00], ["floor_no", 2], ["room_no", 203], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:22:55 UTC +00:00], ["view_type_id", 4]]
+  [1m[35m (46.9ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:22:55 UTC +00:00], ["floor_no", 2], ["room_no", 204], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:22:55 UTC +00:00], ["view_type_id", 1]]
+  [1m[36m (56.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:22:55 UTC +00:00], ["floor_no", 2], ["room_no", 205], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:22:55 UTC +00:00], ["view_type_id", 2]]
+  [1m[35m (48.2ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:22:55 UTC +00:00], ["floor_no", 2], ["room_no", 206], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:22:55 UTC +00:00], ["view_type_id", 3]]
+  [1m[36m (60.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:22:55 UTC +00:00], ["floor_no", 2], ["room_no", 207], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:22:55 UTC +00:00], ["view_type_id", 4]]
+  [1m[35m (49.9ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:22:55 UTC +00:00], ["floor_no", 2], ["room_no", 208], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:22:55 UTC +00:00], ["view_type_id", 1]]
+  [1m[36m (46.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:22:55 UTC +00:00], ["floor_no", 2], ["room_no", 209], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:22:55 UTC +00:00], ["view_type_id", 2]]
+  [1m[35m (48.3ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:22:55 UTC +00:00], ["floor_no", 2], ["room_no", 210], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:22:55 UTC +00:00], ["view_type_id", 3]]
+  [1m[36m (48.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:22:55 UTC +00:00], ["floor_no", 2], ["room_no", 211], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:22:55 UTC +00:00], ["view_type_id", 4]]
+  [1m[35m (46.9ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:22:55 UTC +00:00], ["floor_no", 2], ["room_no", 212], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:22:55 UTC +00:00], ["view_type_id", 1]]
+  [1m[36m (48.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:22:55 UTC +00:00], ["floor_no", 2], ["room_no", 213], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:22:55 UTC +00:00], ["view_type_id", 2]]
+  [1m[35m (48.2ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:22:55 UTC +00:00], ["floor_no", 2], ["room_no", 214], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:22:55 UTC +00:00], ["view_type_id", 3]]
+  [1m[36m (46.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:22:55 UTC +00:00], ["floor_no", 2], ["room_no", 215], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:22:55 UTC +00:00], ["view_type_id", 4]]
+  [1m[35m (48.1ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:22:55 UTC +00:00], ["floor_no", 2], ["room_no", 216], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:22:55 UTC +00:00], ["view_type_id", 1]]
+  [1m[36m (48.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:22:55 UTC +00:00], ["floor_no", 2], ["room_no", 217], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:22:55 UTC +00:00], ["view_type_id", 2]]
+  [1m[35m (46.8ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:22:55 UTC +00:00], ["floor_no", 2], ["room_no", 218], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:22:55 UTC +00:00], ["view_type_id", 3]]
+  [1m[36m (48.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:22:55 UTC +00:00], ["floor_no", 2], ["room_no", 219], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:22:55 UTC +00:00], ["view_type_id", 4]]
+  [1m[35m (48.2ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:22:55 UTC +00:00], ["floor_no", 2], ["room_no", 220], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:22:55 UTC +00:00], ["view_type_id", 1]]
+  [1m[36m (60.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:22:55 UTC +00:00], ["floor_no", 2], ["room_no", 221], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:22:55 UTC +00:00], ["view_type_id", 2]]
+  [1m[35m (48.3ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:22:55 UTC +00:00], ["floor_no", 2], ["room_no", 222], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:22:55 UTC +00:00], ["view_type_id", 3]]
+  [1m[36m (47.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:22:56 UTC +00:00], ["floor_no", 2], ["room_no", 223], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:22:56 UTC +00:00], ["view_type_id", 4]]
+  [1m[35m (48.3ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:22:56 UTC +00:00], ["floor_no", 2], ["room_no", 224], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:22:56 UTC +00:00], ["view_type_id", 1]]
+  [1m[36m (48.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:22:56 UTC +00:00], ["floor_no", 2], ["room_no", 225], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:22:56 UTC +00:00], ["view_type_id", 2]]
+  [1m[35m (46.9ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:22:56 UTC +00:00], ["floor_no", 3], ["room_no", 301], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:22:56 UTC +00:00], ["view_type_id", 3]]
+  [1m[36m (48.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:22:56 UTC +00:00], ["floor_no", 3], ["room_no", 302], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:22:56 UTC +00:00], ["view_type_id", 4]]
+  [1m[35m (48.2ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:22:56 UTC +00:00], ["floor_no", 3], ["room_no", 303], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:22:56 UTC +00:00], ["view_type_id", 1]]
+  [1m[36m (47.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:22:56 UTC +00:00], ["floor_no", 3], ["room_no", 304], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:22:56 UTC +00:00], ["view_type_id", 2]]
+  [1m[35m (48.3ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:22:56 UTC +00:00], ["floor_no", 3], ["room_no", 305], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:22:56 UTC +00:00], ["view_type_id", 3]]
+  [1m[36m (48.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:22:56 UTC +00:00], ["floor_no", 3], ["room_no", 306], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:22:56 UTC +00:00], ["view_type_id", 4]]
+  [1m[35m (46.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:22:56 UTC +00:00], ["floor_no", 3], ["room_no", 307], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:22:56 UTC +00:00], ["view_type_id", 1]]
+  [1m[36m (47.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:22:56 UTC +00:00], ["floor_no", 3], ["room_no", 308], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:22:56 UTC +00:00], ["view_type_id", 2]]
+  [1m[35m (48.5ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:22:56 UTC +00:00], ["floor_no", 3], ["room_no", 309], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:22:56 UTC +00:00], ["view_type_id", 3]]
+  [1m[36m (60.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:22:56 UTC +00:00], ["floor_no", 3], ["room_no", 310], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:22:56 UTC +00:00], ["view_type_id", 4]]
+  [1m[35m (51.9ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:22:56 UTC +00:00], ["floor_no", 3], ["room_no", 311], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:22:56 UTC +00:00], ["view_type_id", 1]]
+  [1m[36m (50.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:22:56 UTC +00:00], ["floor_no", 3], ["room_no", 312], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:22:56 UTC +00:00], ["view_type_id", 2]]
+  [1m[35m (51.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:22:56 UTC +00:00], ["floor_no", 3], ["room_no", 313], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:22:56 UTC +00:00], ["view_type_id", 3]]
+  [1m[36m (102.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:22:56 UTC +00:00], ["floor_no", 3], ["room_no", 314], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:22:56 UTC +00:00], ["view_type_id", 4]]
+  [1m[35m (49.5ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:22:56 UTC +00:00], ["floor_no", 3], ["room_no", 315], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:22:56 UTC +00:00], ["view_type_id", 1]]
+  [1m[36m (228.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:22:57 UTC +00:00], ["floor_no", 3], ["room_no", 316], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:22:57 UTC +00:00], ["view_type_id", 2]]
+  [1m[35m (108.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:22:57 UTC +00:00], ["floor_no", 3], ["room_no", 317], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:22:57 UTC +00:00], ["view_type_id", 3]]
+  [1m[36m (197.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:22:57 UTC +00:00], ["floor_no", 3], ["room_no", 318], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:22:57 UTC +00:00], ["view_type_id", 4]]
+  [1m[35m (102.2ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:22:57 UTC +00:00], ["floor_no", 3], ["room_no", 319], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:22:57 UTC +00:00], ["view_type_id", 1]]
+  [1m[36m (76.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:22:57 UTC +00:00], ["floor_no", 3], ["room_no", 320], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:22:57 UTC +00:00], ["view_type_id", 2]]
+  [1m[35m (49.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:22:57 UTC +00:00], ["floor_no", 3], ["room_no", 321], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:22:57 UTC +00:00], ["view_type_id", 3]]
+  [1m[36m (50.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:22:57 UTC +00:00], ["floor_no", 3], ["room_no", 322], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:22:57 UTC +00:00], ["view_type_id", 4]]
+  [1m[35m (50.3ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:22:57 UTC +00:00], ["floor_no", 3], ["room_no", 323], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:22:57 UTC +00:00], ["view_type_id", 1]]
+  [1m[36m (64.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:22:57 UTC +00:00], ["floor_no", 3], ["room_no", 324], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:22:57 UTC +00:00], ["view_type_id", 2]]
+  [1m[35m (50.5ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:22:57 UTC +00:00], ["floor_no", 3], ["room_no", 325], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:22:57 UTC +00:00], ["view_type_id", 3]]
+  [1m[36m (50.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:22:58 UTC +00:00], ["floor_no", 4], ["room_no", 401], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:22:58 UTC +00:00], ["view_type_id", 4]]
+  [1m[35m (50.5ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:22:58 UTC +00:00], ["floor_no", 4], ["room_no", 402], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:22:58 UTC +00:00], ["view_type_id", 1]]
+  [1m[36m (50.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:22:58 UTC +00:00], ["floor_no", 4], ["room_no", 403], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:22:58 UTC +00:00], ["view_type_id", 2]]
+  [1m[35m (48.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:22:58 UTC +00:00], ["floor_no", 4], ["room_no", 404], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:22:58 UTC +00:00], ["view_type_id", 3]]
+  [1m[36m (108.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:22:58 UTC +00:00], ["floor_no", 4], ["room_no", 405], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:22:58 UTC +00:00], ["view_type_id", 4]]
+  [1m[35m (50.3ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:22:58 UTC +00:00], ["floor_no", 4], ["room_no", 406], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:22:58 UTC +00:00], ["view_type_id", 1]]
+  [1m[36m (50.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:22:58 UTC +00:00], ["floor_no", 4], ["room_no", 407], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:22:58 UTC +00:00], ["view_type_id", 2]]
+  [1m[35m (51.5ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:22:58 UTC +00:00], ["floor_no", 4], ["room_no", 408], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:22:58 UTC +00:00], ["view_type_id", 3]]
+  [1m[36m (48.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:22:58 UTC +00:00], ["floor_no", 4], ["room_no", 409], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:22:58 UTC +00:00], ["view_type_id", 4]]
+  [1m[35m (49.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:22:58 UTC +00:00], ["floor_no", 4], ["room_no", 410], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:22:58 UTC +00:00], ["view_type_id", 1]]
+  [1m[36m (49.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:22:58 UTC +00:00], ["floor_no", 4], ["room_no", 411], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:22:58 UTC +00:00], ["view_type_id", 2]]
+  [1m[35m (49.2ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:22:58 UTC +00:00], ["floor_no", 4], ["room_no", 412], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:22:58 UTC +00:00], ["view_type_id", 3]]
+  [1m[36m (61.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:22:58 UTC +00:00], ["floor_no", 4], ["room_no", 413], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:22:58 UTC +00:00], ["view_type_id", 4]]
+  [1m[35m (49.1ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:22:58 UTC +00:00], ["floor_no", 4], ["room_no", 414], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:22:58 UTC +00:00], ["view_type_id", 1]]
+  [1m[36m (47.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:22:58 UTC +00:00], ["floor_no", 4], ["room_no", 415], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:22:58 UTC +00:00], ["view_type_id", 2]]
+  [1m[35m (49.3ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:22:58 UTC +00:00], ["floor_no", 4], ["room_no", 416], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:22:58 UTC +00:00], ["view_type_id", 3]]
+  [1m[36m (49.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:22:58 UTC +00:00], ["floor_no", 4], ["room_no", 417], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:22:58 UTC +00:00], ["view_type_id", 4]]
+  [1m[35m (49.2ms)[0m  commit transaction
+  [1m[36m (0.4ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:22:58 UTC +00:00], ["floor_no", 4], ["room_no", 418], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:22:58 UTC +00:00], ["view_type_id", 1]]
+  [1m[36m (49.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:22:59 UTC +00:00], ["floor_no", 4], ["room_no", 419], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:22:59 UTC +00:00], ["view_type_id", 2]]
+  [1m[35m (47.7ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:22:59 UTC +00:00], ["floor_no", 4], ["room_no", 420], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:22:59 UTC +00:00], ["view_type_id", 3]]
+  [1m[36m (49.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:22:59 UTC +00:00], ["floor_no", 4], ["room_no", 421], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:22:59 UTC +00:00], ["view_type_id", 4]]
+  [1m[35m (49.3ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:22:59 UTC +00:00], ["floor_no", 4], ["room_no", 422], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:22:59 UTC +00:00], ["view_type_id", 1]]
+  [1m[36m (49.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:22:59 UTC +00:00], ["floor_no", 4], ["room_no", 423], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:22:59 UTC +00:00], ["view_type_id", 2]]
+  [1m[35m (49.3ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:22:59 UTC +00:00], ["floor_no", 4], ["room_no", 424], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:22:59 UTC +00:00], ["view_type_id", 3]]
+  [1m[36m (47.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:22:59 UTC +00:00], ["floor_no", 4], ["room_no", 425], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:22:59 UTC +00:00], ["view_type_id", 4]]
+  [1m[35m (49.2ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:22:59 UTC +00:00], ["floor_no", 5], ["room_no", 501], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:22:59 UTC +00:00], ["view_type_id", 1]]
+  [1m[36m (62.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:22:59 UTC +00:00], ["floor_no", 5], ["room_no", 502], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:22:59 UTC +00:00], ["view_type_id", 2]]
+  [1m[35m (47.7ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:22:59 UTC +00:00], ["floor_no", 5], ["room_no", 503], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:22:59 UTC +00:00], ["view_type_id", 3]]
+  [1m[36m (49.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:22:59 UTC +00:00], ["floor_no", 5], ["room_no", 504], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:22:59 UTC +00:00], ["view_type_id", 4]]
+  [1m[35m (49.1ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:22:59 UTC +00:00], ["floor_no", 5], ["room_no", 505], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:22:59 UTC +00:00], ["view_type_id", 1]]
+  [1m[36m (49.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:22:59 UTC +00:00], ["floor_no", 5], ["room_no", 506], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:22:59 UTC +00:00], ["view_type_id", 2]]
+  [1m[35m (52.2ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:22:59 UTC +00:00], ["floor_no", 5], ["room_no", 507], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:22:59 UTC +00:00], ["view_type_id", 3]]
+  [1m[36m (51.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:22:59 UTC +00:00], ["floor_no", 5], ["room_no", 508], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:22:59 UTC +00:00], ["view_type_id", 4]]
+  [1m[35m (51.6ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:22:59 UTC +00:00], ["floor_no", 5], ["room_no", 509], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:22:59 UTC +00:00], ["view_type_id", 1]]
+  [1m[36m (51.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:22:59 UTC +00:00], ["floor_no", 5], ["room_no", 510], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:22:59 UTC +00:00], ["view_type_id", 2]]
+  [1m[35m (51.6ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:22:59 UTC +00:00], ["floor_no", 5], ["room_no", 511], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:22:59 UTC +00:00], ["view_type_id", 3]]
+  [1m[36m (51.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:22:59 UTC +00:00], ["floor_no", 5], ["room_no", 512], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:22:59 UTC +00:00], ["view_type_id", 4]]
+  [1m[35m (51.4ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:23:00 UTC +00:00], ["floor_no", 5], ["room_no", 513], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:23:00 UTC +00:00], ["view_type_id", 1]]
+  [1m[36m (51.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:23:00 UTC +00:00], ["floor_no", 5], ["room_no", 514], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:23:00 UTC +00:00], ["view_type_id", 2]]
+  [1m[35m (51.6ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:23:00 UTC +00:00], ["floor_no", 5], ["room_no", 515], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:23:00 UTC +00:00], ["view_type_id", 3]]
+  [1m[36m (65.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:23:00 UTC +00:00], ["floor_no", 5], ["room_no", 516], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:23:00 UTC +00:00], ["view_type_id", 4]]
+  [1m[35m (51.5ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:23:00 UTC +00:00], ["floor_no", 5], ["room_no", 517], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:23:00 UTC +00:00], ["view_type_id", 1]]
+  [1m[36m (51.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:23:00 UTC +00:00], ["floor_no", 5], ["room_no", 518], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:23:00 UTC +00:00], ["view_type_id", 2]]
+  [1m[35m (51.5ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:23:00 UTC +00:00], ["floor_no", 5], ["room_no", 519], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:23:00 UTC +00:00], ["view_type_id", 3]]
+  [1m[36m (51.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:23:00 UTC +00:00], ["floor_no", 5], ["room_no", 520], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:23:00 UTC +00:00], ["view_type_id", 4]]
+  [1m[35m (51.5ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:23:00 UTC +00:00], ["floor_no", 5], ["room_no", 521], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:23:00 UTC +00:00], ["view_type_id", 1]]
+  [1m[36m (51.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:23:00 UTC +00:00], ["floor_no", 5], ["room_no", 522], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:23:00 UTC +00:00], ["view_type_id", 2]]
+  [1m[35m (51.5ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:23:00 UTC +00:00], ["floor_no", 5], ["room_no", 523], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:23:00 UTC +00:00], ["view_type_id", 3]]
+  [1m[36m (51.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:23:00 UTC +00:00], ["floor_no", 5], ["room_no", 524], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:23:00 UTC +00:00], ["view_type_id", 4]]
+  [1m[35m (51.3ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:23:00 UTC +00:00], ["floor_no", 5], ["room_no", 525], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:23:00 UTC +00:00], ["view_type_id", 1]]
+  [1m[36m (51.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:23:00 UTC +00:00], ["floor_no", 6], ["room_no", 601], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:23:00 UTC +00:00], ["view_type_id", 2]]
+  [1m[35m (52.8ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:23:00 UTC +00:00], ["floor_no", 6], ["room_no", 602], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:23:00 UTC +00:00], ["view_type_id", 3]]
+  [1m[36m (51.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:23:00 UTC +00:00], ["floor_no", 6], ["room_no", 603], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:23:00 UTC +00:00], ["view_type_id", 4]]
+  [1m[35m (51.5ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:23:00 UTC +00:00], ["floor_no", 6], ["room_no", 604], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:23:00 UTC +00:00], ["view_type_id", 1]]
+  [1m[36m (66.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:23:00 UTC +00:00], ["floor_no", 6], ["room_no", 605], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:23:00 UTC +00:00], ["view_type_id", 2]]
+  [1m[35m (51.5ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:23:01 UTC +00:00], ["floor_no", 6], ["room_no", 606], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:23:01 UTC +00:00], ["view_type_id", 3]]
+  [1m[36m (51.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:23:01 UTC +00:00], ["floor_no", 6], ["room_no", 607], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:23:01 UTC +00:00], ["view_type_id", 4]]
+  [1m[35m (51.5ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:23:01 UTC +00:00], ["floor_no", 6], ["room_no", 608], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:23:01 UTC +00:00], ["view_type_id", 1]]
+  [1m[36m (51.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:23:01 UTC +00:00], ["floor_no", 6], ["room_no", 609], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:23:01 UTC +00:00], ["view_type_id", 2]]
+  [1m[35m (52.8ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:23:01 UTC +00:00], ["floor_no", 6], ["room_no", 610], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:23:01 UTC +00:00], ["view_type_id", 3]]
+  [1m[36m (51.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:23:01 UTC +00:00], ["floor_no", 6], ["room_no", 611], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:23:01 UTC +00:00], ["view_type_id", 4]]
+  [1m[35m (51.6ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:23:01 UTC +00:00], ["floor_no", 6], ["room_no", 612], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:23:01 UTC +00:00], ["view_type_id", 1]]
+  [1m[36m (51.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:23:01 UTC +00:00], ["floor_no", 6], ["room_no", 613], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:23:01 UTC +00:00], ["view_type_id", 2]]
+  [1m[35m (51.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:23:01 UTC +00:00], ["floor_no", 6], ["room_no", 614], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:23:01 UTC +00:00], ["view_type_id", 3]]
+  [1m[36m (51.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:23:01 UTC +00:00], ["floor_no", 6], ["room_no", 615], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:23:01 UTC +00:00], ["view_type_id", 4]]
+  [1m[35m (51.3ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:23:01 UTC +00:00], ["floor_no", 6], ["room_no", 616], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:23:01 UTC +00:00], ["view_type_id", 1]]
+  [1m[36m (51.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:23:01 UTC +00:00], ["floor_no", 6], ["room_no", 617], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:23:01 UTC +00:00], ["view_type_id", 2]]
+  [1m[35m (51.4ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:23:01 UTC +00:00], ["floor_no", 6], ["room_no", 618], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:23:01 UTC +00:00], ["view_type_id", 3]]
+  [1m[36m (65.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:23:01 UTC +00:00], ["floor_no", 6], ["room_no", 619], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:23:01 UTC +00:00], ["view_type_id", 4]]
+  [1m[35m (51.6ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:23:01 UTC +00:00], ["floor_no", 6], ["room_no", 620], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:23:01 UTC +00:00], ["view_type_id", 1]]
+  [1m[36m (51.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:23:01 UTC +00:00], ["floor_no", 6], ["room_no", 621], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:23:01 UTC +00:00], ["view_type_id", 2]]
+  [1m[35m (51.4ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:23:01 UTC +00:00], ["floor_no", 6], ["room_no", 622], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:23:01 UTC +00:00], ["view_type_id", 3]]
+  [1m[36m (51.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:23:01 UTC +00:00], ["floor_no", 6], ["room_no", 623], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:23:01 UTC +00:00], ["view_type_id", 4]]
+  [1m[35m (51.4ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:23:01 UTC +00:00], ["floor_no", 6], ["room_no", 624], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:23:01 UTC +00:00], ["view_type_id", 1]]
+  [1m[36m (51.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:23:02 UTC +00:00], ["floor_no", 6], ["room_no", 625], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:23:02 UTC +00:00], ["view_type_id", 2]]
+  [1m[35m (51.5ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:23:02 UTC +00:00], ["floor_no", 7], ["room_no", 701], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:23:02 UTC +00:00], ["view_type_id", 3]]
+  [1m[36m (51.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:23:02 UTC +00:00], ["floor_no", 7], ["room_no", 702], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:23:02 UTC +00:00], ["view_type_id", 4]]
+  [1m[35m (51.6ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:23:02 UTC +00:00], ["floor_no", 7], ["room_no", 703], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:23:02 UTC +00:00], ["view_type_id", 1]]
+  [1m[36m (51.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:23:02 UTC +00:00], ["floor_no", 7], ["room_no", 704], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:23:02 UTC +00:00], ["view_type_id", 2]]
+  [1m[35m (49.3ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:23:02 UTC +00:00], ["floor_no", 7], ["room_no", 705], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:23:02 UTC +00:00], ["view_type_id", 3]]
+  [1m[36m (49.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:23:02 UTC +00:00], ["floor_no", 7], ["room_no", 706], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:23:02 UTC +00:00], ["view_type_id", 4]]
+  [1m[35m (49.3ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:23:02 UTC +00:00], ["floor_no", 7], ["room_no", 707], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:23:02 UTC +00:00], ["view_type_id", 1]]
+  [1m[36m (61.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:23:02 UTC +00:00], ["floor_no", 7], ["room_no", 708], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:23:02 UTC +00:00], ["view_type_id", 2]]
+  [1m[35m (49.2ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:23:02 UTC +00:00], ["floor_no", 7], ["room_no", 709], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:23:02 UTC +00:00], ["view_type_id", 3]]
+  [1m[36m (48.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:23:02 UTC +00:00], ["floor_no", 7], ["room_no", 710], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:23:02 UTC +00:00], ["view_type_id", 4]]
+  [1m[35m (49.3ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:23:02 UTC +00:00], ["floor_no", 7], ["room_no", 711], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:23:02 UTC +00:00], ["view_type_id", 1]]
+  [1m[36m (49.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:23:02 UTC +00:00], ["floor_no", 7], ["room_no", 712], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:23:02 UTC +00:00], ["view_type_id", 2]]
+  [1m[35m (49.3ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:23:02 UTC +00:00], ["floor_no", 7], ["room_no", 713], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:23:02 UTC +00:00], ["view_type_id", 3]]
+  [1m[36m (49.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:23:02 UTC +00:00], ["floor_no", 7], ["room_no", 714], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:23:02 UTC +00:00], ["view_type_id", 4]]
+  [1m[35m (48.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:23:02 UTC +00:00], ["floor_no", 7], ["room_no", 715], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:23:02 UTC +00:00], ["view_type_id", 1]]
+  [1m[36m (49.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:23:02 UTC +00:00], ["floor_no", 7], ["room_no", 716], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:23:02 UTC +00:00], ["view_type_id", 2]]
+  [1m[35m (49.3ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:23:02 UTC +00:00], ["floor_no", 7], ["room_no", 717], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:23:02 UTC +00:00], ["view_type_id", 3]]
+  [1m[36m (49.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:23:02 UTC +00:00], ["floor_no", 7], ["room_no", 718], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:23:02 UTC +00:00], ["view_type_id", 4]]
+  [1m[35m (127.6ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:23:03 UTC +00:00], ["floor_no", 7], ["room_no", 719], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:23:03 UTC +00:00], ["view_type_id", 1]]
+  [1m[36m (49.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:23:03 UTC +00:00], ["floor_no", 7], ["room_no", 720], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:23:03 UTC +00:00], ["view_type_id", 2]]
+  [1m[35m (49.3ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:23:03 UTC +00:00], ["floor_no", 7], ["room_no", 721], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:23:03 UTC +00:00], ["view_type_id", 3]]
+  [1m[36m (61.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:23:03 UTC +00:00], ["floor_no", 7], ["room_no", 722], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:23:03 UTC +00:00], ["view_type_id", 4]]
+  [1m[35m (49.3ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:23:03 UTC +00:00], ["floor_no", 7], ["room_no", 723], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:23:03 UTC +00:00], ["view_type_id", 1]]
+  [1m[36m (49.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:23:03 UTC +00:00], ["floor_no", 7], ["room_no", 724], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:23:03 UTC +00:00], ["view_type_id", 2]]
+  [1m[35m (48.1ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:23:03 UTC +00:00], ["floor_no", 7], ["room_no", 725], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:23:03 UTC +00:00], ["view_type_id", 3]]
+  [1m[36m (74.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:23:03 UTC +00:00], ["floor_no", 8], ["room_no", 801], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:23:03 UTC +00:00], ["view_type_id", 4]]
+  [1m[35m (51.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:23:03 UTC +00:00], ["floor_no", 8], ["room_no", 802], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:23:03 UTC +00:00], ["view_type_id", 1]]
+  [1m[36m (49.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:23:03 UTC +00:00], ["floor_no", 8], ["room_no", 803], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:23:03 UTC +00:00], ["view_type_id", 2]]
+  [1m[35m (48.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:23:03 UTC +00:00], ["floor_no", 8], ["room_no", 804], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:23:03 UTC +00:00], ["view_type_id", 3]]
+  [1m[36m (49.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:23:03 UTC +00:00], ["floor_no", 8], ["room_no", 805], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:23:03 UTC +00:00], ["view_type_id", 4]]
+  [1m[35m (49.3ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:23:03 UTC +00:00], ["floor_no", 8], ["room_no", 806], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:23:03 UTC +00:00], ["view_type_id", 1]]
+  [1m[36m (49.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:23:03 UTC +00:00], ["floor_no", 8], ["room_no", 807], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:23:03 UTC +00:00], ["view_type_id", 2]]
+  [1m[35m (49.4ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:23:03 UTC +00:00], ["floor_no", 8], ["room_no", 808], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:23:03 UTC +00:00], ["view_type_id", 3]]
+  [1m[36m (48.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:23:03 UTC +00:00], ["floor_no", 8], ["room_no", 809], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:23:03 UTC +00:00], ["view_type_id", 4]]
+  [1m[35m (49.3ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:23:03 UTC +00:00], ["floor_no", 8], ["room_no", 810], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:23:03 UTC +00:00], ["view_type_id", 1]]
+  [1m[36m (62.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:23:04 UTC +00:00], ["floor_no", 8], ["room_no", 811], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:23:04 UTC +00:00], ["view_type_id", 2]]
+  [1m[35m (48.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:23:04 UTC +00:00], ["floor_no", 8], ["room_no", 812], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:23:04 UTC +00:00], ["view_type_id", 3]]
+  [1m[36m (49.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:23:04 UTC +00:00], ["floor_no", 8], ["room_no", 813], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:23:04 UTC +00:00], ["view_type_id", 4]]
+  [1m[35m (49.4ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:23:04 UTC +00:00], ["floor_no", 8], ["room_no", 814], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:23:04 UTC +00:00], ["view_type_id", 1]]
+  [1m[36m (49.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:23:04 UTC +00:00], ["floor_no", 8], ["room_no", 815], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:23:04 UTC +00:00], ["view_type_id", 2]]
+  [1m[35m (49.4ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:23:04 UTC +00:00], ["floor_no", 8], ["room_no", 816], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:23:04 UTC +00:00], ["view_type_id", 3]]
+  [1m[36m (48.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:23:04 UTC +00:00], ["floor_no", 8], ["room_no", 817], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:23:04 UTC +00:00], ["view_type_id", 4]]
+  [1m[35m (49.4ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:23:04 UTC +00:00], ["floor_no", 8], ["room_no", 818], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:23:04 UTC +00:00], ["view_type_id", 1]]
+  [1m[36m (49.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:23:04 UTC +00:00], ["floor_no", 8], ["room_no", 819], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:23:04 UTC +00:00], ["view_type_id", 2]]
+  [1m[35m (49.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:23:04 UTC +00:00], ["floor_no", 8], ["room_no", 820], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:23:04 UTC +00:00], ["view_type_id", 3]]
+  [1m[36m (48.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:23:04 UTC +00:00], ["floor_no", 8], ["room_no", 821], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:23:04 UTC +00:00], ["view_type_id", 4]]
+  [1m[35m (48.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:23:04 UTC +00:00], ["floor_no", 8], ["room_no", 822], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:23:04 UTC +00:00], ["view_type_id", 1]]
+  [1m[36m (49.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:23:04 UTC +00:00], ["floor_no", 8], ["room_no", 823], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:23:04 UTC +00:00], ["view_type_id", 2]]
+  [1m[35m (49.3ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Tue, 15 Jan 2019 21:23:04 UTC +00:00], ["floor_no", 8], ["room_no", 824], ["room_type_id", 1], ["updated_at", Tue, 15 Jan 2019 21:23:04 UTC +00:00], ["view_type_id", 3]]
+  [1m[36m (61.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "rooms" ("created_at", "floor_no", "room_no", "room_type_id", "updated_at", "view_type_id") VALUES (?, ?, ?, ?, ?, ?)[0m  [["created_at", Tue, 15 Jan 2019 21:23:04 UTC +00:00], ["floor_no", 8], ["room_no", 825], ["room_type_id", 2], ["updated_at", Tue, 15 Jan 2019 21:23:04 UTC +00:00], ["view_type_id", 4]]
+  [1m[35m (51.8ms)[0m  commit transaction
+Connecting to database specified by database.yml

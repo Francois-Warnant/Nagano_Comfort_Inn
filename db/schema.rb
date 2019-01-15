@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20190114222109) do
+ActiveRecord::Schema.define(:version => 20190115210737) do
 
   create_table "personal_infos", :force => true do |t|
     t.integer  "user_id"
@@ -46,35 +46,19 @@ ActiveRecord::Schema.define(:version => 20190114222109) do
     t.datetime "updated_at",     :null => false
   end
 
-  create_table "room_room_types", :force => true do |t|
-    t.integer  "room_id"
-    t.integer  "room_type_id"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
-  end
-
-  add_index "room_room_types", ["room_id", "room_type_id"], :name => "index_room_room_types_on_room_id_and_room_type_id"
-
   create_table "room_types", :force => true do |t|
     t.string   "room_type"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
-  create_table "room_view_types", :force => true do |t|
-    t.integer  "room_id"
-    t.integer  "view_type_id"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
-  end
-
-  add_index "room_view_types", ["room_id", "view_type_id"], :name => "index_room_view_types_on_room_id_and_view_type_id"
-
   create_table "rooms", :force => true do |t|
     t.integer  "floor_no"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
     t.integer  "room_no"
+    t.integer  "room_type_id"
+    t.integer  "view_type_id"
   end
 
   create_table "users", :force => true do |t|

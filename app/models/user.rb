@@ -28,7 +28,6 @@ class User < ActiveRecord::Base
   attr_accessible :role_id, :email, :password, :password_confirmation, :remember_me
   # attr_accessible :title, :body
 
-  has_one :personal_info
   has_many :reservations, dependent: :destroy
 
   #before_save :assign_role

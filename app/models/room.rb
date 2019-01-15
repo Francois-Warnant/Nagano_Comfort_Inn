@@ -10,14 +10,8 @@
 #
 
 class Room < ActiveRecord::Base
-  attr_accessible :floor_no, :room_no
+  attr_accessible :floor_no, :room_no, :room_type_id, :view_type_id
 
   has_many :room_reservations
   has_many :reservations, through: :room_reservations
-
-  has_one :room_room_type
-  has_one :room_type, through: :room_room_type
-
-  has_one :room_view_type
-  has_one :view_type, through: :room_view_type
 end
