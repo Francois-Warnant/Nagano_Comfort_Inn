@@ -1,4 +1,6 @@
 class ReservationsController < ApplicationController
+  before_filter :authenticate_user!
+
   def show
     @reservation = Reservation.find(params[:id])
   end
@@ -9,6 +11,7 @@ class ReservationsController < ApplicationController
 
   def new
     @reservation = Reservation.new
+    @room = Room.new
   end
 
   def create
@@ -27,9 +30,8 @@ class ReservationsController < ApplicationController
   end
 
   private
-
     def build_reservation(reserv)
-      #reserv = params[:reservation]
+
       arrival = Date.new reserv["start_date(1i)",].to_i, reserv["start_date(2i)",].to_i, reserv["start_date(3i)",].to_i
       depart = Date.new reserv["end_date(1i)",].to_i, reserv["end_date(2i)",].to_i, reserv["end_date(3i)",].to_i
       demands = reserv["client_demands"]

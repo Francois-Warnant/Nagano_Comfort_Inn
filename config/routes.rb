@@ -1,12 +1,18 @@
 NaganoComfortInn::Application.routes.draw do
   devise_for :users
 
-  resources :users, only: [:show]
+  resources :users, only: [:show, :index] do
+    resources :personal_infos
+  end
 
-  resources :rooms
   resources :reservations
+  resources :rooms
+  resources :room_types
+  resources :view_types
 
   root to: 'pages_generale#index'
+
+  #match '/reservation', to: ''
 
 
   # The priority is based upon order of creation:

@@ -12,7 +12,7 @@ namespace :db do
     ViewType.create!(view_type: "Jungle")
 
     total_rooms.times do |n|
-      if is_floor_diff n, current_floor
+      if is_floor_diff n
         current_floor+= 1
       end
 
@@ -23,13 +23,16 @@ namespace :db do
     total_rooms.times do |n|
       room = Room.find(n+1)
 
-      room.create_room_room_type(room_type_id: ((n+1) % 4)) 
-      room.create_room_view_type(view_type_id: ((n+1) % 2))
+      no= (((n) % 4) + 1)
+      room.create_room_room_type(room_type_id: no)
+
+      no= (((n) % 2) + 1)
+      room.create_room_view_type(view_type_id: no)
     end
   end
 end
 
-def is_floor_diff (n, current_floor)
+def is_floor_diff (n)
   if (n % 25) == 0
     true
   else

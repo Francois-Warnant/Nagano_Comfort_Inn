@@ -1,5 +1,5 @@
 %body
-  = form_for(@room) do |f|
-    = f.label :TYPE
-    = f.text_field :type_id, size: 3
+  = form_for(@roomType) do |f|
+    = f.label :ROOM_TYPE
+    = f.text_field :room_type
     = f.submit "Create"

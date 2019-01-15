@@ -12,7 +12,7 @@ class ViewTypesController < ApplicationController
   end
 
   def create
-    @view = ViewType.new(params[:view])
+    @view = ViewType.new(params[:view_type])
     if @view.save
       flash[:success] = "NEW VIEW ADDED"
       redirect_to @view

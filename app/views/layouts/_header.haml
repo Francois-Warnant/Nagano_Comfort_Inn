@@ -6,9 +6,9 @@
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
-      = link_to "Nagano Inn", root_path, class: "navbar-brand test"
+      = link_to "Francois Inn", root_path, class: "navbar-brand test"
     #navbar.navbar-collapse.collapse
       - if !user_signed_in?
         = link_to "Sign in", new_user_session_path, class: "button btn btn-success"
-      - else 
+      - else
         = link_to "Sign out", destroy_user_session_path, class: "button btn btn-success", method: :delete, data:{ confirm: "You sure?"}
