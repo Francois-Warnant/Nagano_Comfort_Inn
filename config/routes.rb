@@ -1,11 +1,12 @@
 NaganoComfortInn::Application.routes.draw do
   devise_for :users
 
-  resources :users, only: [:show, :index] do
-    resources :personal_infos
+  resources :users, only: [:show, :index]
+
+  resources :reservations do
+    resources :room_reservations, only: [:show, :index]
   end
 
-  resources :reservations
   resources :rooms
   resources :room_types
   resources :view_types
