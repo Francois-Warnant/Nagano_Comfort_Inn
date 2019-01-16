@@ -1,4 +1,5 @@
 class RoomTypesController < ApplicationController
+  load_and_authorize_resource
 
   def show
     @roomType = RoomType.find(params[:id])

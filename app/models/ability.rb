@@ -1,7 +1,28 @@
 class Ability
   include CanCan::Ability
 
-  def initialize(user)
+  def initialize (user)
+    user.roles.each { |role| send(role.name.downcase, user) }
+  end
+
+  def admin (user)
+    can :manage, :all
+  end
+
+  def client (user)
+    can [:manage],        Reservation
+    can [:update, :read], User, id: user.id
+    can :read,            Room
+  end
+
+  def employee (user)
+    can :manage, [reservation, room, user]
+  end
+
+  def cleaning (user) #A VENIR
+    can :read, :room
+  end
+
     # Define abilities for the passed in user here. For example:
     #
     #   user ||= User.new # guest user (not logged in)
@@ -28,5 +49,4 @@ class Ability
     #
     # See the wiki for details:
     # https://github.com/ryanb/cancan/wiki/Defining-Abilities
-  end
 end

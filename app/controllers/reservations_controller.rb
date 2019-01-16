@@ -1,11 +1,17 @@
 class ReservationsController < ApplicationController
+  before_filter :set_user
+  load_and_authorize_resource
 
   def show
     @reservation = Reservation.find(params[:id])
   end
 
   def index
-    @reservation = Reservation.all
+    if current_user.has_role?(:employee) || current_user.has_role?(:admin)
+      @reservation = Reservation.all
+    else
+      redirect_to current_user
+    end
   end
 
   def new
@@ -25,6 +31,17 @@ class ReservationsController < ApplicationController
   end
 
   def update
+
+  end
+
+  def set_user  #temp
+    id = params[:user_id]
+
+    if (id != nil)
+      @user = User.find(params[:user_id])
+    else
+      @user = nil
+    end
 
   end
 

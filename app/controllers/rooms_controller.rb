@@ -1,11 +1,12 @@
 class RoomsController < ApplicationController
+  load_and_authorize_resource
 
   def show
-    @room = Room.find(params[:id])
+    #@room = Room.find(params[:id])
   end
 
   def index
-    @room = Room.all
+    #@room = Room.all
   end
 
   def new

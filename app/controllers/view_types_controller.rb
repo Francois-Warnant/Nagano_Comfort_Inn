@@ -1,4 +1,5 @@
 class ViewTypesController < ApplicationController
+  load_and_authorize_resource
 
   def show
     @view = ViewType.find(params[:id])
