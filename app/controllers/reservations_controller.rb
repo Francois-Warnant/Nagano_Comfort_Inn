@@ -3,15 +3,11 @@ class ReservationsController < ApplicationController
   load_and_authorize_resource
 
   def show
-    @reservation = Reservation.find(params[:id])
+    @reservation = Reservation.find(@user.id)
   end
 
   def index
-    if current_user.has_role?(:employee) || current_user.has_role?(:admin)
-      @reservation = Reservation.all
-    else
-      redirect_to current_user
-    end
+      @reservation = Reservation.find_all_by_user_id(@user.id)
   end
 
   def new
@@ -24,7 +20,7 @@ class ReservationsController < ApplicationController
 
     if @reservation.save
       flash[:success] = "NEW RESERVATION ADDED"
-      redirect_to current_user
+      redirect_to my_profile_path
     else
       render 'new'
     end
@@ -35,14 +31,7 @@ class ReservationsController < ApplicationController
   end
 
   def set_user  #temp
-    id = params[:user_id]
-
-    if (id != nil)
-      @user = User.find(params[:user_id])
-    else
-      @user = nil
-    end
-
+    @user = current_user
   end
 
   private

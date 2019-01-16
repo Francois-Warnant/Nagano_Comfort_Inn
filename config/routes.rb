@@ -1,21 +1,30 @@
 NaganoComfortInn::Application.routes.draw do
   devise_for :users
 
-  resources :users, only: [:show, :index] do
-    resources :reservations
+  namespace :gestion do
+
+    resources :users, only: [:show, :index] do
+      resources :reservations
+    end
+    resources :reservations do
+      resources :room_reservations, only: [:show, :index]
+    end
+
+    #resources :cleaning
+    resources :rooms
+    resources :room_types
+    resources :view_types
   end
 
-  resources :reservations do
-    resources :room_reservations, only: [:show, :index]
-  end
+  resources :reservations
+  resources :profiles
 
-  resources :rooms
-  resources :room_types
-  resources :view_types
+
 
   root to: 'pages_generale#home'
 
-  #match '/reservation', to: ''
+  match '/my_profile', to: 'profiles#edit'
+  match '/new_reservation', to: 'reservations#new'
 
 
   # The priority is based upon order of creation:

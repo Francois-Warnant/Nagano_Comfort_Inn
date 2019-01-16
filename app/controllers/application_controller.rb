@@ -2,16 +2,20 @@ class ApplicationController < ActionController::Base
   before_filter :authenticate_user!, except: [:home, :login, :sign_up]
 
   rescue_from CanCan::AccessDenied do |exception|
-    redirect_to root_url, alert: exception.message
+    redirect_to my_profile_path, alert: exception.message
   end
 
   def after_sign_in_path_for(resource)
     current_user_has_reservations = current_user.reservations.count > 0
 
-    if  current_user_has_reservations
+    if current_user.has_role?(:admin)
       current_user
     else
-      new_reservation_path
+      if  current_user_has_reservations
+        my_profile_path
+      else
+        new_reservation_path
+      end
     end
   end
 

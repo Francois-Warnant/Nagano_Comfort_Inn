@@ -10,9 +10,14 @@ class Ability
   end
 
   def client (user)
-    can [:manage],        Reservation
-    can [:update, :read], User, id: user.id
-    can :read,            Room
+    can :manage, ReservationsController
+    cannot :manage, User::ReservationsController
+
+    cannot :manage, User
+    can [:create, :edit, :read], Reservation
+    can :read, Room
+
+    can :manage, :profile
   end
 
   def employee (user)
