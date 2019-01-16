@@ -11,7 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20190115213434) do
+ActiveRecord::Schema.define(:version => 20190116152517) do
+
+  create_table "assignments", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "role_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "reservations", :force => true do |t|
     t.datetime "start_date"
@@ -26,6 +33,12 @@ ActiveRecord::Schema.define(:version => 20190115213434) do
   add_index "reservations", ["created_at"], :name => "index_reservations_on_user_id_and_created_at"
   add_index "reservations", ["end_date"], :name => "index_reservations_on_user_id_and_end_date"
   add_index "reservations", ["start_date"], :name => "index_reservations_on_user_id_and_start_date"
+
+  create_table "roles", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "room_reservations", :force => true do |t|
     t.integer  "reservation_id"
@@ -50,7 +63,6 @@ ActiveRecord::Schema.define(:version => 20190115213434) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "role_id"
     t.string   "email",                  :default => "", :null => false
     t.string   "encrypted_password",     :default => "", :null => false
     t.string   "reset_password_token"

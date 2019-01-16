@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  before_filter :authenticate_user!, except: [:home, :login, :sign_up]
 
 
   def after_sign_in_path_for(resource)

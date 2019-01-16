@@ -11,7 +11,7 @@ NaganoComfortInn::Application.routes.draw do
   resources :room_types
   resources :view_types
 
-  root to: 'pages_generale#index'
+  root to: 'pages_generale#home'
 
   #match '/reservation', to: ''
 

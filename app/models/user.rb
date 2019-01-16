@@ -23,6 +23,7 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+  after_create :assign_default_role
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :role_id, :email, :password, :password_confirmation, :remember_me
@@ -30,10 +31,11 @@ class User < ActiveRecord::Base
 
   has_many :reservations, dependent: :destroy
 
-  #before_save :assign_role
+  has_many :assignments
+  has_many :roles, through: :assignments
 
   private
-    #def assign_role
-    #  self.role_id = "#"
-    #end
+    def assign_default_role
+      self.assignments.create(role_id: 2)
+    end
 end

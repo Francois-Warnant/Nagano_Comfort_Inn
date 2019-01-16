@@ -1,4 +1,5 @@
 class ViewTypesController < ApplicationController
+
   def show
     @view = ViewType.find(params[:id])
   end

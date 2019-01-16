@@ -7,6 +7,7 @@ gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem 'devise'
 gem 'faker', '1.0.1'
+gem 'cancan'
 
 group :development, :test do
   gem 'sqlite3'

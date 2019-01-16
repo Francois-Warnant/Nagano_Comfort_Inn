@@ -11,6 +11,11 @@ namespace :db do
     ViewType.create!(view_type: "Ocean")
     ViewType.create!(view_type: "Jungle")
 
+    Role.create!(name: "admin")
+    Role.create!(name: "client")
+    Role.create!(name: "employee")
+    Role.create!(name: "cleaning")
+
     total_rooms.times do |n|
       if is_floor_diff n
         current_floor+= 1
