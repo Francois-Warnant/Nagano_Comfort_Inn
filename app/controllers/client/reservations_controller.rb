@@ -1,18 +1,17 @@
-class ReservationsController < ApplicationController
+class Client::ReservationsController < ApplicationController
   before_filter :set_user
   load_and_authorize_resource
 
   def show
-    @reservation = Reservation.find(@user.id)
+    #@reservation = Reservation.find(@user.id)
   end
 
   def index
-      @reservation = Reservation.find_all_by_user_id(@user.id)
+    @reservation = Reservation.find_all_by_user_id(@user.id)
   end
 
   def new
-    @reservation = Reservation.new
-    @room = Room.new
+    @reservation = Reservation.new(user_id: @user.id)
   end
 
   def create
@@ -30,7 +29,7 @@ class ReservationsController < ApplicationController
 
   end
 
-  def set_user  #temp
+  def set_user  # duplicate // should be centralized
     @user = current_user
   end
 

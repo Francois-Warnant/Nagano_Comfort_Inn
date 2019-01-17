@@ -142,6 +142,11 @@ body {
   padding: 10px;
 }
 
+#navbar>.button:hover {
+  color: black;
+  background-color: #7aba7b;
+}
+
 /* mixins, variables, etc. */
 
 $grayMediumLight: #eaeaea;

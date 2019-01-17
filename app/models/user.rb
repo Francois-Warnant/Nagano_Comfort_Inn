@@ -42,6 +42,6 @@ class User < ActiveRecord::Base
 
   private
     def assign_default_role
-      self.assignments.create(role_id: 1)
+      self.assignments.create(role_id: 2)
     end
 end

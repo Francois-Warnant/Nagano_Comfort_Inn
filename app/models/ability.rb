@@ -10,22 +10,23 @@ class Ability
   end
 
   def client (user)
-    can :manage, ReservationsController
-    cannot :manage, User::ReservationsController
-
+    cannot :manage, Gestion::ReservationsController
+    cannot :manage, "Gestion/users/ReservationsController" ##!!!!!!!!!!!!!
     cannot :manage, User
+
+    can :manage, Client::ReservationsController
+
     can [:create, :edit, :read], Reservation
     can :read, Room
-
     can :manage, :profile
   end
 
-  def employee (user)
-    can :manage, [reservation, room, user]
+  def employee (user) #A VENIR
+    #can :manage, [reservation, room, user]
   end
 
   def cleaning (user) #A VENIR
-    can :read, :room
+    #can :read, :room
   end
 
     # Define abilities for the passed in user here. For example:

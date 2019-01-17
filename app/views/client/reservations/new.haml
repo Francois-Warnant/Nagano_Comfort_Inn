@@ -1,0 +1,19 @@
+%body
+  = form_for(@reservation, url: client_reservations_path) do |f|
+    %p I will arrive on :
+    = f.date_select :start_date, selected: Date.today
+    %p I will leave on :
+    = f.date_select :end_date, default: 3.days.from_now
+    %p
+    = f.fields_for :room_reservations do |r|
+      %p What type of room :
+      = r.select :room_type_id, RoomType.pluck(:room_type)
+      %p
+      %p What type of view :
+      = r.select :view_type_id, ViewType.pluck(:view_type)
+      %p
+
+
+
+
+    = f.submit "Create"

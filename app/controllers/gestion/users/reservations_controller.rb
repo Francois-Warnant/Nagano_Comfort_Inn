@@ -1,4 +1,4 @@
-class ReservationsController < UsersController
+class Gestion::ReservationsController < UsersController
   before_filter :set_user
   load_and_authorize_resource
 
@@ -7,20 +7,16 @@ class ReservationsController < UsersController
   end
 
   def index
-    if current_user.has_role?(:employee) || current_user.has_role?(:admin)
-      @reservation = Reservation.all
-    else
-      redirect_to current_user
-    end
+    @reservation = Reservation.all
   end
 
   def new
-    @reservation = Reservation.new
+    @reservation = Reservation.new(user_id: @user.id)
     @room = Room.new
   end
 
   def create
-    @reservation = build_reservation params[:reservation]
+    @reservation = Reservation.new(params[:reservation])
 
     if @reservation.save
       flash[:success] = "NEW RESERVATION ADDED"

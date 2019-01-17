@@ -9,6 +9,13 @@
       = link_to "Francois Inn", root_path, class: "navbar-brand test"
     #navbar.navbar-collapse.collapse
       - if !user_signed_in?
-        = link_to "Sign in", new_user_session_path, class: "button btn btn-success"
+        = link_to "Sign up", new_user_registration_path, class: "button btn"
+        = link_to "Sign in", new_user_session_path, class: "button btn"
       - else
-        = link_to "Sign out", destroy_user_session_path, class: "button btn btn-success", method: :delete, data:{ confirm: "You sure?"}
+        - if !current_user.has_role?(:admin)
+          = link_to "Reservation", new_reservation_path, class: "button btn"
+          = link_to "Profile", my_profile_path, class: "button btn"
+        - else
+          = link_to "Reservations", gestion_reservations_path, class: "button btn"
+          = link_to "Users", gestion_users_path, class: "button btn"
+        = link_to "Sign out", destroy_user_session_path, class: "button btn", method: :delete, data:{ confirm: "You sure?"}
