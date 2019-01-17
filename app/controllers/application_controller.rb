@@ -9,13 +9,15 @@ class ApplicationController < ActionController::Base
     current_user_has_reservations = current_user.reservations.count > 0
 
     if current_user.has_role?(:admin)
-      current_user
-    else
-      if  current_user_has_reservations
+      root_path
+    elsif current_user.has_role?(:client)
+      if current_user_has_reservations
         my_profile_path
       else
         new_reservation_path
       end
+    else
+      root_path
     end
   end
 
