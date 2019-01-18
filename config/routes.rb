@@ -3,12 +3,11 @@ NaganoComfortInn::Application.routes.draw do
 
   namespace :gestion do
     resources :users, only: [:show, :index, :new, :create]  do
-      resources :reservations
+      resources :reservations, controller: "users/reservations"
     end
 
-    resources :reservations, only: [:index]
+    resources :reservations, only: [:index], controller: "reservations"
 
-    #resources :cleaning
     resources :rooms
     resources :room_types
     resources :view_types
@@ -25,6 +24,4 @@ NaganoComfortInn::Application.routes.draw do
 
   match '/my_profile', to: 'client/profiles#edit'
   match '/new_reservation', to: 'client/reservations#new'
-
-
 end

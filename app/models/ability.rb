@@ -11,12 +11,11 @@ class Ability
 
   def client (user)
     cannot :manage, Gestion::ReservationsController
-    cannot :manage, "Gestion/users/ReservationsController" ##!!!!!!!!!!!!!
-    cannot :manage, User
-
+    cannot :manage, User::ReservationsController
     can :manage, Client::ReservationsController
 
-    can [:create, :edit, :read], Reservation
+    cannot :manage, User
+
     can :read, Room
     can :manage, :profile
   end

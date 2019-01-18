@@ -1,6 +1,7 @@
 class Gestion::ReservationsController < UsersController
   before_filter :set_user
-  load_and_authorize_resource
+  #load_and_authorize_resource :users
+  #load_and_authorize_resource :through => :users
 
   def show
     @reservation = Reservation.find(params[:id])
