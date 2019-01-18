@@ -19,4 +19,12 @@ class Reservation < ActiveRecord::Base
   has_many :rooms, through: :room_reservations
 
   validates :user_id, presence: true
+
+
+
+
+  def reserve_room!(room)
+    room_reservations.create!(room_id: room.id)
+  end
+
 end

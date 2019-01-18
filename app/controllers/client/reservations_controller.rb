@@ -12,10 +12,13 @@ class Client::ReservationsController < ApplicationController
 
   def new
     @reservation = Reservation.new(user_id: @user.id)
+    @room_type = RoomType.new
+    @view_type = ViewType.new
   end
 
   def create
     @reservation = build_reservation params[:reservation]
+
 
     if @reservation.save
       flash[:success] = "NEW RESERVATION ADDED"

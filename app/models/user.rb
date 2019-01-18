@@ -34,6 +34,13 @@ class User < ActiveRecord::Base
   has_many :assignments
   has_many :roles, through: :assignments
 
+  def reserve(r_params)
+    arrival = Date.new r_params["start_date(1i)",].to_i, r_params["start_date(2i)",].to_i, r_params["start_date(3i)",].to_i
+    depart = Date.new r_params["end_date(1i)",].to_i, r_params["end_date(2i)",].to_i, r_params["end_date(3i)",].to_i
+    demands = r_params["client_demands"]
+
+    reservations.build({start_date: arrival, end_date: depart, client_demands: demands})
+  end
 
 
   def has_role?(role_sym)

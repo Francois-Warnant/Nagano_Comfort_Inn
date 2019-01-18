@@ -6,7 +6,7 @@ NaganoComfortInn::Application.routes.draw do
       resources :reservations, controller: "users/reservations"
     end
 
-    resources :reservations, only: [:index], controller: "reservations"
+    resources :reservations, only: [:index, :new, :create], controller: "reservations"
 
     resources :rooms
     resources :room_types

@@ -14,4 +14,12 @@ class Room < ActiveRecord::Base
 
   has_many :room_reservations
   has_many :reservations, through: :room_reservations
+
+  def assign_room_type!(new_room_type)
+    self.room_type_id = new_room_type
+  end
+
+  def assign_view_type!(new_view_type)
+    self.room_type_id = new_view_type
+  end
 end

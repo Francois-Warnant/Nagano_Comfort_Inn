@@ -1,9 +1,15 @@
 %body
-  = form_for(@reservation) do |f|
+  = form_for(@reservation, url: gestion_reservations_path) do |f|
+
+    %p for client # :
+    = f.select :user_id, User.pluck(:email)
+    %p
     %p I will arrive on :
     = f.date_select :start_date, selected: Date.today
+    %p
     %p I will leave on :
     = f.date_select :end_date, default: 3.days.from_now
+    %p
     %p I want :
     = f.text_area :client_demands
     %p
