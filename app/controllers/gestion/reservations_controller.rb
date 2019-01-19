@@ -10,15 +10,7 @@ class Gestion::ReservationsController < ApplicationController
   end
 
   def create
-    params_reservation= params[:reservation]
-    mail = params_reservation[:user_id]      ##c pas beau... à changer
-    id = User.find_by_email(mail)
-    params_reservation[:user_id] = id
-
-
-
-    @reservation = Reservation.create(params_reservation)
-
+    @reservation = Reservation.create(build_params(params))
 
     if @reservation.save
       flash[:success] = "NEW RESERVATION ADDED"
@@ -28,4 +20,14 @@ class Gestion::ReservationsController < ApplicationController
       render 'new'
     end
   end
+
+  private 
+    def build_params(params)
+      params_reservation= params[:reservation]
+      id = User.find_by_email(params_reservation[:user_id]).id
+      
+      params_reservation[:user_id] = id
+      
+      return params_reservation
+    end
 end
