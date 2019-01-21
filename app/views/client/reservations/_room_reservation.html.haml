@@ -1,0 +1,19 @@
+.container.roomChoice
+  .roomNo
+    room no
+    = no + 1
+  %p 
+    From :
+    = form.date_select :start_date, selected: Date.today
+
+    To :
+    = form.date_select :end_date, default: 3.days.from_now
+
+  %p
+  = form.fields_for :room_reservations do |r|
+    %p 
+      Type of room :
+      = r.select :room_type_id, RoomType.pluck(:room_type)
+      Type of view :
+      = r.select :view_type_id, ViewType.pluck(:view_type)
+    %p

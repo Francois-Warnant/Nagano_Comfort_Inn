@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20190116152517) do
+ActiveRecord::Schema.define(:version => 20190120234128) do
 
   create_table "assignments", :force => true do |t|
     t.integer  "user_id"
@@ -21,18 +21,15 @@ ActiveRecord::Schema.define(:version => 20190116152517) do
   end
 
   create_table "reservations", :force => true do |t|
-    t.datetime "start_date"
-    t.datetime "end_date"
     t.string   "client_demands"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
     t.integer  "user_id"
+    t.integer  "nb_rooms"
   end
 
   add_index "reservations", ["created_at"], :name => "index_reservations_on_created_at"
   add_index "reservations", ["created_at"], :name => "index_reservations_on_user_id_and_created_at"
-  add_index "reservations", ["end_date"], :name => "index_reservations_on_user_id_and_end_date"
-  add_index "reservations", ["start_date"], :name => "index_reservations_on_user_id_and_start_date"
 
   create_table "roles", :force => true do |t|
     t.string   "name"
@@ -45,6 +42,8 @@ ActiveRecord::Schema.define(:version => 20190116152517) do
     t.integer  "room_id"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+    t.datetime "start_date"
+    t.datetime "end_date"
   end
 
   create_table "room_types", :force => true do |t|

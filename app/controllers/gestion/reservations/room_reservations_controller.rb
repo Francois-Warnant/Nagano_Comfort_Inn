@@ -1,4 +1,4 @@
-class RoomReservationsController < ReservationsController
+class Reservation::RoomReservationsController < Gestion::ReservationsController
   #load_and_authorize_resource
 
   def show

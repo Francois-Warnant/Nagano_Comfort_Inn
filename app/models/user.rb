@@ -3,7 +3,6 @@
 # Table name: users
 #
 #  id                     :integer          not null, primary key
-#  role_id                :string(255)
 #  email                  :string(255)      default(""), not null
 #  encrypted_password     :string(255)      default(""), not null
 #  reset_password_token   :string(255)
@@ -16,6 +15,13 @@
 #  last_sign_in_ip        :string(255)
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  first_name             :string(255)
+#  last_name              :string(255)
+#  address                :string(255)
+#  city                   :string(255)
+#  country                :string(255)
+#  postal_code            :string(255)
+#  phone_number           :string(255)
 #
 
 class User < ActiveRecord::Base

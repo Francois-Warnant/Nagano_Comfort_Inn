@@ -1,4 +1,4 @@
-class Gestion::User::ReservationsController < UsersController
+class User::ReservationsController < Gestion::UsersController
   before_filter :set_user
   #load_and_authorize_resource :users
   #load_and_authorize_resource :through => :users

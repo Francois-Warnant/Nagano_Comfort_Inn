@@ -1,11 +1,13 @@
-class RoomReservationsController < ApplicationController
-  load_and_authorize_resource
+module Gestion
+	class RoomReservationsController < Gestion::GestionController
+	  load_and_authorize_resource
 
-  def show
+	  def show
 
-  end
+	  end
 
-  def index
+	  def index
 
-  end
+	  end
+	end
 end
