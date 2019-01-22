@@ -21,5 +21,3 @@
         %td{style: "border: none"} 
           %b VIEW : 
           = room_res.select :view_type, ViewType.pluck(:view_type)
-    %div.roomSelect
-      = link_to :CHOOSE, new_client_reservation_path,class: "btn btn-default"

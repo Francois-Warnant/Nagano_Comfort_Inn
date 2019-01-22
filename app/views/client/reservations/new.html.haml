@@ -2,15 +2,10 @@
   %h1 Reservation
   = form_for(:my_reservation, url: client_reservations_path) do |form|
 
-    %p 
-      How many Rooms ? :
-      = form.select :nb_rooms, ((1..30).map { |i| [i,i] } )
-      = link_to "Confirm", new_client_reservation_path, remote: true, id: "confirmNbRooms"
-
     - 1.times do |no|
       = render 'client/reservations/room_reservation', form: form, no: no
-
-    = link_to "ADD", new_client_reservation_path, class: "btn btn-default"
+    %br
+    = link_to "ADD NEW ROOM", new_reservation_path, class: "btn btn-default"
 
     %br
     %br
