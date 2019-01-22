@@ -12,7 +12,7 @@
 #
 
 class RoomReservation < ActiveRecord::Base
-  attr_accessible :reservation_id, :room_id
+  attr_accessible :reservation_id, :room_id, :start_date, :end_date
 
   belongs_to :reservation
   belongs_to :room

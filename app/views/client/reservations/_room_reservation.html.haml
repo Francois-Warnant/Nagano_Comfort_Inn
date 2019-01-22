@@ -3,7 +3,7 @@
     room no
     = no + 1
 
-  = form.fields_for :room_reservations do |room_res|
+  = form.fields_for :individual_room_reservation do |room_res|
     %table.table.table-borderless
       %tr
         %th{style: "border: none"} Dates
@@ -17,9 +17,9 @@
         %th{style: "border: none"} Type / View
         %td{style: "border: none"} 
           %b TYPE : 
-          = room_res.select :room_type_id, RoomType.pluck(:room_type)
+          = room_res.select :room_type, RoomType.pluck(:room_type)
         %td{style: "border: none"} 
           %b VIEW : 
-          = room_res.select :view_type_id, ViewType.pluck(:view_type)
+          = room_res.select :view_type, ViewType.pluck(:view_type)
     %div.roomSelect
       = link_to :CHOOSE, new_client_reservation_path,class: "btn btn-default"

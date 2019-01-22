@@ -11,7 +11,7 @@
 #
 
 class Reservation < ActiveRecord::Base
-  attr_accessible :client_demands, :end_date, :start_date, :user_id
+  attr_accessible :client_demands, :nb_rooms, :user_id
 
   belongs_to :user
   has_many :room_reservations, dependent: :destroy
