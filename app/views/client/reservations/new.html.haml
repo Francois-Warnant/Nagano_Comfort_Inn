@@ -1,12 +1,12 @@
 %body
   %h1 Reservation
-  = form_for(:my_reservation, url: client_reservations_path) do |form|
+  = form_for(:my_reservation, url: client_reservations_path, remote: true) do |form|
 
-    - 1.times do |no|
-      = render 'client/reservations/room_reservation', form: form, no: no
+    - @nb_rooms.times do |no|
+      = render 'client/reservations/room_reservation', form: form, no: @nb_rooms
     %br
-    = link_to "ADD NEW ROOM", new_reservation_path, class: "btn btn-default"
-
+      #test
+    = link_to "ADD", new_reservation_path, remote: true, class: "btn btn-default", id: "ajax"
     %br
     %br
-    = form.submit "Create"
+    = form.submit "Create", class: "btn btn-default"

@@ -3,7 +3,7 @@ class Client::ReservationsController < ApplicationController
   load_and_authorize_resource
 
   def show
-    #@reservation = Reservation.find(@user.id)
+    @reservation = Reservation.find(@user.id)
   end
 
   def index
@@ -15,29 +15,38 @@ class Client::ReservationsController < ApplicationController
     @room_reservation = @reservation.room_reservations.build()
     @room_type = RoomType.new
     @view_type = ViewType.new
+    @nb_rooms = 1
   end
 
   def create
     @reservation_form = params[:my_reservation]
-
     res_params = find_room_basic(@reservation_form)
     chosen_room = res_params[:chosen_room]
 
-    if chosen_room != nil
-      @reservation = current_user.reservations.build({nb_rooms: 1})
-      @reservation.room_reservations.build(room_id: chosen_room.id, start_date: res_params[:start_date], end_date: res_params[:end_date])
+    respond_to do |format|
 
-      if @reservation.save
-        flash[:success] = "NEW RESERVATION ADDED"
-        redirect_to my_profile_path
+      if chosen_room != nil
+        @reservation = current_user.reservations.build({nb_rooms: 1})
+        @reservation.room_reservations.build(room_id: chosen_room.id, start_date: res_params[:start_date], end_date: res_params[:end_date])
+
+        if @reservation.save
+          format.html { redirect_to my_profile_path, notice: 'NEW RESERVATION ADDED' }
+          format.js
+          format.json { render json: @reservation, status: :created, location: @reservation }
+        else
+          format.html { render new_reservation_path }
+          format.js
+          format.json { render json: @reservation.errors, status: :unprocessable_entity }
+        end
+
       else
-        render 'new'
-      end
 
-    else
-      redirect_to new_reservation_path, notice: "AUCUNE CHAMBRE DISPONIBLE!"
+
+        #redirect_to new_reservation_path, notice: "AUCUNE CHAMBRE DISPONIBLE!"
+      end
     end
   end
+
 
   def update
 
@@ -60,23 +69,34 @@ class Client::ReservationsController < ApplicationController
       room_type = room_res[:room_type]
       view_type = room_res[:view_type]
 
+      # convertir les params en dates
       arrival = get_date_from_params({ d1: room_res["start_date(1i)"], d2: room_res["start_date(2i)"], d3: room_res["start_date(3i)"] })
       depart = get_date_from_params ({ d1: room_res["end_date(1i)"], d2: room_res["end_date(2i)"], d3: room_res["end_date(3i)"] })
 
+      # trouver les id (ViewType et RoomType) pour la selection de la chambre
       room_type_id = (RoomType.find_by_room_type(room_type)).id
       view_type_id = (ViewType.find_by_view_type(view_type)).id
 
+      # Touver toutes les chambres ayant le bon ViewType et RoomType
       @possible_rooms = Room.where(view_type_id: view_type_id, room_type_id: room_type_id)
 
+      # Verif simple de la date de debut de réservation   /  A RETRAVAILLER!!!!
       @possible_rooms.each do |possible_room|
+        chambre_dispo = true
+
         if possible_room.room_reservations.count > 0
           possible_room.room_reservations.each do |rr|
 
-            if rr.start_date.to_date < arrival
-              puts possible_room.id
-              @possible_rooms_date.push(possible_room)
+            if rr.start_date.to_date <= arrival
+              chambre_dispo = false
             end
           end
+
+          if chambre_dispo == true
+            puts possible_room.id
+            @possible_rooms_date.push(possible_room)
+          end
+
         else
           @possible_rooms_date.push(possible_room)
         end

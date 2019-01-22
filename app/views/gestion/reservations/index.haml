@@ -1,5 +1,3 @@
 - @reservation.each do |r|
-  = r.start_date
-  %p
-  = r.user_id
+  = User.find_by_id(r.user_id).email
   %p
