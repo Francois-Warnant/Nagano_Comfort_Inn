@@ -1,0 +1,6 @@
+- @view.each do |r|
+  .beauCarre
+    = r.view_type
+  %p
+
+= link_to "ADD", new_gestion_view_type_path, class: "btn btn-default", remote: true, id: "ajaxButton", data: {type: "script"}

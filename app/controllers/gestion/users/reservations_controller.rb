@@ -1,4 +1,4 @@
-class User::ReservationsController < Gestion::UsersController
+class Gestion::User::ReservationsController < UsersController
   before_filter :set_user
   #load_and_authorize_resource :users
   #load_and_authorize_resource :through => :users
@@ -8,7 +8,7 @@ class User::ReservationsController < Gestion::UsersController
   end
 
   def index
-    @reservation = Reservation.all
+    @reservation = @user.reservations.all
   end
 
   def new
@@ -32,14 +32,7 @@ class User::ReservationsController < Gestion::UsersController
   end
 
   def set_user  #temp
-    id = params[:user_id]
-
-    if (id != nil)
-      @user = User.find(params[:user_id])
-    else
-      @user = nil
-    end
-
+    @user = User.find(params[:user_id])
   end
 
   private

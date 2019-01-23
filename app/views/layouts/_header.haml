@@ -17,5 +17,8 @@
           = link_to "Profile", my_profile_path, class: "button btn"
         - else
           = link_to "Reservations", gestion_reservations_path, class: "button btn"
+          = link_to "Rooms", gestion_rooms_path, class: "button btn"
+          = link_to "Room Types", gestion_room_types_path, class: "button btn"
+          = link_to "Room Views", gestion_view_types_path, class: "button btn"
           = link_to "Users", gestion_users_path, class: "button btn"
         = link_to "Sign out", destroy_user_session_path, class: "button btn", method: :delete, data:{ confirm: "You sure?"}

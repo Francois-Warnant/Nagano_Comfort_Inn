@@ -1,5 +1,5 @@
 %body
-  = form_for(@view) do |f|
+  = form_for(@view, url: gestion_view_types_path) do |f|
     = f.label :VIEW_TYPE
     = f.text_field :view_type
     = f.submit "Create"

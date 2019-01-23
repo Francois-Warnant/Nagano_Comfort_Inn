@@ -1,3 +1,15 @@
-- @reservation.each do |r|
-  = User.find_by_id(r.user_id).email
-  %p
+- if (@user != nil)
+  - @res_no = 0
+  - @reservation.each do |r|
+    - @res_no += 1
+    %p
+      Reservation
+      = @res_no
+    - r.each do |rr|
+      = rr.start_date
+      %p
+- else
+  - @reservation.each do |r|
+    .beauCarre
+      = User.find_by_id(r.user_id).email
+    %p

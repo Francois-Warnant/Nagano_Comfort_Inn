@@ -1,4 +1,5 @@
 %body
   - @user.reservations.each do |r|
-    = r.room_reservations.first.start_date
+    .beauCarre
+      = r.created_at
     %p
