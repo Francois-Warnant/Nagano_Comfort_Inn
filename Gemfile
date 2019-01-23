@@ -23,10 +23,11 @@ group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
-  gem 'jquery-ui-rails', '4.0.0'
 end
 
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
+gem 'jquery_datepicker'
 gem 'turbolinks', '1.1.1'
 
 # To use ActiveModel has_secure_password

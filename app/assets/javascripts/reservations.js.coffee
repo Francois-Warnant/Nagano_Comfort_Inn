@@ -4,3 +4,4 @@
 
 @addRoomToReservation = (element) ->
   element.style.color = "white"
+

@@ -48,14 +48,13 @@ class User < ActiveRecord::Base
     reservations.build({start_date: arrival, end_date: depart, client_demands: demands})
   end
 
-
   def has_role?(role_sym)
     roles.any? { |r| r.name.underscore.to_sym == role_sym }
   end
 
   private
     def assign_default_role
-      if User.count == 0  #TEMP
+      if User.count < 1 || User.count == nil #TEMP
         self.assignments.create(role_id: 1)
       else
         self.assignments.create(role_id: 2)

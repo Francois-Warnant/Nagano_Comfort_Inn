@@ -1,12 +1,60 @@
 %body
   %h1 Reservation
-  = form_for(:my_reservation, url: client_reservations_path, remote: true) do |form|
+  = form_for(:my_reservation, url: client_reservations_path) do |form|
+    .container.roomChoice
+      .roomNo
+        room no
+        = 0 + 1
 
-    - @nb_rooms.times do |no|
-      = render 'client/reservations/room_reservation', form: form, no: @nb_rooms
+      = form.fields_for :individual_room_reservation do |room_res|
+        %table.table.table-borderless
+          %tr
+            %th{style: "border: none"} Dates
+            %td{style: "border: none"}
+              %b FROM :
+              = room_res.date_select :start_date, selected: Date.today
+            %td{style: "border: none"}
+              %b TO :
+              = room_res.date_select :end_date, default: 3.days.from_now
+          %tr
+            %th{style: "border: none"} Type / View
+            %td{style: "border: none"}
+              %b TYPE :
+              = room_res.select :room_type, RoomType.pluck(:room_type)
+            %td{style: "border: none"}
+              %b VIEW :
+              = room_res.select :view_type, ViewType.pluck(:view_type)
+
     %br
-      #test
+
+    #none{style: "display: none"}
+      .container.roomChoice
+        .roomNo
+          room no
+          = 0 + 1
+
+        = form.fields_for :individual_room_reservation do |room_res|
+          %table.table.table-borderless
+            %tr
+              %th{style: "border: none"} Dates
+              %td{style: "border: none"}
+                %b FROM :
+                = room_res.date_select :start_date, selected: Date.today
+              %td{style: "border: none"}
+                %b TO :
+                = room_res.date_select :end_date, default: 3.days.from_now
+            %tr
+              %th{style: "border: none"} Type / View
+              %td{style: "border: none"}
+                %b TYPE :
+                = room_res.select :room_type, RoomType.pluck(:room_type)
+              %td{style: "border: none"}
+                %b VIEW :
+                = room_res.select :view_type, ViewType.pluck(:view_type)
+
+    #test{style: "display: none"} RENDER HERE
+
     = link_to "ADD", new_reservation_path, remote: true, class: "btn btn-default", id: "ajax"
     %br
     %br
-    = form.submit "Create", class: "btn btn-default"
+    = form.submit "Create", class: "btn btn-default", confirm: "Are you sure?"

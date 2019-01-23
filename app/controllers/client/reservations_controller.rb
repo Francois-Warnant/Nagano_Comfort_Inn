@@ -11,16 +11,15 @@ class Client::ReservationsController < ApplicationController
   end
 
   def new
-    @reservation = Reservation.new(user_id: @user.id)
+    @reservation = current_user.reservations.build({nb_rooms: 1})
     @room_reservation = @reservation.room_reservations.build()
-    @room_type = RoomType.new
-    @view_type = ViewType.new
     @nb_rooms = 1
   end
 
   def create
-    @reservation_form = params[:my_reservation]
-    res_params = find_room_basic(@reservation_form)
+    puts params[:my_reservation]
+    reservation_form = params[:my_reservation]
+    res_params = find_room_basic(reservation_form)
     chosen_room = res_params[:chosen_room]
 
     respond_to do |format|
@@ -34,15 +33,13 @@ class Client::ReservationsController < ApplicationController
           format.js
           format.json { render json: @reservation, status: :created, location: @reservation }
         else
-          format.html { render new_reservation_path }
+          format.html { render my_profile_path }
           format.js
           format.json { render json: @reservation.errors, status: :unprocessable_entity }
         end
 
       else
-
-
-        #redirect_to new_reservation_path, notice: "AUCUNE CHAMBRE DISPONIBLE!"
+        render "new"
       end
     end
   end
