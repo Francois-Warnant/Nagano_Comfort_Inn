@@ -28,6 +28,7 @@ end
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'jquery_datepicker'
+gem 'bootstrap-datepicker-rails'
 gem 'turbolinks', '1.1.1'
 
 # To use ActiveModel has_secure_password

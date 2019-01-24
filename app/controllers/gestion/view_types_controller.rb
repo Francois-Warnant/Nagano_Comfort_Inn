@@ -7,9 +7,10 @@ module Gestion
     end
 
     def index
-      @view = ViewType.all
-      respond_to do |format|
+      @views = ViewType.all
+      @view = ViewType.new
 
+      respond_to do |format|
         format.html { }
         format.js
       end
@@ -17,21 +18,23 @@ module Gestion
 
     def new
       @view = ViewType.new
-      respond_to do |format|
 
+      respond_to do |format|
         format.html { render "new" }
-        format.js
+        format.js { render partial: "new" }
       end
     end
 
     def create
       @view = ViewType.new(params[:view_type])
-      if @view.save
 
-        flash[:success] = "NEW VIEW ADDED"
-        redirect_to gestion_view_types_path
-      else
-        render 'new'
+      respond_to do |format|
+        if @view.save
+          format.html { redirect_to gestion_view_types_path, notice: "NEW VIEW ADDED" }
+          format.js { render partial: "create" }
+        else
+          format.html { render 'new' }
+        end
       end
     end
 

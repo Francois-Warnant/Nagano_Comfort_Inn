@@ -1,60 +1,45 @@
 %body
   %h1 Reservation
   = form_for(:my_reservation, url: client_reservations_path) do |form|
-    .container.roomChoice
-      .roomNo
-        room no
-        = 0 + 1
-
-      = form.fields_for :individual_room_reservation do |room_res|
-        %table.table.table-borderless
-          %tr
-            %th{style: "border: none"} Dates
-            %td{style: "border: none"}
-              %b FROM :
-              = room_res.date_select :start_date, selected: Date.today
-            %td{style: "border: none"}
-              %b TO :
-              = room_res.date_select :end_date, default: 3.days.from_now
-          %tr
-            %th{style: "border: none"} Type / View
-            %td{style: "border: none"}
-              %b TYPE :
-              = room_res.select :room_type, RoomType.pluck(:room_type)
-            %td{style: "border: none"}
-              %b VIEW :
-              = room_res.select :view_type, ViewType.pluck(:view_type)
-
-    %br
-
-    #none{style: "display: none"}
-      .container.roomChoice
+    #ReservationFormContent
+      .container.room_choice#ajout_chambre
         .roomNo
           room no
           = 0 + 1
+        %table.table.table-borderless
+          %tr
+            %td{style: "border: none"}
+              %b FROM :
+              = text_field_tag "rooms[0]start_date"
+            %td{style: "border: none"}
+              %b TO :
+              = text_field_tag "rooms[0]end_date"
+          %tr
+            %td{style: "border: none"}
+              %b TYPE :
+              = select_tag "rooms[0]room_type", options_for_select(RoomType.all.map{|x| [x.room_type,  x.id]})
+            %td{style: "border: none"}
+              %b VIEW :
+              = select_tag "rooms[0]view_type", options_for_select(ViewType.all.map{|x| [x.view_type,  x.id]})
 
-        = form.fields_for :individual_room_reservation do |room_res|
-          %table.table.table-borderless
-            %tr
-              %th{style: "border: none"} Dates
-              %td{style: "border: none"}
-                %b FROM :
-                = room_res.date_select :start_date, selected: Date.today
-              %td{style: "border: none"}
-                %b TO :
-                = room_res.date_select :end_date, default: 3.days.from_now
-            %tr
-              %th{style: "border: none"} Type / View
-              %td{style: "border: none"}
-                %b TYPE :
-                = room_res.select :room_type, RoomType.pluck(:room_type)
-              %td{style: "border: none"}
-                %b VIEW :
-                = room_res.select :view_type, ViewType.pluck(:view_type)
+    %br
 
-    #test{style: "display: none"} RENDER HERE
+    #hidden{style: "display: none"} RENDER HERE
 
-    = link_to "ADD", new_reservation_path, remote: true, class: "btn btn-default", id: "ajax"
+    %a{:href => "#", onclick: "add_new_room_search()", class: "btn btn-default"} ADD
     %br
     %br
     = form.submit "Create", class: "btn btn-default", confirm: "Are you sure?"
+
+
+
+:javascript
+  nb_rooms = 0;
+  $(function() {
+    $("#rooms_0start_date").datepicker();
+  })
+
+  add_new_room_search = function() {
+    div = $('#ajout_chambre').clone()
+    $('#ReservationFormContent').append(div)
+  }

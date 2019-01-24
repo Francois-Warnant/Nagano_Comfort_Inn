@@ -7,7 +7,13 @@ module Gestion
     end
 
     def index
-      @roomType = RoomType.all
+      @roomTypes = RoomType.all
+      @roomType = RoomType.new
+
+      respond_to do |format|
+        format.html { }
+        format.js
+      end
     end
 
     def new
@@ -16,11 +22,14 @@ module Gestion
 
     def create
       @roomType = RoomType.new(params[:room_type])
-      if @roomType.save
-        flash[:success] = "NEW ROOM TYPE ADDED"
-        redirect_to @roomType
-      else
-        render 'new'
+
+      respond_to do |format|
+        if @roomType.save
+          format.html { redirect_to gestion_room_types_path, notice: "NEW ROOM ADDED" }
+          format.js { render partial: "create" }
+        else
+          format.html { render 'new' }
+        end
       end
     end
 

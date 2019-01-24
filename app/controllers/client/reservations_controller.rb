@@ -14,10 +14,15 @@ class Client::ReservationsController < ApplicationController
     @reservation = current_user.reservations.build({nb_rooms: 1})
     @room_reservation = @reservation.room_reservations.build()
     @nb_rooms = 1
+
+    respond_to do |format|
+      format.html { render "new" }
+      format.js {render partial: "create"}
+    end
   end
 
   def create
-    puts params[:my_reservation]
+    puts params["my_reservation"]
     reservation_form = params[:my_reservation]
     res_params = find_room_basic(reservation_form)
     chosen_room = res_params[:chosen_room]
@@ -31,11 +36,9 @@ class Client::ReservationsController < ApplicationController
         if @reservation.save
           format.html { redirect_to my_profile_path, notice: 'NEW RESERVATION ADDED' }
           format.js
-          format.json { render json: @reservation, status: :created, location: @reservation }
         else
           format.html { render my_profile_path }
           format.js
-          format.json { render json: @reservation.errors, status: :unprocessable_entity }
         end
 
       else

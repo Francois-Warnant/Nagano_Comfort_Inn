@@ -1,0 +1,4 @@
+div = document.createElement("div")
+div.setAttribute("class","beauCarre")
+div.innerHTML= '<%= j RoomType.find(RoomType.count).room_type %>'
+$('.listeElems').append(div);

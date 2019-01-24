@@ -1,0 +1,9 @@
+.container.listeElems
+  - @roomTypes.each do |r|
+    .beauCarre
+      = r.room_type
+
+.listAddForm
+  = form_for(@roomType, url: gestion_room_types_path, remote: true, id: "newForm") do |f|
+    = f.text_field :room_type, placeholder: "New Room Type"
+    = f.submit "Add"

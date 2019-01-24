@@ -1,0 +1,4 @@
+div = document.createElement("div")
+div.setAttribute("class","beauCarre")
+div.innerHTML= '<%= j ViewType.find(ViewType.count).view_type %>'
+$('.listeElems').append(div);
