@@ -25,6 +25,7 @@ module Gestion
 
       respond_to do |format|
         if @roomType.save
+          flash[:success] = "Welcome to the Sample App!"
           format.html { redirect_to gestion_room_types_path, notice: "NEW ROOM ADDED" }
           format.js { render partial: "create" }
         else

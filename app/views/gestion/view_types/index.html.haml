@@ -5,5 +5,5 @@
 
 .listAddForm
   = form_for(@view, url: gestion_view_types_path, remote: true, id: "newForm") do |f|
-    = f.text_field :view_type, placeholder: "View type"
+    = f.text_field :view_type, placeholder: "View type", required: true
     = f.submit "Add"

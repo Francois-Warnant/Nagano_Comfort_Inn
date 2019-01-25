@@ -54,7 +54,7 @@ class User < ActiveRecord::Base
 
   private
     def assign_default_role
-      if User.count < 1 || User.count == nil #TEMP
+      if User.count < 2
         self.assignments.create(role_id: 1)
       else
         self.assignments.create(role_id: 2)

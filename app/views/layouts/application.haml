@@ -14,12 +14,11 @@
   %body.text-center
     = render 'layouts/header'
 
-    .container.deviseMessages
-      %p.notice= notice
-      %p.alert= alert
-
     - if !current_page?(root_path)
       .container.contenu
+        .container#alert_message
+          - flash.each do |key, value|
+            %div{:class => "alert alert-#{key}"}= value
         = yield
     - else
       = yield

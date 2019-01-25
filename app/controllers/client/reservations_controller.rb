@@ -25,7 +25,6 @@ class Client::ReservationsController < ApplicationController
     rooms = params[:rooms]
     chosen_rooms = find_rooms(rooms)
 
-
     respond_to do |format|
 
       if chosen_rooms != nil
@@ -45,7 +44,7 @@ class Client::ReservationsController < ApplicationController
         end
 
       else
-        render "client/reservations/new"
+        render "new"
       end
     end
   end
@@ -123,6 +122,7 @@ class Client::ReservationsController < ApplicationController
       end
 
       cpt= 0;
+      # Verif que chosen_room n'est pas déja choisi pour cette réservation ()
       while (@chosen_room == nil)
         unless chosen_rooms.include? @possible_rooms_date[cpt]
           @chosen_room = @possible_rooms_date[cpt]
