@@ -22,16 +22,19 @@ class Client::ReservationsController < ApplicationController
   end
 
   def create
-    puts params["my_reservation"]
-    reservation_form = params[:my_reservation]
-    res_params = find_room_basic(reservation_form)
-    chosen_room = res_params[:chosen_room]
+    rooms = params[:rooms]
+    chosen_rooms = find_rooms(rooms)
+
 
     respond_to do |format|
 
-      if chosen_room != nil
-        @reservation = current_user.reservations.build({nb_rooms: 1})
-        @reservation.room_reservations.build(room_id: chosen_room.id, start_date: res_params[:start_date], end_date: res_params[:end_date])
+      if chosen_rooms != nil
+        @reservation = current_user.reservations.build({nb_rooms: chosen_rooms.count})
+
+        chosen_rooms.each do |room_params|
+          room =  room_params[:chosen_room]
+          @reservation.room_reservations.build(room_id: room.id, start_date: room_params[:start_date], end_date: room_params[:end_date])
+        end
 
         if @reservation.save
           format.html { redirect_to my_profile_path, notice: 'NEW RESERVATION ADDED' }
@@ -42,11 +45,14 @@ class Client::ReservationsController < ApplicationController
         end
 
       else
-        render "new"
+        render "client/reservations/new"
       end
     end
   end
 
+  def edit
+
+  end
 
   def update
 
@@ -61,24 +67,39 @@ class Client::ReservationsController < ApplicationController
       return Date.new date_params[:d1].to_i, date_params[:d2].to_i, date_params[:d3].to_i
     end
 
-    def find_room_basic(reservation_form) # version prototype test
-      @chosenRoom = nil
+    def find_rooms(rooms)
+      missing_room = false
+      chosen_rooms = []
+
+      rooms.each do |room|
+        if !missing_room
+          chosen_room = find_room_basic(room, chosen_rooms)
+          missing_room = (chosen_room == nil)
+          chosen_rooms.push(chosen_room)
+        end
+      end
+
+      if missing_room
+        nil
+      else
+        chosen_rooms
+      end
+    end
+
+    def find_room_basic(room_params, chosen_rooms) # version prototype test
+      @chosen_room = nil
       @possible_rooms = []
       @possible_rooms_date = []
-      room_res =  reservation_form[:individual_room_reservation]
-      room_type = room_res[:room_type]
-      view_type = room_res[:view_type]
+      room =  room_params[1]
+      room_type = room[:room_type]
+      view_type = room[:view_type]
 
       # convertir les params en dates
-      arrival = get_date_from_params({ d1: room_res["start_date(1i)"], d2: room_res["start_date(2i)"], d3: room_res["start_date(3i)"] })
-      depart = get_date_from_params ({ d1: room_res["end_date(1i)"], d2: room_res["end_date(2i)"], d3: room_res["end_date(3i)"] })
-
-      # trouver les id (ViewType et RoomType) pour la selection de la chambre
-      room_type_id = (RoomType.find_by_room_type(room_type)).id
-      view_type_id = (ViewType.find_by_view_type(view_type)).id
+      arrival = DateTime.parse(room[:check_in])
+      depart = DateTime.parse(room[:check_out])
 
       # Touver toutes les chambres ayant le bon ViewType et RoomType
-      @possible_rooms = Room.where(view_type_id: view_type_id, room_type_id: room_type_id)
+      @possible_rooms = Room.where(view_type_id: view_type, room_type_id: room_type)
 
       # Verif simple de la date de debut de réservation   /  A RETRAVAILLER!!!!
       @possible_rooms.each do |possible_room|
@@ -93,7 +114,6 @@ class Client::ReservationsController < ApplicationController
           end
 
           if chambre_dispo == true
-            puts possible_room.id
             @possible_rooms_date.push(possible_room)
           end
 
@@ -102,8 +122,15 @@ class Client::ReservationsController < ApplicationController
         end
       end
 
-      @chosenRoom = @possible_rooms_date.first
+      cpt= 0;
+      while (@chosen_room == nil)
+        unless chosen_rooms.include? @possible_rooms_date[cpt]
+          @chosen_room = @possible_rooms_date[cpt]
+        end
 
-      return {chosen_room: @chosenRoom, start_date: arrival, end_date: depart}
+        cpt += 1
+      end
+
+      return {chosen_room: @chosen_room, start_date: arrival, end_date: depart}
     end
 end

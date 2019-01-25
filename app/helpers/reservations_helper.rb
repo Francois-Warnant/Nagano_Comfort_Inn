@@ -7,4 +7,8 @@ module ReservationsHelper
     end
     return test
   end
+
+  def getTodaysDate
+    Date.strptime(Date.today.to_s, "%d-%m-%Y")
+  end
 end
