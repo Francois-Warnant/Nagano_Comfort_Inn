@@ -178,10 +178,10 @@ $grayMediumLight: #eaeaea;
   border-right-style: solid;
   border-left-style: solid;
   border-top-style: solid;
+  border-radius: 10px;
 }
 
 .roomNo {
-  width: 100px;
   background-color: black;
   color: white;
 }
@@ -210,8 +210,9 @@ $grayMediumLight: #eaeaea;
 .beauCarre {
   color: black;
   background-color: rgba(174, 235, 178, 0.75);
-  margin: 20px 15px 0px 15px;
+  margin: 20px 120px 0px 120px;
   border: 1px solid white;
+  border-radius: 5px;
 }
 
 .listAddForm{
@@ -224,4 +225,9 @@ $grayMediumLight: #eaeaea;
 
 .date_field {
   color: black;
+}
+
+.btn-edit-room {
+  width : 90%;
+  margin-bottom: 10px;
 }

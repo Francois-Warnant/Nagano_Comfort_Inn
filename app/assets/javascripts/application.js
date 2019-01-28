@@ -15,5 +15,6 @@
 // require jquery-ui
 //= require bootstrap.min.js
 //= require bootstrap-datepicker
+// require bootstrap-modal
 // require turbolinks
 //= require_tree .

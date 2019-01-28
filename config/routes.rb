@@ -24,4 +24,5 @@ NaganoComfortInn::Application.routes.draw do
 
   match '/my_profile', to: 'client/profiles#edit'
   match '/new_reservation', to: 'client/reservations#new'
+  match '/my_reservation', to: 'client/reservations#edit'
 end

@@ -1,0 +1,22 @@
+%h1 My Reservation
+- @reservation.room_reservations.each do |rr|
+  .container.room_choice
+    .roomNo#no
+      ROOM NO.
+      =rr.room.room_no
+    %table.table.table-borderless
+      %tr
+        %td{style: "border: none"}
+          %b CHECK-IN :
+          = text_field_tag "rooms[0]check_in", rr.start_date.to_date, placeholder: Date.today, required: true, autocomplete: :off
+        %td{style: "border: none"}
+          %b CHECK-OUT :
+          = text_field_tag "rooms[0]check_out", rr.end_date.to_date, placeholder: Date.today, required: true, autocomplete: :off
+      %tr
+        %td{style: "border: none"}
+          %b TYPE :
+          = getRoomTypeForRoom(rr.room)
+        %td{style: "border: none"}
+          %b VIEW :
+          = getViewTypeForRoom(rr.room)
+    = link_to :CHANGE, nil ,class: "btn btn-default btn-edit-room"

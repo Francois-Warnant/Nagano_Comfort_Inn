@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.21'
-#gem 'bootstrap-sass', '3.1.1.0'
+gem 'bootstrap-sass', '3.1.1.0'
 gem 'haml-rails'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
