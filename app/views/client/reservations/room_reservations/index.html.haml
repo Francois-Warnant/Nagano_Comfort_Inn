@@ -1,5 +1,7 @@
 %h1 My Reservation
-- @reservation.room_reservations.each do |rr|
+
+#modal-window.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog"}
+- @room_reservations.each do |rr|
   .container.room_choice
     .roomNo#no
       ROOM NO.
@@ -19,5 +21,4 @@
         %td{style: "border: none"}
           %b VIEW :
           = getViewTypeForRoom(rr.room)
-    = link_to :CHANGE, "client/reservations/room_reservations/edit", class: "btn btn-default btn-edit-room", :remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window'
-    #modal-window.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog"}
+    = link_to :CHANGE, edit_client_reservation_room_reservation_path(@reservation.id, @room_reservations.first().id), class: "btn btn-default btn-edit-room", :remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window'

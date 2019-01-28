@@ -1,5 +1,4 @@
-class Client::ProfilesController < ApplicationController
-  load_and_authorize_resource class: false
+class Client::ProfilesController < Client::ClientController
 
   before_filter :set_user
 

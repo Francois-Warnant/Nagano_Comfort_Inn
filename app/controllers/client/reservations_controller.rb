@@ -1,6 +1,5 @@
-class Client::ReservationsController < ApplicationController
+class Client::ReservationsController < Client::ClientController
   before_filter :set_user
-  load_and_authorize_resource
 
   def show
     @reservation = Reservation.find(@user.id)
@@ -51,19 +50,6 @@ class Client::ReservationsController < ApplicationController
 
   def edit
     @reservation = Reservation.find(params[:id])
-    puts "---------------"
-    puts "---------------"
-    puts "---------------"
-    puts "---------------"
-    puts "---------------"
-    puts "---------------"
-    puts "---------------"
-    puts @reservation
-    @reservation.room_reservations.each do |rr|
-      puts rr.id
-      puts rr.start_date
-    end
-
   end
 
   def update
