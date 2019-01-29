@@ -30,6 +30,10 @@ class ApplicationController < ActionController::Base
     authorize! action_name.to_sym, self.class
   end
 
+  #def not_found
+  #  raise ActionController::RoutingError.new('Not Found')
+  #end
+
 
 
   protect_from_forgery

@@ -13,8 +13,8 @@
         = link_to "Sign in", new_user_session_path, class: "button btn"
       - else
         - if !current_user.has_role?(:admin)
-          = link_to "Reservation", new_reservation_path, class: "button btn"
-          = link_to "Profile", my_profile_path, class: "button btn"
+          = link_to "Reserve", new_reservation_path, class: "button btn"
+          = link_to "Reservations", my_reservations_path, class: "button btn"
         - else
           = link_to "Reservations", gestion_reservations_path, class: "button btn"
           = link_to "Rooms", gestion_rooms_path, class: "button btn"

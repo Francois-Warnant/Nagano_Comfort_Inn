@@ -15,15 +15,6 @@ module Gestion
       end
     end
 
-    def new
-      @view = ViewType.new
-
-      respond_to do |format|
-        format.html { render "new" }
-        format.js { render partial: "new" }
-      end
-    end
-
     def create
       @view = ViewType.new(params[:view_type])
 
@@ -32,7 +23,7 @@ module Gestion
           format.html { redirect_to gestion_view_types_path, notice: "NEW VIEW ADDED" }
           format.js { render partial: "create" }
         else
-          format.html { render 'new' }
+          format.html { render 'index' }
         end
       end
     end

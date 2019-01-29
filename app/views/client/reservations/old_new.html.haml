@@ -1,11 +1,9 @@
 %body
-  %p#notice= notice
-  %h1.section_title RESERVATION
-
+  %h1 RESERVATION
   = form_for(:my_reservation, url: client_reservations_path) do |form|
     #ReservationFormContent
       .container.room_choice#ajout_chambre
-        .roomNo#no ROOM SEARCH
+        .roomNo#no ROOM NO. 1
         %table.table.table-borderless
           %tr
             %td{style: "border: none"}
@@ -22,14 +20,11 @@
               %b VIEW :
               = select_tag "rooms[0]view_type", options_for_select(ViewType.all.map{|x| [x.view_type,  x.id]})
 
-        %a{:href => "#", onclick: "add_new_room_search()", class: "btn btn-default btn-edit-room"} SEARCH
-
     %br
 
     #hidden{style: "display: none"} RENDER HERE
-    #room_section
 
-
+    %a{:href => "#", onclick: "add_new_room_search()", class: "btn btn-default"} ADD
     %br
     %br
     = form.submit "Create", class: "btn btn-default", confirm: "Are you sure?"
