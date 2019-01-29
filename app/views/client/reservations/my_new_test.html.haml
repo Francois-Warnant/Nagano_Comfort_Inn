@@ -1,0 +1,84 @@
+%body
+  %p#notice= notice
+  %h1.section_title RESERVATION
+
+  = form_for(:my_reservation, url: client_reservations_path) do |form|
+    #ReservationFormContent
+      .container.room_choice#ajout_chambre
+        .roomNo#no ROOM SEARCH
+        %table.table.table-borderless
+          %tr
+            %td{style: "border: none"}
+              %b CHECK-IN :
+              = text_field_tag "rooms[0]check_in", nil, placeholder: Date.today, required: true, autocomplete: :off
+            %td{style: "border: none"}
+              %b CHECK-OUT :
+              = text_field_tag "rooms[0]check_out", nil, placeholder: Date.today, required: true, autocomplete: :off
+          %tr
+            %td{style: "border: none"}
+              %b TYPE :
+              = select_tag "rooms[0]room_type", options_for_select(RoomType.all.map{|x| [x.room_type,  x.id]})
+            %td{style: "border: none"}
+              %b VIEW :
+              = select_tag "rooms[0]view_type", options_for_select(ViewType.all.map{|x| [x.view_type,  x.id]})
+
+        %a{:href => "#", onclick: "add_new_room_search()", class: "btn btn-default btn-edit-room"} SEARCH
+
+    %br
+
+    #room_section
+    #hidden{style: "display: none"} RENDER HERE
+
+    %br
+    %br
+    = form.submit "Create", class: "btn btn-default", confirm: "Are you sure?"
+
+
+
+:javascript
+  nb_rooms = 0;
+  $(function() {
+    setDatePicker()
+  })
+
+  setDatePicker = function() {
+    $("#rooms_"+nb_rooms+"check_in").datepicker({
+      format: 'yyyy-mm-dd'
+    });
+    $("#rooms_"+nb_rooms+"check_out").datepicker({
+      format: 'yyyy-mm-dd'
+    });
+  }
+
+  add_new_room_search = function() {
+    div = $('#ajout_chambre').clone()
+    div = change_attr(div)
+    $('#ReservationFormContent').append(div)
+    setDatePicker()
+  }
+
+  change_attr = function(div) {
+    view_type = div.find('#rooms_'+ 0 +'view_type')
+    room_type = div.find('#rooms_'+ 0 +'room_type')
+    check_in = div.find('#rooms_'+ 0 +'check_in')
+    check_out = div.find('#rooms_'+ 0 +'check_out')
+    no = div.find('#no')
+    nb_rooms++
+
+    view_type.attr("name", "rooms[" + nb_rooms + "]view_type")
+    view_type.attr("id", "rooms_"+ nb_rooms +"view_type")
+
+    room_type.attr("name", "rooms[" + nb_rooms + "]room_type")
+    room_type.attr("id", "rooms_"+ nb_rooms +"room_type")
+
+    check_in.attr("name", "rooms[" + nb_rooms + "]check_in")
+    check_in.attr("id", "rooms_"+ nb_rooms +"check_in")
+    check_in[0].value=""
+
+    check_out.attr("name", "rooms[" + nb_rooms + "]check_out")
+    check_out.attr("id", "rooms_"+ nb_rooms +"check_out")
+    check_out[0].value=""
+
+    no[0].innerHTML= "ROOM NO. " +  (nb_rooms + 1)
+    return div
+  }
