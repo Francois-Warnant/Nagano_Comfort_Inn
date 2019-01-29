@@ -99,6 +99,7 @@ class Client::ReservationsController < Client::ClientController
       # Touver toutes les chambres ayant le bon ViewType et RoomType
       @possible_rooms = Room.view_types(view_type).room_types(room_type)  #Room.where(view_type_id: view_type, room_type_id: room_type)
 
+
       # Verif simple de la date de debut de réservation   /  A RETRAVAILLER!!!!
       @possible_rooms.each do |possible_room|
         chambre_dispo = true
@@ -108,8 +109,6 @@ class Client::ReservationsController < Client::ClientController
           possible_room.room_reservations.each do |rr|
 
             # si la date d'arrivée est plus tard que les dates de réservation de la chambre // TEMPORAIRE + FAIRE FULL CHECK
-
-
             if rr.start_date.to_date <= arrival
               chambre_dispo = false
             end
@@ -154,13 +153,14 @@ class Client::ReservationsController < Client::ClientController
       depart = DateTime.parse(room[:check_out])
 
       # Touver toutes les chambres ayant le bon ViewType et RoomType
-      @possible_rooms = Room.where(view_type_id: view_type, room_type_id: room_type)
+      @possible_rooms = Room.view_types(view_type).room_types(room_type)
 
       # Verif simple de la date de debut de réservation   /  A RETRAVAILLER!!!!
       @possible_rooms.each do |possible_room|
         chambre_dispo = true
 
         # Si le nombre de réservation accrocher à la chambre est plus grand que 0
+
         if possible_room.room_reservations.count > 0
           possible_room.room_reservations.each do |rr|
 

@@ -6,7 +6,7 @@ module Gestion
     end
 
     def index
-      @room = Room.view_types(1).room_types(1)
+      @rooms = Room.paginate(page: params[:page])
     end
 
     def new

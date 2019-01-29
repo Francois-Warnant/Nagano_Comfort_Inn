@@ -31,4 +31,8 @@ class Room < ActiveRecord::Base
   def assign_view_type!(new_view_type)
     self.room_type_id = new_view_type
   end
+
+  def is_occupied?(check_in, check_out)
+    is_occupied = false
+  end
 end

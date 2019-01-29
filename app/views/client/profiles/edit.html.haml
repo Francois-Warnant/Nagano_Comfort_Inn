@@ -1,5 +1,7 @@
 %body
+  - nb_reservation = 0;
   - @user.reservations.each do |r|
     .beauCarre
-      = r.created_at
+      %b
+        = link_to "RESERVATION #" + (nb_reservation += 1).to_s, my_reservation_path(id: r.id)
     %p

@@ -23,7 +23,11 @@ namespace :db do
 
       room = makeRoomNo n, current_floor
       view_id= (((n) % 2) + 1)
-      room_id= (((n) % 4) + 1)
+      if (current_floor <= 4)
+        room_id= (((n) % 4) + 1)
+      else
+        room_id= (((n+1) % 4) + 1)
+      end
       Room.create!(floor_no: current_floor, room_no: room, view_type_id: view_id, room_type_id: room_id)
     end
   end

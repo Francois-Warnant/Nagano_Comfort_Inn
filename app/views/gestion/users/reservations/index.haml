@@ -1,5 +1,6 @@
+- nb_reservation = 0;
 - @reservation.each do |r|
-  = r.start_date
-  %p
-  = r.user_id
-  %p
+  .beauCarre
+    %b
+      Reservation #
+      = nb_reservation += 1
