@@ -6257,3 +6257,568 @@ Processing by Gestion::RoomTypesController#index as HTML
   Rendered layouts/_header.haml (1.4ms)
   Rendered layouts/_footer.haml (0.4ms)
 Completed 200 OK in 73.7ms (Views: 69.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/gestion/rooms" for 127.0.0.1 at 2019-01-29 14:00:25 -0500
+Processing by Gestion::RoomsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mRole Load (0.1ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "rooms" [0m
+  [1m[35mRoom Load (0.3ms)[0m  SELECT "rooms".* FROM "rooms" ORDER BY rooms.room_no ASC LIMIT 30 OFFSET 0
+  Rendered gestion/rooms/index.haml within layouts/application (9.0ms)
+  Rendered layouts/_header.haml (0.9ms)
+  Rendered layouts/_footer.haml (0.3ms)
+Completed 200 OK in 100.7ms (Views: 35.0ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/gestion/rooms?page=2" for 127.0.0.1 at 2019-01-29 14:00:27 -0500
+Processing by Gestion::RoomsController#index as HTML
+  Parameters: {"page"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mRole Load (0.2ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "rooms" [0m
+  [1m[35mRoom Load (0.5ms)[0m  SELECT "rooms".* FROM "rooms" ORDER BY rooms.room_no ASC LIMIT 30 OFFSET 30
+  Rendered gestion/rooms/index.haml within layouts/application (8.4ms)
+  Rendered layouts/_header.haml (1.3ms)
+  Rendered layouts/_footer.haml (0.4ms)
+Completed 200 OK in 74.7ms (Views: 71.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/gestion/rooms?page=3" for 127.0.0.1 at 2019-01-29 14:00:28 -0500
+Processing by Gestion::RoomsController#index as HTML
+  Parameters: {"page"=>"3"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mRole Load (0.2ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "rooms" [0m
+  [1m[35mRoom Load (0.5ms)[0m  SELECT "rooms".* FROM "rooms" ORDER BY rooms.room_no ASC LIMIT 30 OFFSET 60
+  Rendered gestion/rooms/index.haml within layouts/application (8.7ms)
+  Rendered layouts/_header.haml (1.3ms)
+  Rendered layouts/_footer.haml (0.5ms)
+Completed 200 OK in 78.8ms (Views: 74.6ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/gestion/rooms?page=4" for 127.0.0.1 at 2019-01-29 14:00:29 -0500
+Processing by Gestion::RoomsController#index as HTML
+  Parameters: {"page"=>"4"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mRole Load (0.2ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "rooms" [0m
+  [1m[35mRoom Load (0.6ms)[0m  SELECT "rooms".* FROM "rooms" ORDER BY rooms.room_no ASC LIMIT 30 OFFSET 90
+  Rendered gestion/rooms/index.haml within layouts/application (9.0ms)
+  Rendered layouts/_header.haml (1.3ms)
+  Rendered layouts/_footer.haml (0.5ms)
+Completed 200 OK in 55.9ms (Views: 51.9ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/gestion/rooms?page=5" for 127.0.0.1 at 2019-01-29 14:00:30 -0500
+Processing by Gestion::RoomsController#index as HTML
+  Parameters: {"page"=>"5"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mRole Load (0.2ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "rooms" [0m
+  [1m[35mRoom Load (0.7ms)[0m  SELECT "rooms".* FROM "rooms" ORDER BY rooms.room_no ASC LIMIT 30 OFFSET 120
+  Rendered gestion/rooms/index.haml within layouts/application (9.8ms)
+  Rendered layouts/_header.haml (1.4ms)
+  Rendered layouts/_footer.haml (0.5ms)
+Completed 200 OK in 82.9ms (Views: 78.7ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/gestion/rooms?page=6" for 127.0.0.1 at 2019-01-29 14:00:31 -0500
+Processing by Gestion::RoomsController#index as HTML
+  Parameters: {"page"=>"6"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mRole Load (0.2ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "rooms" [0m
+  [1m[35mRoom Load (0.6ms)[0m  SELECT "rooms".* FROM "rooms" ORDER BY rooms.room_no ASC LIMIT 30 OFFSET 150
+  Rendered gestion/rooms/index.haml within layouts/application (8.6ms)
+  Rendered layouts/_header.haml (1.3ms)
+  Rendered layouts/_footer.haml (0.4ms)
+Completed 200 OK in 77.5ms (Views: 73.5ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/gestion/rooms?page=7" for 127.0.0.1 at 2019-01-29 14:00:32 -0500
+Processing by Gestion::RoomsController#index as HTML
+  Parameters: {"page"=>"7"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mRole Load (0.1ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "rooms" [0m
+  [1m[35mRoom Load (0.5ms)[0m  SELECT "rooms".* FROM "rooms" ORDER BY rooms.room_no ASC LIMIT 30 OFFSET 180
+  Rendered gestion/rooms/index.haml within layouts/application (6.5ms)
+  Rendered layouts/_header.haml (1.1ms)
+  Rendered layouts/_footer.haml (0.4ms)
+Completed 200 OK in 44.6ms (Views: 41.5ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/gestion/rooms?page=1" for 127.0.0.1 at 2019-01-29 14:00:42 -0500
+Processing by Gestion::RoomsController#index as HTML
+  Parameters: {"page"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mRole Load (0.2ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "rooms" [0m
+  [1m[35mRoom Load (0.5ms)[0m  SELECT "rooms".* FROM "rooms" ORDER BY rooms.room_no ASC LIMIT 30 OFFSET 0
+  Rendered gestion/rooms/index.haml within layouts/application (8.3ms)
+  Rendered layouts/_header.haml (1.3ms)
+  Rendered layouts/_footer.haml (0.5ms)
+Completed 200 OK in 58.0ms (Views: 54.1ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/gestion/room_types" for 127.0.0.1 at 2019-01-29 14:01:14 -0500
+Processing by Gestion::RoomTypesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mRole Load (0.1ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1
+  [1m[36mRoomType Load (0.1ms)[0m  [1mSELECT "room_types".* FROM "room_types" [0m
+  Rendered gestion/room_types/index.html.haml within layouts/application (1.7ms)
+  Rendered layouts/_header.haml (1.1ms)
+  Rendered layouts/_footer.haml (0.3ms)
+Completed 200 OK in 66.3ms (Views: 58.4ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/gestion/view_types" for 127.0.0.1 at 2019-01-29 14:01:15 -0500
+Processing by Gestion::ViewTypesController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mRole Load (0.2ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1[0m
+  [1m[35mViewType Load (0.1ms)[0m  SELECT "view_types".* FROM "view_types" 
+  Rendered gestion/view_types/index.html.haml within layouts/application (1.8ms)
+  Rendered layouts/_header.haml (1.2ms)
+  Rendered layouts/_footer.haml (0.4ms)
+Completed 200 OK in 49.1ms (Views: 40.5ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/gestion/users" for 127.0.0.1 at 2019-01-29 14:01:15 -0500
+Processing by Gestion::UsersController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mRole Load (0.2ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" [0m
+  Rendered gestion/users/index.haml within layouts/application (0.8ms)
+  Rendered layouts/_header.haml (1.2ms)
+  Rendered layouts/_footer.haml (0.4ms)
+Completed 200 OK in 73.3ms (Views: 69.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/gestion/rooms" for 127.0.0.1 at 2019-01-29 14:01:16 -0500
+Processing by Gestion::RoomsController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mRole Load (0.2ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "rooms" 
+  [1m[36mRoom Load (0.5ms)[0m  [1mSELECT "rooms".* FROM "rooms" ORDER BY rooms.room_no ASC LIMIT 30 OFFSET 0[0m
+  Rendered gestion/rooms/index.haml within layouts/application (8.4ms)
+  Rendered layouts/_header.haml (1.2ms)
+  Rendered layouts/_footer.haml (0.4ms)
+Completed 200 OK in 72.4ms (Views: 68.4ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/gestion/reservations" for 127.0.0.1 at 2019-01-29 14:01:20 -0500
+Processing by Gestion::ReservationsController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mRole Load (0.1ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1[0m
+  [1m[35mReservation Load (0.1ms)[0m  SELECT "reservations".* FROM "reservations" 
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  Rendered gestion/reservations/index.haml within layouts/application (1.4ms)
+  Rendered layouts/_header.haml (1.2ms)
+  Rendered layouts/_footer.haml (0.4ms)
+Completed 200 OK in 46.1ms (Views: 36.9ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/gestion/rooms" for 127.0.0.1 at 2019-01-29 14:01:21 -0500
+Processing by Gestion::RoomsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mRole Load (0.1ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "rooms" [0m
+  [1m[35mRoom Load (0.5ms)[0m  SELECT "rooms".* FROM "rooms" ORDER BY rooms.room_no ASC LIMIT 30 OFFSET 0
+  Rendered gestion/rooms/index.haml within layouts/application (7.5ms)
+  Rendered layouts/_header.haml (1.2ms)
+  Rendered layouts/_footer.haml (0.4ms)
+Completed 200 OK in 72.7ms (Views: 69.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/gestion/users" for 127.0.0.1 at 2019-01-29 14:01:22 -0500
+Processing by Gestion::UsersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mRole Load (0.1ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" [0m
+  Rendered gestion/users/index.haml within layouts/application (0.8ms)
+  Rendered layouts/_header.haml (1.2ms)
+  Rendered layouts/_footer.haml (0.4ms)
+Completed 200 OK in 66.1ms (Views: 62.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/gestion/users/2/reservations" for 127.0.0.1 at 2019-01-29 14:01:23 -0500
+Processing by Gestion::Users::ReservationsController#index as HTML
+  Parameters: {"user_id"=>"2"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mRole Load (0.1ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", "2"]]
+  [1m[36mReservation Load (0.1ms)[0m  [1mSELECT "reservations".* FROM "reservations" WHERE "reservations"."user_id" = 2[0m
+  Rendered gestion/users/reservations/index.haml within layouts/application (0.1ms)
+  Rendered layouts/_header.haml (1.3ms)
+  Rendered layouts/_footer.haml (0.4ms)
+Completed 200 OK in 45.1ms (Views: 39.8ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/gestion/view_types" for 127.0.0.1 at 2019-01-29 14:01:28 -0500
+Processing by Gestion::ViewTypesController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mRole Load (0.2ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1[0m
+  [1m[35mViewType Load (0.2ms)[0m  SELECT "view_types".* FROM "view_types" 
+  Rendered gestion/view_types/index.html.haml within layouts/application (1.5ms)
+  Rendered layouts/_header.haml (1.3ms)
+  Rendered layouts/_footer.haml (0.4ms)
+Completed 200 OK in 69.1ms (Views: 65.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/gestion/room_types" for 127.0.0.1 at 2019-01-29 14:01:30 -0500
+Processing by Gestion::RoomTypesController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mRole Load (0.3ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1
+  [1m[36mRoomType Load (0.2ms)[0m  [1mSELECT "room_types".* FROM "room_types" [0m
+  Rendered gestion/room_types/index.html.haml within layouts/application (1.5ms)
+  Rendered layouts/_header.haml (1.3ms)
+  Rendered layouts/_footer.haml (0.4ms)
+Completed 200 OK in 73.6ms (Views: 68.7ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/gestion/rooms" for 127.0.0.1 at 2019-01-29 14:01:30 -0500
+Processing by Gestion::RoomsController#index as HTML
+  [1m[35mUser Load (0.5ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mRole Load (0.1ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "rooms" 
+  [1m[36mRoom Load (0.4ms)[0m  [1mSELECT "rooms".* FROM "rooms" ORDER BY rooms.room_no ASC LIMIT 30 OFFSET 0[0m
+  Rendered gestion/rooms/index.haml within layouts/application (7.1ms)
+  Rendered layouts/_header.haml (1.1ms)
+  Rendered layouts/_footer.haml (0.4ms)
+Completed 200 OK in 47.2ms (Views: 43.6ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/gestion/reservations" for 127.0.0.1 at 2019-01-29 14:01:31 -0500
+Processing by Gestion::ReservationsController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mRole Load (0.1ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1[0m
+  [1m[35mReservation Load (0.1ms)[0m  SELECT "reservations".* FROM "reservations" 
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  Rendered gestion/reservations/index.haml within layouts/application (1.8ms)
+  Rendered layouts/_header.haml (1.2ms)
+  Rendered layouts/_footer.haml (0.4ms)
+Completed 200 OK in 42.3ms (Views: 39.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/gestion/rooms" for 127.0.0.1 at 2019-01-29 14:01:33 -0500
+Processing by Gestion::RoomsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mRole Load (0.1ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "rooms" [0m
+  [1m[35mRoom Load (0.5ms)[0m  SELECT "rooms".* FROM "rooms" ORDER BY rooms.room_no ASC LIMIT 30 OFFSET 0
+  Rendered gestion/rooms/index.haml within layouts/application (7.5ms)
+  Rendered layouts/_header.haml (1.2ms)
+  Rendered layouts/_footer.haml (0.4ms)
+Completed 200 OK in 69.7ms (Views: 66.3ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/gestion/rooms" for 127.0.0.1 at 2019-01-29 14:03:06 -0500
+Processing by Gestion::RoomsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mRole Load (0.1ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "rooms" [0m
+  [1m[35mRoom Load (0.5ms)[0m  SELECT "rooms".* FROM "rooms" ORDER BY rooms.room_no ASC LIMIT 30 OFFSET 0
+  Rendered gestion/rooms/index.haml within layouts/application (9.7ms)
+  Rendered layouts/_header.haml (0.8ms)
+  Rendered layouts/_footer.haml (0.3ms)
+Completed 200 OK in 1483.1ms (Views: 1479.8ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/gestion/rooms" for 127.0.0.1 at 2019-01-29 14:03:29 -0500
+Processing by Gestion::RoomsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mRole Load (0.1ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "rooms" [0m
+  [1m[35mRoom Load (0.4ms)[0m  SELECT "rooms".* FROM "rooms" ORDER BY rooms.room_no ASC LIMIT 30 OFFSET 0
+  Rendered gestion/rooms/index.haml within layouts/application (9.0ms)
+  Rendered layouts/_header.haml (1.3ms)
+  Rendered layouts/_footer.haml (0.4ms)
+Completed 200 OK in 73.0ms (Views: 69.6ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/gestion/rooms" for 127.0.0.1 at 2019-01-29 14:03:51 -0500
+Processing by Gestion::RoomsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mRole Load (0.1ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "rooms" [0m
+  [1m[35mRoom Load (0.4ms)[0m  SELECT "rooms".* FROM "rooms" ORDER BY rooms.room_no ASC LIMIT 30 OFFSET 0
+  Rendered gestion/rooms/index.haml within layouts/application (8.7ms)
+  Rendered layouts/_header.haml (1.2ms)
+  Rendered layouts/_footer.haml (0.4ms)
+Completed 200 OK in 75.2ms (Views: 71.8ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/gestion/rooms?page=2" for 127.0.0.1 at 2019-01-29 14:03:58 -0500
+Processing by Gestion::RoomsController#index as HTML
+  Parameters: {"page"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mRole Load (0.2ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "rooms" [0m
+  [1m[35mRoom Load (0.5ms)[0m  SELECT "rooms".* FROM "rooms" ORDER BY rooms.room_no ASC LIMIT 30 OFFSET 30
+  Rendered gestion/rooms/index.haml within layouts/application (8.8ms)
+  Rendered layouts/_header.haml (1.3ms)
+  Rendered layouts/_footer.haml (0.4ms)
+Completed 200 OK in 80.2ms (Views: 76.1ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/gestion/rooms?page=3" for 127.0.0.1 at 2019-01-29 14:03:59 -0500
+Processing by Gestion::RoomsController#index as HTML
+  Parameters: {"page"=>"3"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mRole Load (0.2ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "rooms" [0m
+  [1m[35mRoom Load (0.6ms)[0m  SELECT "rooms".* FROM "rooms" ORDER BY rooms.room_no ASC LIMIT 30 OFFSET 60
+  Rendered gestion/rooms/index.haml within layouts/application (9.3ms)
+  Rendered layouts/_header.haml (1.3ms)
+  Rendered layouts/_footer.haml (0.4ms)
+Completed 200 OK in 81.3ms (Views: 77.2ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/gestion/rooms?page=4" for 127.0.0.1 at 2019-01-29 14:04:00 -0500
+Processing by Gestion::RoomsController#index as HTML
+  Parameters: {"page"=>"4"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mRole Load (0.1ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "rooms" [0m
+  [1m[35mRoom Load (0.4ms)[0m  SELECT "rooms".* FROM "rooms" ORDER BY rooms.room_no ASC LIMIT 30 OFFSET 90
+  Rendered gestion/rooms/index.haml within layouts/application (6.2ms)
+  Rendered layouts/_header.haml (1.1ms)
+  Rendered layouts/_footer.haml (0.4ms)
+Completed 200 OK in 61.0ms (Views: 58.3ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/gestion/rooms?page=5" for 127.0.0.1 at 2019-01-29 14:04:01 -0500
+Processing by Gestion::RoomsController#index as HTML
+  Parameters: {"page"=>"5"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mRole Load (0.2ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "rooms" [0m
+  [1m[35mRoom Load (0.6ms)[0m  SELECT "rooms".* FROM "rooms" ORDER BY rooms.room_no ASC LIMIT 30 OFFSET 120
+  Rendered gestion/rooms/index.haml within layouts/application (8.7ms)
+  Rendered layouts/_header.haml (1.3ms)
+  Rendered layouts/_footer.haml (0.5ms)
+Completed 200 OK in 79.0ms (Views: 75.0ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/gestion/rooms?page=6" for 127.0.0.1 at 2019-01-29 14:04:01 -0500
+Processing by Gestion::RoomsController#index as HTML
+  Parameters: {"page"=>"6"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mRole Load (0.1ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1
+  [1m[36m (0.0ms)[0m  [1mSELECT COUNT(*) FROM "rooms" [0m
+  [1m[35mRoom Load (0.3ms)[0m  SELECT "rooms".* FROM "rooms" ORDER BY rooms.room_no ASC LIMIT 30 OFFSET 150
+  Rendered gestion/rooms/index.haml within layouts/application (4.2ms)
+  Rendered layouts/_header.haml (0.8ms)
+  Rendered layouts/_footer.haml (0.3ms)
+Completed 200 OK in 28.1ms (Views: 26.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/gestion/rooms?page=1" for 127.0.0.1 at 2019-01-29 14:04:03 -0500
+Processing by Gestion::RoomsController#index as HTML
+  Parameters: {"page"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mRole Load (0.2ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "rooms" [0m
+  [1m[35mRoom Load (0.6ms)[0m  SELECT "rooms".* FROM "rooms" ORDER BY rooms.room_no ASC LIMIT 30 OFFSET 0
+  Rendered gestion/rooms/index.haml within layouts/application (9.2ms)
+  Rendered layouts/_header.haml (1.3ms)
+  Rendered layouts/_footer.haml (0.5ms)
+Completed 200 OK in 55.4ms (Views: 51.2ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/gestion/rooms?page=1" for 127.0.0.1 at 2019-01-29 14:04:19 -0500
+Processing by Gestion::RoomsController#index as HTML
+  Parameters: {"page"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mRole Load (0.1ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "rooms" [0m
+  [1m[35mRoom Load (0.5ms)[0m  SELECT "rooms".* FROM "rooms" ORDER BY rooms.room_no ASC LIMIT 30 OFFSET 0
+  Rendered gestion/rooms/index.haml within layouts/application (7.8ms)
+  Rendered layouts/_header.haml (1.1ms)
+  Rendered layouts/_footer.haml (0.4ms)
+Completed 200 OK in 43.9ms (Views: 41.0ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/gestion/rooms?page=1" for 127.0.0.1 at 2019-01-29 14:05:25 -0500
+Processing by Gestion::RoomsController#index as HTML
+  Parameters: {"page"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mRole Load (0.2ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "rooms" [0m
+  [1m[35mRoom Load (0.4ms)[0m  SELECT "rooms".* FROM "rooms" ORDER BY rooms.room_no ASC LIMIT 30 OFFSET 0
+  Rendered gestion/rooms/index.haml within layouts/application (8.2ms)
+  Rendered layouts/_header.haml (0.8ms)
+  Rendered layouts/_footer.haml (0.3ms)
+Completed 200 OK in 1363.2ms (Views: 1359.6ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/gestion/rooms?page=1" for 127.0.0.1 at 2019-01-29 14:05:55 -0500
+Processing by Gestion::RoomsController#index as HTML
+  Parameters: {"page"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mRole Load (0.1ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "rooms" [0m
+  [1m[35mRoom Load (0.4ms)[0m  SELECT "rooms".* FROM "rooms" ORDER BY rooms.room_no ASC LIMIT 30 OFFSET 0
+  Rendered gestion/rooms/index.haml within layouts/application (6.3ms)
+  Rendered layouts/_header.haml (0.9ms)
+  Rendered layouts/_footer.haml (0.3ms)
+Completed 200 OK in 1391.1ms (Views: 1388.4ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/gestion/rooms?page=1" for 127.0.0.1 at 2019-01-29 14:06:08 -0500
+Processing by Gestion::RoomsController#index as HTML
+  Parameters: {"page"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mRole Load (0.1ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "rooms" [0m
+  [1m[35mRoom Load (0.4ms)[0m  SELECT "rooms".* FROM "rooms" ORDER BY rooms.room_no ASC LIMIT 30 OFFSET 0
+  Rendered gestion/rooms/index.haml within layouts/application (38.3ms)
+  Rendered layouts/_header.haml (0.9ms)
+  Rendered layouts/_footer.haml (0.3ms)
+Completed 200 OK in 1390.3ms (Views: 1387.2ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/gestion/rooms?page=1" for 127.0.0.1 at 2019-01-29 14:06:17 -0500
+Processing by Gestion::RoomsController#index as HTML
+  Parameters: {"page"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mRole Load (0.2ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "rooms" [0m
+  [1m[35mRoom Load (0.4ms)[0m  SELECT "rooms".* FROM "rooms" ORDER BY rooms.room_no ASC LIMIT 30 OFFSET 0
+  Rendered gestion/rooms/index.haml within layouts/application (7.9ms)
+  Rendered layouts/_header.haml (0.8ms)
+  Rendered layouts/_footer.haml (0.6ms)
+Completed 200 OK in 1358.9ms (Views: 1355.6ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/gestion/rooms?page=1" for 127.0.0.1 at 2019-01-29 14:06:27 -0500
+Processing by Gestion::RoomsController#index as HTML
+  Parameters: {"page"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mRole Load (0.1ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "rooms" [0m
+  [1m[35mRoom Load (0.4ms)[0m  SELECT "rooms".* FROM "rooms" ORDER BY rooms.room_no ASC LIMIT 30 OFFSET 0
+  Rendered gestion/rooms/index.haml within layouts/application (6.5ms)
+  Rendered layouts/_header.haml (0.8ms)
+  Rendered layouts/_footer.haml (0.3ms)
+Completed 200 OK in 1350.6ms (Views: 1347.5ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/gestion/rooms?page=1" for 127.0.0.1 at 2019-01-29 14:06:37 -0500
+Processing by Gestion::RoomsController#index as HTML
+  Parameters: {"page"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mRole Load (0.1ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "rooms" [0m
+  [1m[35mRoom Load (0.3ms)[0m  SELECT "rooms".* FROM "rooms" ORDER BY rooms.room_no ASC LIMIT 30 OFFSET 0
+  Rendered gestion/rooms/index.haml within layouts/application (4.7ms)
+  Rendered layouts/_header.haml (0.8ms)
+  Rendered layouts/_footer.haml (0.3ms)
+Completed 200 OK in 1332.6ms (Views: 1330.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/gestion/rooms?page=1" for 127.0.0.1 at 2019-01-29 14:06:53 -0500
+Processing by Gestion::RoomsController#index as HTML
+  Parameters: {"page"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mRole Load (0.1ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "rooms" [0m
+  [1m[35mRoom Load (0.4ms)[0m  SELECT "rooms".* FROM "rooms" ORDER BY rooms.room_no ASC LIMIT 30 OFFSET 0
+  Rendered gestion/rooms/index.haml within layouts/application (6.4ms)
+  Rendered layouts/_header.haml (0.9ms)
+  Rendered layouts/_footer.haml (0.3ms)
+Completed 200 OK in 1317.0ms (Views: 1314.1ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/gestion/rooms?page=1" for 127.0.0.1 at 2019-01-29 14:07:03 -0500
+Processing by Gestion::RoomsController#index as HTML
+  Parameters: {"page"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mRole Load (0.1ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "rooms" [0m
+  [1m[35mRoom Load (0.4ms)[0m  SELECT "rooms".* FROM "rooms" ORDER BY rooms.room_no ASC LIMIT 30 OFFSET 0
+  Rendered gestion/rooms/index.haml within layouts/application (5.7ms)
+  Rendered layouts/_header.haml (0.9ms)
+  Rendered layouts/_footer.haml (0.3ms)
+Completed 200 OK in 1318.5ms (Views: 1315.8ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/gestion/rooms?page=3" for 127.0.0.1 at 2019-01-29 14:07:14 -0500
+Processing by Gestion::RoomsController#index as HTML
+  Parameters: {"page"=>"3"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mRole Load (0.2ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "rooms" [0m
+  [1m[35mRoom Load (1.0ms)[0m  SELECT "rooms".* FROM "rooms" ORDER BY rooms.room_no ASC LIMIT 30 OFFSET 60
+  Rendered gestion/rooms/index.haml within layouts/application (9.1ms)
+  Rendered layouts/_header.haml (1.3ms)
+  Rendered layouts/_footer.haml (0.4ms)
+Completed 200 OK in 80.1ms (Views: 75.8ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/gestion/rooms?page=2" for 127.0.0.1 at 2019-01-29 14:07:15 -0500
+Processing by Gestion::RoomsController#index as HTML
+  Parameters: {"page"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mRole Load (0.2ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "rooms" [0m
+  [1m[35mRoom Load (0.6ms)[0m  SELECT "rooms".* FROM "rooms" ORDER BY rooms.room_no ASC LIMIT 30 OFFSET 30
+  Rendered gestion/rooms/index.haml within layouts/application (9.0ms)
+  Rendered layouts/_header.haml (1.3ms)
+  Rendered layouts/_footer.haml (0.4ms)
+Completed 200 OK in 84.2ms (Views: 80.1ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/gestion/rooms?page=1" for 127.0.0.1 at 2019-01-29 14:07:17 -0500
+Processing by Gestion::RoomsController#index as HTML
+  Parameters: {"page"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mRole Load (0.1ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "rooms" [0m
+  [1m[35mRoom Load (0.5ms)[0m  SELECT "rooms".* FROM "rooms" ORDER BY rooms.room_no ASC LIMIT 30 OFFSET 0
+  Rendered gestion/rooms/index.haml within layouts/application (8.1ms)
+  Rendered layouts/_header.haml (1.3ms)
+  Rendered layouts/_footer.haml (0.5ms)
+Completed 200 OK in 51.6ms (Views: 48.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/gestion/rooms?page=4" for 127.0.0.1 at 2019-01-29 14:07:18 -0500
+Processing by Gestion::RoomsController#index as HTML
+  Parameters: {"page"=>"4"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mRole Load (0.2ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "rooms" [0m
+  [1m[35mRoom Load (0.6ms)[0m  SELECT "rooms".* FROM "rooms" ORDER BY rooms.room_no ASC LIMIT 30 OFFSET 90
+  Rendered gestion/rooms/index.haml within layouts/application (8.6ms)
+  Rendered layouts/_header.haml (1.2ms)
+  Rendered layouts/_footer.haml (0.4ms)
+Completed 200 OK in 53.5ms (Views: 48.5ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/gestion/rooms?page=1" for 127.0.0.1 at 2019-01-29 14:07:19 -0500
+Processing by Gestion::RoomsController#index as HTML
+  Parameters: {"page"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mRole Load (0.2ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "rooms" [0m
+  [1m[35mRoom Load (0.5ms)[0m  SELECT "rooms".* FROM "rooms" ORDER BY rooms.room_no ASC LIMIT 30 OFFSET 0
+  Rendered gestion/rooms/index.haml within layouts/application (8.6ms)
+  Rendered layouts/_header.haml (1.4ms)
+  Rendered layouts/_footer.haml (0.5ms)
+Completed 200 OK in 56.9ms (Views: 52.8ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/gestion/rooms?page=1" for 127.0.0.1 at 2019-01-29 14:07:35 -0500
+Processing by Gestion::RoomsController#index as HTML
+  Parameters: {"page"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mRole Load (0.1ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "rooms" [0m
+  [1m[35mRoom Load (0.4ms)[0m  SELECT "rooms".* FROM "rooms" ORDER BY rooms.room_no ASC LIMIT 30 OFFSET 0
+  Rendered gestion/rooms/index.haml within layouts/application (6.1ms)
+  Rendered layouts/_header.haml (0.8ms)
+  Rendered layouts/_footer.haml (0.5ms)
+Completed 200 OK in 1348.5ms (Views: 1345.7ms | ActiveRecord: 0.8ms)

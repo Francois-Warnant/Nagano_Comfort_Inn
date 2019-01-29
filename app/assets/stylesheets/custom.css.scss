@@ -231,10 +231,14 @@ $grayMediumLight: #eaeaea;
   margin: 20px 10px 0px 10px;
   border: 1px solid white;
   border-radius: 5px;
-  display: block;
+  display: inline-block;
   float: left;
   width: 150px;
   height: 150px;
+}
+
+.test_aff {
+  margin-left: 70px;
 }
 
 .listAddForm{
