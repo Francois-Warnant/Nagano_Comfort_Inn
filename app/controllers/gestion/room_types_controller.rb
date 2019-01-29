@@ -1,6 +1,5 @@
 module Gestion
   class RoomTypesController < Gestion::GestionController
-    load_and_authorize_resource
 
     def show
       @roomType = RoomType.find(params[:id])

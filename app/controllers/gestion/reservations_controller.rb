@@ -1,6 +1,5 @@
 class Gestion::ReservationsController < Gestion::GestionController
   before_filter :set_user
-  load_and_authorize_resource
 
   def index
     if (@user == nil)

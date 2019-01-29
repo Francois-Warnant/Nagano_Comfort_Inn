@@ -148,6 +148,16 @@ body {
   background-color: #7aba7b;
 }
 
+#navbar>.button:active {
+  color: white;
+  background-color: #7aba7b;
+}
+
+#navbar>.button:visited {
+  color: white;
+  background-color: #7aba7b;
+}
+
 /* mixins, variables, etc. */
 
 $grayMediumLight: #eaeaea;
@@ -213,6 +223,18 @@ $grayMediumLight: #eaeaea;
   margin: 20px 120px 0px 120px;
   border: 1px solid white;
   border-radius: 5px;
+}
+
+.affChambre {
+  color: black;
+  background-color: rgba(174, 235, 178, 0.75);
+  margin: 20px 10px 0px 10px;
+  border: 1px solid white;
+  border-radius: 5px;
+  display: block;
+  float: left;
+  width: 150px;
+  height: 150px;
 }
 
 .listAddForm{

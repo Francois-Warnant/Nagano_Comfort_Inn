@@ -16,4 +16,12 @@ class RoomReservation < ActiveRecord::Base
 
   belongs_to :reservation
   belongs_to :room
+
+  # Sélectionne les réservations selon la start_date.
+  scope :before_start_date, lambda { |date| where ('start_date > ?'), date }
+  scope :after_start_date, lambda { |date| where ('start_date > ?'), date }
+
+  # Sélectionne les réservations selon la end_date.
+  scope :before_end_date, lambda { |date| where ('end_date > ?'), date }
+  scope :after_end_date, lambda { |date| where ('end_date > ?'), date }
 end

@@ -1,6 +1,5 @@
 module Gestion
 	class UsersController < Gestion::GestionController
-	  load_and_authorize_resource
 
 	  def show
 	    @user = User.find(params[:id])

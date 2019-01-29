@@ -1,13 +1,12 @@
 module Gestion
   class RoomsController < Gestion::GestionController
-    load_and_authorize_resource
 
     def show
       #@room = Room.find(params[:id])
     end
 
     def index
-      #@room = Room.all
+      @room = Room.view_types(1).room_types(1)
     end
 
     def new

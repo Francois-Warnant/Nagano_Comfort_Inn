@@ -1,6 +1,5 @@
 module Gestion
-  class ViewTypesController < Gestion::GestionController
-    load_and_authorize_resource
+  class ViewTypesController < GestionController
 
     def show
       @view = ViewType.find(params[:id])

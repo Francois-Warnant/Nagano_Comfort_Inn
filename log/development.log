@@ -623,3 +623,1450 @@ Processing by PagesGeneraleController#home as HTML
   Rendered layouts/_header.haml (1.0ms)
   Rendered layouts/_footer.haml (0.5ms)
 Completed 200 OK in 90.1ms (Views: 89.3ms | ActiveRecord: 0.0ms)
+Connecting to database specified by database.yml
+
+
+Started GET "/new_reservation" for 127.0.0.1 at 2019-01-29 09:22:27 -0500
+Processing by Client::ReservationsController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mRole Load (0.1ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 2
+  [1m[36mRoomType Load (0.1ms)[0m  [1mSELECT "room_types".* FROM "room_types" [0m
+  [1m[35mViewType Load (0.1ms)[0m  SELECT "view_types".* FROM "view_types" 
+  Rendered client/reservations/new.html.haml within layouts/application (34.3ms)
+  Rendered layouts/_header.haml (4.0ms)
+  Rendered layouts/_footer.haml (2.5ms)
+Completed 200 OK in 578.1ms (Views: 433.2ms | ActiveRecord: 3.6ms)
+
+
+Started GET "/new_reservation" for 127.0.0.1 at 2019-01-29 09:24:34 -0500
+Processing by Client::ReservationsController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mRole Load (0.1ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 2
+  [1m[36mRoomType Load (0.1ms)[0m  [1mSELECT "room_types".* FROM "room_types" [0m
+  [1m[35mViewType Load (0.1ms)[0m  SELECT "view_types".* FROM "view_types" 
+  Rendered client/reservations/new.html.haml within layouts/application (39.1ms)
+  Rendered layouts/_header.haml (0.8ms)
+  Rendered layouts/_footer.haml (0.3ms)
+Completed 200 OK in 162.4ms (Views: 66.4ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/new_reservation" for 127.0.0.1 at 2019-01-29 09:38:41 -0500
+Processing by Client::ReservationsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mRole Load (0.2ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 2
+ERROR: compiling _app_views_client_reservations_new_html_haml__1179619698000281231_33922400 RAISED /home/francoiswarnant/Workspace/Rails_Projects/Nagano_Comfort_Inn/app/views/client/reservations/new.html.haml:39: syntax error, unexpected keyword_ensure, expecting keyword_end
+...:Util.html_safe(_erbout);ensure;@haml_buffer = @haml_buffer....
+...                               ^
+/home/francoiswarnant/Workspace/Rails_Projects/Nagano_Comfort_Inn/app/views/client/reservations/new.html.haml:42: syntax error, unexpected $end, expecting keyword_end
+Function body:           def _app_views_client_reservations_new_html_haml__1179619698000281231_33922400(local_assigns, output_buffer)
+            _old_virtual_path, @virtual_path = @virtual_path, "client/reservations/new";_old_output_buffer = @output_buffer;;begin;extend Haml::Helpers;_hamlout = @haml_buffer = Haml::Buffer.new(haml_buffer, {:autoclose=>["area", "base", "basefont", "br", "col", "command", "embed", "frame", "hr", "img", "input", "isindex", "keygen", "link", "menuitem", "meta", "param", "source", "track", "wbr"], :preserve=>["textarea", "pre", "code"], :attr_wrapper=>"'", :ugly=>false, :format=>:html5, :encoding=>"UTF-8", :escape_html=>true, :escape_attrs=>true, :hyphenate_data_attrs=>true, :cdata=>false});_erbout = _hamlout.buffer;@output_buffer = output_buffer ||= ActionView::OutputBuffer.new rescue nil;;_hamlout.push_text("<body>\n  <p id='notice'>#{_hamlout.adjust_tabs(2); 
+_hamlout.format_script_false_true_false_true_false_true_false((notice
+));}</p>\n  <h1 class='section_title'>RESERVATION</h1>\n  ", 0, false);
+
+haml_temp =  form_for(:my_reservation, url: client_reservations_path) do |form|
+_hamlout.push_text("  <div id='ReservationFormContent'>\n    <div class='container room_choice' id='ajout_chambre'>\n      <div class='roomNo' id='no'>ROOM SEARCH</div>\n      <table class='table table-borderless'>\n        <tr>\n          <td#{_hamlout.adjust_tabs(4); 
+
+
+
+
+_hamlout.attributes({}, nil, style: "border: none")}>\n            <b>CHECK-IN :</b>\n            #{_hamlout.adjust_tabs(1); 
+
+_hamlout.format_script_false_false_false_true_false_true_false(( text_field_tag "rooms[0]check_in", nil, placeholder: Date.today, required: true, autocomplete: :off
+));}\n          </td>\n          <td#{_hamlout.adjust_tabs(-1); _hamlout.attributes({}, nil, style: "border: none")}>\n            <b>CHECK-OUT :</b>\n            #{_hamlout.adjust_tabs(1); 
+
+_hamlout.format_script_false_false_false_true_false_true_false(( text_field_tag "rooms[0]check_out", nil, placeholder: Date.today, required: true, autocomplete: :off
+));}\n          </td>\n        </tr>\n        <tr>\n          <td#{_hamlout.adjust_tabs(-1); 
+_hamlout.attributes({}, nil, style: "border: none")}>\n            <b>TYPE :</b>\n            #{_hamlout.adjust_tabs(1); 
+
+_hamlout.format_script_false_false_false_true_false_true_false(( select_tag "rooms[0]room_type", options_for_select(RoomType.all.map{|x| [x.room_type,  x.id]})
+));}\n          </td>\n          <td#{_hamlout.adjust_tabs(-1); _hamlout.attributes({}, nil, style: "border: none")}>\n            <b>VIEW :</b>\n            #{_hamlout.adjust_tabs(1); 
+
+_hamlout.format_script_false_false_false_true_false_true_false(( select_tag "rooms[0]view_type", options_for_select(ViewType.all.map{|x| [x.view_type,  x.id]})
+));}\n          </td>\n        </tr>\n      </table>\n      <a#{_hamlout.adjust_tabs(-3); 
+_hamlout.attributes({}, nil, :href => "#", onclick: "add_new_room_search()", class: "btn btn-default btn-edit-room")}>SEARCH</a>\n    </div>\n  </div>\n  <br>\n  <div#{_hamlout.adjust_tabs(-2); 
+
+
+
+_hamlout.attributes({"id"=>"hidden"}, nil, style: "display: none")}>RENDER HERE</div>\n  <div id='room_section'>\n    <div class='container'>\n", 2, false);
+
+
+ Room.all.each do |room|
+_hamlout.push_text("      <div id='row'></div>\n    </div>\n  </div>\n  <br>\n  <br>\n  #{_hamlout.adjust_tabs(-2); 
+
+
+
+
+_hamlout.format_script_false_false_false_true_false_true_false(( form.submit "Create", class: "btn btn-default", confirm: "Are you sure?"
+));}\n", 0, false);end;_hamlout.buffer << _hamlout.format_script_false_false_false_true_false_false_false(haml_temp);_hamlout.push_text("\n</body>\n<script>\n  nb_rooms = 0;\n  $(function() {\n    setDatePicker()\n  })\n  \n  setDatePicker = function() {\n    $(\"#rooms_\"+nb_rooms+\"check_in\").datepicker({\n      format: 'yyyy-mm-dd'\n    });\n    $(\"#rooms_\"+nb_rooms+\"check_out\").datepicker({\n      format: 'yyyy-mm-dd'\n    });\n  }\n  \n  add_new_room_search = function() {\n    div = $('#ajout_chambre').clone()\n    div = change_attr(div)\n    $('#ReservationFormContent').append(div)\n    setDatePicker()\n  }\n  \n  change_attr = function(div) {\n    view_type = div.find('#rooms_'+ 0 +'view_type')\n    room_type = div.find('#rooms_'+ 0 +'room_type')\n    check_in = div.find('#rooms_'+ 0 +'check_in')\n    check_out = div.find('#rooms_'+ 0 +'check_out')\n    no = div.find('#no')\n    nb_rooms++\n  \n    view_type.attr(\"name\", \"rooms[\" + nb_rooms + \"]view_type\")\n    view_type.attr(\"id\", \"rooms_\"+ nb_rooms +\"view_type\")\n  \n    room_type.attr(\"name\", \"rooms[\" + nb_rooms + \"]room_type\")\n    room_type.attr(\"id\", \"rooms_\"+ nb_rooms +\"room_type\")\n  \n    check_in.attr(\"name\", \"rooms[\" + nb_rooms + \"]check_in\")\n    check_in.attr(\"id\", \"rooms_\"+ nb_rooms +\"check_in\")\n    check_in[0].value=\"\"\n  \n    check_out.attr(\"name\", \"rooms[\" + nb_rooms + \"]check_out\")\n    check_out.attr(\"id\", \"rooms_\"+ nb_rooms +\"check_out\")\n    check_out[0].value=\"\"\n  \n    no[0].innerHTML= \"ROOM NO. \" +  (nb_rooms + 1)\n    return div\n  }\n</script>\n", -1, false);::Haml::Util.html_safe(_erbout);ensure;@haml_buffer = @haml_buffer.upper if @haml_buffer;end;
+          ensure
+            @virtual_path, @output_buffer = _old_virtual_path, _old_output_buffer
+          end
+
+Backtrace: /home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_view/template.rb:297:in `module_eval'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_view/template.rb:297:in `compile'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_view/template.rb:244:in `block in compile!'
+<internal:prelude>:10:in `synchronize'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_view/template.rb:232:in `compile!'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_view/template.rb:144:in `block in render'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/activesupport-3.2.21/lib/active_support/notifications.rb:125:in `instrument'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_view/template.rb:143:in `render'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_view/renderer/template_renderer.rb:47:in `block (2 levels) in render_template'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_view/renderer/abstract_renderer.rb:38:in `block in instrument'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/activesupport-3.2.21/lib/active_support/notifications.rb:123:in `block in instrument'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/activesupport-3.2.21/lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/activesupport-3.2.21/lib/active_support/notifications.rb:123:in `instrument'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_view/renderer/abstract_renderer.rb:38:in `instrument'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_view/renderer/template_renderer.rb:46:in `block in render_template'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_view/renderer/template_renderer.rb:54:in `render_with_layout'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_view/renderer/template_renderer.rb:45:in `render_template'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_view/renderer/template_renderer.rb:18:in `render'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_view/renderer/renderer.rb:36:in `render_template'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_view/renderer/renderer.rb:17:in `render'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/abstract_controller/rendering.rb:110:in `_render_template'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_controller/metal/streaming.rb:225:in `_render_template'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/abstract_controller/rendering.rb:103:in `render_to_body'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_controller/metal/renderers.rb:28:in `render_to_body'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_controller/metal/compatibility.rb:50:in `render_to_body'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/abstract_controller/rendering.rb:88:in `render'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_controller/metal/rendering.rb:16:in `render'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_controller/metal/instrumentation.rb:40:in `block (2 levels) in render'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/activesupport-3.2.21/lib/active_support/core_ext/benchmark.rb:5:in `block in ms'
+/usr/share/rvm/rubies/ruby-1.9.3-p551/lib/ruby/1.9.1/benchmark.rb:295:in `realtime'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/activesupport-3.2.21/lib/active_support/core_ext/benchmark.rb:5:in `ms'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_controller/metal/instrumentation.rb:40:in `block in render'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_controller/metal/instrumentation.rb:83:in `cleanup_view_runtime'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/activerecord-3.2.21/lib/active_record/railties/controller_runtime.rb:24:in `cleanup_view_runtime'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_controller/metal/instrumentation.rb:39:in `render'
+/home/francoiswarnant/Workspace/Rails_Projects/Nagano_Comfort_Inn/app/controllers/client/reservations_controller.rb:18:in `block (2 levels) in new'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_controller/metal/mime_responds.rb:196:in `call'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_controller/metal/mime_responds.rb:196:in `respond_to'
+/home/francoiswarnant/Workspace/Rails_Projects/Nagano_Comfort_Inn/app/controllers/client/reservations_controller.rb:17:in `new'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/abstract_controller/base.rb:167:in `process_action'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_controller/metal/rendering.rb:10:in `process_action'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/abstract_controller/callbacks.rb:18:in `block in process_action'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/activesupport-3.2.21/lib/active_support/callbacks.rb:469:in `_run__55149694738185022__process_action__4317882087826791366__callbacks'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/activesupport-3.2.21/lib/active_support/callbacks.rb:405:in `__run_callback'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/activesupport-3.2.21/lib/active_support/callbacks.rb:385:in `_run_process_action_callbacks'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/activesupport-3.2.21/lib/active_support/callbacks.rb:81:in `run_callbacks'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/abstract_controller/callbacks.rb:17:in `process_action'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_controller/metal/rescue.rb:29:in `process_action'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_controller/metal/instrumentation.rb:30:in `block in process_action'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/activesupport-3.2.21/lib/active_support/notifications.rb:123:in `block in instrument'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/activesupport-3.2.21/lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/activesupport-3.2.21/lib/active_support/notifications.rb:123:in `instrument'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_controller/metal/params_wrapper.rb:207:in `process_action'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/activerecord-3.2.21/lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/abstract_controller/base.rb:121:in `process'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/abstract_controller/rendering.rb:45:in `process'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_controller/metal.rb:203:in `dispatch'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_controller/metal.rb:246:in `block in action'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_dispatch/routing/route_set.rb:73:in `call'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_dispatch/routing/route_set.rb:73:in `dispatch'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_dispatch/routing/route_set.rb:36:in `call'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/journey-1.0.4/lib/journey/router.rb:68:in `block in call'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/journey-1.0.4/lib/journey/router.rb:56:in `each'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/journey-1.0.4/lib/journey/router.rb:56:in `call'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_dispatch/routing/route_set.rb:608:in `call'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/warden-1.2.7/lib/warden/manager.rb:36:in `block in call'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/warden-1.2.7/lib/warden/manager.rb:35:in `catch'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/warden-1.2.7/lib/warden/manager.rb:35:in `call'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/rack-1.4.7/lib/rack/etag.rb:23:in `call'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/rack-1.4.7/lib/rack/conditionalget.rb:25:in `call'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_dispatch/middleware/head.rb:14:in `call'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_dispatch/middleware/flash.rb:242:in `call'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/rack-1.4.7/lib/rack/session/abstract/id.rb:210:in `context'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/rack-1.4.7/lib/rack/session/abstract/id.rb:205:in `call'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_dispatch/middleware/cookies.rb:341:in `call'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/activerecord-3.2.21/lib/active_record/query_cache.rb:64:in `call'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/activerecord-3.2.21/lib/active_record/connection_adapters/abstract/connection_pool.rb:479:in `call'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/activesupport-3.2.21/lib/active_support/callbacks.rb:405:in `_run__561742500432434709__call__134365762435443368__callbacks'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/activesupport-3.2.21/lib/active_support/callbacks.rb:405:in `__run_callback'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/activesupport-3.2.21/lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/activesupport-3.2.21/lib/active_support/callbacks.rb:81:in `run_callbacks'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_dispatch/middleware/reloader.rb:65:in `call'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/railties-3.2.21/lib/rails/rack/logger.rb:32:in `call_app'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/railties-3.2.21/lib/rails/rack/logger.rb:16:in `block in call'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/activesupport-3.2.21/lib/active_support/tagged_logging.rb:22:in `tagged'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/railties-3.2.21/lib/rails/rack/logger.rb:16:in `call'
+/home/francoiswarnant/Workspace/Rails_Projects/Nagano_Comfort_Inn/config/initializers/quiet_assets.rb:9:in `call_with_quiet_assets'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_dispatch/middleware/request_id.rb:22:in `call'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/rack-1.4.7/lib/rack/methodoverride.rb:21:in `call'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/rack-1.4.7/lib/rack/runtime.rb:17:in `call'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/activesupport-3.2.21/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/rack-1.4.7/lib/rack/lock.rb:15:in `call'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_dispatch/middleware/static.rb:83:in `call'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/railties-3.2.21/lib/rails/engine.rb:484:in `call'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/railties-3.2.21/lib/rails/application.rb:231:in `call'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/rack-1.4.7/lib/rack/content_length.rb:14:in `call'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/railties-3.2.21/lib/rails/rack/log_tailer.rb:17:in `call'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/rack-1.4.7/lib/rack/handler/webrick.rb:59:in `service'
+/usr/share/rvm/rubies/ruby-1.9.3-p551/lib/ruby/1.9.1/webrick/httpserver.rb:138:in `service'
+/usr/share/rvm/rubies/ruby-1.9.3-p551/lib/ruby/1.9.1/webrick/httpserver.rb:94:in `run'
+/usr/share/rvm/rubies/ruby-1.9.3-p551/lib/ruby/1.9.1/webrick/server.rb:191:in `block in start_thread'
+  Rendered client/reservations/new.html.haml within layouts/application (15.4ms)
+Completed 500 Internal Server Error in 22.9ms
+
+ActionView::Template::Error (/home/francoiswarnant/Workspace/Rails_Projects/Nagano_Comfort_Inn/app/views/client/reservations/new.html.haml:39: syntax error, unexpected keyword_ensure, expecting keyword_end
+...:Util.html_safe(_erbout);ensure;@haml_buffer = @haml_buffer....
+...                               ^
+/home/francoiswarnant/Workspace/Rails_Projects/Nagano_Comfort_Inn/app/views/client/reservations/new.html.haml:42: syntax error, unexpected $end, expecting keyword_end):
+    36:     %br
+    37:     %br
+    38:     = form.submit "Create", class: "btn btn-default", confirm: "Are you sure?"
+    39: 
+    40: 
+    41: 
+    42: :javascript
+  app/controllers/client/reservations_controller.rb:18:in `block (2 levels) in new'
+  app/controllers/client/reservations_controller.rb:17:in `new'
+  config/initializers/quiet_assets.rb:9:in `call_with_quiet_assets'
+
+
+  Rendered /home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.4ms)
+  Rendered /home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (9.7ms)
+
+
+Started GET "/new_reservation" for 127.0.0.1 at 2019-01-29 09:39:01 -0500
+Processing by Client::ReservationsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mRole Load (0.2ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 2
+  [1m[36mRoomType Load (0.2ms)[0m  [1mSELECT "room_types".* FROM "room_types" [0m
+  [1m[35mViewType Load (0.1ms)[0m  SELECT "view_types".* FROM "view_types" 
+  Rendered client/reservations/new.html.haml within layouts/application (33.1ms)
+  Rendered layouts/_header.haml (0.8ms)
+  Rendered layouts/_footer.haml (0.4ms)
+Completed 200 OK in 73.1ms (Views: 68.5ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/new_reservation" for 127.0.0.1 at 2019-01-29 09:41:37 -0500
+Processing by Client::ReservationsController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mRole Load (0.1ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 2
+ERROR: compiling _app_views_client_reservations_new_html_haml__1179619698000281231_37456280 RAISED /home/francoiswarnant/Workspace/Rails_Projects/Nagano_Comfort_Inn/app/views/client/reservations/new.html.haml:46: syntax error, unexpected keyword_ensure, expecting keyword_end
+...:Util.html_safe(_erbout);ensure;@haml_buffer = @haml_buffer....
+...                               ^
+/home/francoiswarnant/Workspace/Rails_Projects/Nagano_Comfort_Inn/app/views/client/reservations/new.html.haml:49: syntax error, unexpected $end, expecting keyword_end
+Function body:           def _app_views_client_reservations_new_html_haml__1179619698000281231_37456280(local_assigns, output_buffer)
+            _old_virtual_path, @virtual_path = @virtual_path, "client/reservations/new";_old_output_buffer = @output_buffer;;begin;extend Haml::Helpers;_hamlout = @haml_buffer = Haml::Buffer.new(haml_buffer, {:autoclose=>["area", "base", "basefont", "br", "col", "command", "embed", "frame", "hr", "img", "input", "isindex", "keygen", "link", "menuitem", "meta", "param", "source", "track", "wbr"], :preserve=>["textarea", "pre", "code"], :attr_wrapper=>"'", :ugly=>false, :format=>:html5, :encoding=>"UTF-8", :escape_html=>true, :escape_attrs=>true, :hyphenate_data_attrs=>true, :cdata=>false});_erbout = _hamlout.buffer;@output_buffer = output_buffer ||= ActionView::OutputBuffer.new rescue nil;;_hamlout.push_text("<body>\n  <p id='notice'>#{_hamlout.adjust_tabs(2); 
+_hamlout.format_script_false_true_false_true_false_true_false((notice
+));}</p>\n  <h1 class='section_title'>RESERVATION</h1>\n  ", 0, false);
+
+haml_temp =  form_for(:my_reservation, url: client_reservations_path) do |form|
+_hamlout.push_text("  <div id='ReservationFormContent'>\n    <div class='container room_choice' id='ajout_chambre'>\n      <div class='roomNo' id='no'>ROOM SEARCH</div>\n      <table class='table table-borderless'>\n        <tr>\n          <td#{_hamlout.adjust_tabs(4); 
+
+
+
+
+_hamlout.attributes({}, nil, style: "border: none")}>\n            <b>CHECK-IN :</b>\n            #{_hamlout.adjust_tabs(1); 
+
+_hamlout.format_script_false_false_false_true_false_true_false(( text_field_tag "rooms[0]check_in", nil, placeholder: Date.today, required: true, autocomplete: :off
+));}\n          </td>\n          <td#{_hamlout.adjust_tabs(-1); _hamlout.attributes({}, nil, style: "border: none")}>\n            <b>CHECK-OUT :</b>\n            #{_hamlout.adjust_tabs(1); 
+
+_hamlout.format_script_false_false_false_true_false_true_false(( text_field_tag "rooms[0]check_out", nil, placeholder: Date.today, required: true, autocomplete: :off
+));}\n          </td>\n        </tr>\n        <tr>\n          <td#{_hamlout.adjust_tabs(-1); 
+_hamlout.attributes({}, nil, style: "border: none")}>\n            <b>TYPE :</b>\n            #{_hamlout.adjust_tabs(1); 
+
+_hamlout.format_script_false_false_false_true_false_true_false(( select_tag "rooms[0]room_type", options_for_select(RoomType.all.map{|x| [x.room_type,  x.id]})
+));}\n          </td>\n          <td#{_hamlout.adjust_tabs(-1); _hamlout.attributes({}, nil, style: "border: none")}>\n            <b>VIEW :</b>\n            #{_hamlout.adjust_tabs(1); 
+
+_hamlout.format_script_false_false_false_true_false_true_false(( select_tag "rooms[0]view_type", options_for_select(ViewType.all.map{|x| [x.view_type,  x.id]})
+));}\n          </td>\n        </tr>\n      </table>\n      <a#{_hamlout.adjust_tabs(-3); 
+_hamlout.attributes({}, nil, :href => "#", onclick: "add_new_room_search()", class: "btn btn-default btn-edit-room")}>SEARCH</a>\n    </div>\n  </div>\n  <br>\n  <div#{_hamlout.adjust_tabs(-2); 
+
+
+
+_hamlout.attributes({"id"=>"hidden"}, nil, style: "display: none")}>RENDER HERE</div>\n  <div id='room_section'>\n    <div class='container'>\n", 2, false);
+
+
+ Room.all.each do |room|
+_hamlout.push_text("      <div id='col-xs-1'>\n        ffffff\n      </div>\n      <div id='col-xs-3'>\n        ffffff\n      </div>\n      <div id='col-xs-3'>\n        ffffff\n      </div>\n      <div id='col-xs-4'>\n        ffffff\n      </div>\n    </div>\n  </div>\n  <br>\n  <br>\n  #{_hamlout.adjust_tabs(-2); 
+
+
+
+
+
+
+
+
+
+
+
+_hamlout.format_script_false_false_false_true_false_true_false(( form.submit "Create", class: "btn btn-default", confirm: "Are you sure?"
+));}\n", 0, false);end;_hamlout.buffer << _hamlout.format_script_false_false_false_true_false_false_false(haml_temp);_hamlout.push_text("\n</body>\n<script>\n  nb_rooms = 0;\n  $(function() {\n    setDatePicker()\n  })\n  \n  setDatePicker = function() {\n    $(\"#rooms_\"+nb_rooms+\"check_in\").datepicker({\n      format: 'yyyy-mm-dd'\n    });\n    $(\"#rooms_\"+nb_rooms+\"check_out\").datepicker({\n      format: 'yyyy-mm-dd'\n    });\n  }\n  \n  add_new_room_search = function() {\n    div = $('#ajout_chambre').clone()\n    div = change_attr(div)\n    $('#ReservationFormContent').append(div)\n    setDatePicker()\n  }\n  \n  change_attr = function(div) {\n    view_type = div.find('#rooms_'+ 0 +'view_type')\n    room_type = div.find('#rooms_'+ 0 +'room_type')\n    check_in = div.find('#rooms_'+ 0 +'check_in')\n    check_out = div.find('#rooms_'+ 0 +'check_out')\n    no = div.find('#no')\n    nb_rooms++\n  \n    view_type.attr(\"name\", \"rooms[\" + nb_rooms + \"]view_type\")\n    view_type.attr(\"id\", \"rooms_\"+ nb_rooms +\"view_type\")\n  \n    room_type.attr(\"name\", \"rooms[\" + nb_rooms + \"]room_type\")\n    room_type.attr(\"id\", \"rooms_\"+ nb_rooms +\"room_type\")\n  \n    check_in.attr(\"name\", \"rooms[\" + nb_rooms + \"]check_in\")\n    check_in.attr(\"id\", \"rooms_\"+ nb_rooms +\"check_in\")\n    check_in[0].value=\"\"\n  \n    check_out.attr(\"name\", \"rooms[\" + nb_rooms + \"]check_out\")\n    check_out.attr(\"id\", \"rooms_\"+ nb_rooms +\"check_out\")\n    check_out[0].value=\"\"\n  \n    no[0].innerHTML= \"ROOM NO. \" +  (nb_rooms + 1)\n    return div\n  }\n</script>\n", -1, false);::Haml::Util.html_safe(_erbout);ensure;@haml_buffer = @haml_buffer.upper if @haml_buffer;end;
+          ensure
+            @virtual_path, @output_buffer = _old_virtual_path, _old_output_buffer
+          end
+
+Backtrace: /home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_view/template.rb:297:in `module_eval'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_view/template.rb:297:in `compile'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_view/template.rb:244:in `block in compile!'
+<internal:prelude>:10:in `synchronize'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_view/template.rb:232:in `compile!'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_view/template.rb:144:in `block in render'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/activesupport-3.2.21/lib/active_support/notifications.rb:125:in `instrument'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_view/template.rb:143:in `render'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_view/renderer/template_renderer.rb:47:in `block (2 levels) in render_template'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_view/renderer/abstract_renderer.rb:38:in `block in instrument'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/activesupport-3.2.21/lib/active_support/notifications.rb:123:in `block in instrument'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/activesupport-3.2.21/lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/activesupport-3.2.21/lib/active_support/notifications.rb:123:in `instrument'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_view/renderer/abstract_renderer.rb:38:in `instrument'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_view/renderer/template_renderer.rb:46:in `block in render_template'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_view/renderer/template_renderer.rb:54:in `render_with_layout'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_view/renderer/template_renderer.rb:45:in `render_template'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_view/renderer/template_renderer.rb:18:in `render'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_view/renderer/renderer.rb:36:in `render_template'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_view/renderer/renderer.rb:17:in `render'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/abstract_controller/rendering.rb:110:in `_render_template'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_controller/metal/streaming.rb:225:in `_render_template'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/abstract_controller/rendering.rb:103:in `render_to_body'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_controller/metal/renderers.rb:28:in `render_to_body'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_controller/metal/compatibility.rb:50:in `render_to_body'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/abstract_controller/rendering.rb:88:in `render'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_controller/metal/rendering.rb:16:in `render'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_controller/metal/instrumentation.rb:40:in `block (2 levels) in render'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/activesupport-3.2.21/lib/active_support/core_ext/benchmark.rb:5:in `block in ms'
+/usr/share/rvm/rubies/ruby-1.9.3-p551/lib/ruby/1.9.1/benchmark.rb:295:in `realtime'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/activesupport-3.2.21/lib/active_support/core_ext/benchmark.rb:5:in `ms'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_controller/metal/instrumentation.rb:40:in `block in render'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_controller/metal/instrumentation.rb:83:in `cleanup_view_runtime'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/activerecord-3.2.21/lib/active_record/railties/controller_runtime.rb:24:in `cleanup_view_runtime'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_controller/metal/instrumentation.rb:39:in `render'
+/home/francoiswarnant/Workspace/Rails_Projects/Nagano_Comfort_Inn/app/controllers/client/reservations_controller.rb:18:in `block (2 levels) in new'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_controller/metal/mime_responds.rb:196:in `call'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_controller/metal/mime_responds.rb:196:in `respond_to'
+/home/francoiswarnant/Workspace/Rails_Projects/Nagano_Comfort_Inn/app/controllers/client/reservations_controller.rb:17:in `new'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/abstract_controller/base.rb:167:in `process_action'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_controller/metal/rendering.rb:10:in `process_action'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/abstract_controller/callbacks.rb:18:in `block in process_action'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/activesupport-3.2.21/lib/active_support/callbacks.rb:469:in `_run__55149694738185022__process_action__4317882087826791366__callbacks'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/activesupport-3.2.21/lib/active_support/callbacks.rb:405:in `__run_callback'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/activesupport-3.2.21/lib/active_support/callbacks.rb:385:in `_run_process_action_callbacks'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/activesupport-3.2.21/lib/active_support/callbacks.rb:81:in `run_callbacks'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/abstract_controller/callbacks.rb:17:in `process_action'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_controller/metal/rescue.rb:29:in `process_action'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_controller/metal/instrumentation.rb:30:in `block in process_action'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/activesupport-3.2.21/lib/active_support/notifications.rb:123:in `block in instrument'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/activesupport-3.2.21/lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/activesupport-3.2.21/lib/active_support/notifications.rb:123:in `instrument'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_controller/metal/params_wrapper.rb:207:in `process_action'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/activerecord-3.2.21/lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/abstract_controller/base.rb:121:in `process'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/abstract_controller/rendering.rb:45:in `process'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_controller/metal.rb:203:in `dispatch'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_controller/metal.rb:246:in `block in action'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_dispatch/routing/route_set.rb:73:in `call'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_dispatch/routing/route_set.rb:73:in `dispatch'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_dispatch/routing/route_set.rb:36:in `call'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/journey-1.0.4/lib/journey/router.rb:68:in `block in call'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/journey-1.0.4/lib/journey/router.rb:56:in `each'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/journey-1.0.4/lib/journey/router.rb:56:in `call'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_dispatch/routing/route_set.rb:608:in `call'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/warden-1.2.7/lib/warden/manager.rb:36:in `block in call'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/warden-1.2.7/lib/warden/manager.rb:35:in `catch'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/warden-1.2.7/lib/warden/manager.rb:35:in `call'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/rack-1.4.7/lib/rack/etag.rb:23:in `call'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/rack-1.4.7/lib/rack/conditionalget.rb:25:in `call'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_dispatch/middleware/head.rb:14:in `call'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_dispatch/middleware/flash.rb:242:in `call'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/rack-1.4.7/lib/rack/session/abstract/id.rb:210:in `context'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/rack-1.4.7/lib/rack/session/abstract/id.rb:205:in `call'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_dispatch/middleware/cookies.rb:341:in `call'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/activerecord-3.2.21/lib/active_record/query_cache.rb:64:in `call'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/activerecord-3.2.21/lib/active_record/connection_adapters/abstract/connection_pool.rb:479:in `call'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/activesupport-3.2.21/lib/active_support/callbacks.rb:405:in `_run__561742500432434709__call__134365762435443368__callbacks'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/activesupport-3.2.21/lib/active_support/callbacks.rb:405:in `__run_callback'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/activesupport-3.2.21/lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/activesupport-3.2.21/lib/active_support/callbacks.rb:81:in `run_callbacks'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_dispatch/middleware/reloader.rb:65:in `call'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/railties-3.2.21/lib/rails/rack/logger.rb:32:in `call_app'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/railties-3.2.21/lib/rails/rack/logger.rb:16:in `block in call'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/activesupport-3.2.21/lib/active_support/tagged_logging.rb:22:in `tagged'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/railties-3.2.21/lib/rails/rack/logger.rb:16:in `call'
+/home/francoiswarnant/Workspace/Rails_Projects/Nagano_Comfort_Inn/config/initializers/quiet_assets.rb:9:in `call_with_quiet_assets'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_dispatch/middleware/request_id.rb:22:in `call'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/rack-1.4.7/lib/rack/methodoverride.rb:21:in `call'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/rack-1.4.7/lib/rack/runtime.rb:17:in `call'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/activesupport-3.2.21/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/rack-1.4.7/lib/rack/lock.rb:15:in `call'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_dispatch/middleware/static.rb:83:in `call'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/railties-3.2.21/lib/rails/engine.rb:484:in `call'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/railties-3.2.21/lib/rails/application.rb:231:in `call'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/rack-1.4.7/lib/rack/content_length.rb:14:in `call'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/railties-3.2.21/lib/rails/rack/log_tailer.rb:17:in `call'
+/home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/rack-1.4.7/lib/rack/handler/webrick.rb:59:in `service'
+/usr/share/rvm/rubies/ruby-1.9.3-p551/lib/ruby/1.9.1/webrick/httpserver.rb:138:in `service'
+/usr/share/rvm/rubies/ruby-1.9.3-p551/lib/ruby/1.9.1/webrick/httpserver.rb:94:in `run'
+/usr/share/rvm/rubies/ruby-1.9.3-p551/lib/ruby/1.9.1/webrick/server.rb:191:in `block in start_thread'
+  Rendered client/reservations/new.html.haml within layouts/application (6.9ms)
+Completed 500 Internal Server Error in 13.2ms
+
+ActionView::Template::Error (/home/francoiswarnant/Workspace/Rails_Projects/Nagano_Comfort_Inn/app/views/client/reservations/new.html.haml:46: syntax error, unexpected keyword_ensure, expecting keyword_end
+...:Util.html_safe(_erbout);ensure;@haml_buffer = @haml_buffer....
+...                               ^
+/home/francoiswarnant/Workspace/Rails_Projects/Nagano_Comfort_Inn/app/views/client/reservations/new.html.haml:49: syntax error, unexpected $end, expecting keyword_end):
+    43:     %br
+    44:     %br
+    45:     = form.submit "Create", class: "btn btn-default", confirm: "Are you sure?"
+    46: 
+    47: 
+    48: 
+    49: :javascript
+  app/controllers/client/reservations_controller.rb:18:in `block (2 levels) in new'
+  app/controllers/client/reservations_controller.rb:17:in `new'
+  config/initializers/quiet_assets.rb:9:in `call_with_quiet_assets'
+
+
+  Rendered /home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.1ms)
+  Rendered /home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.3ms)
+  Rendered /home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (13.4ms)
+
+
+Started GET "/new_reservation" for 127.0.0.1 at 2019-01-29 09:41:52 -0500
+Processing by Client::ReservationsController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mRole Load (0.2ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 2
+  [1m[36mRoomType Load (0.1ms)[0m  [1mSELECT "room_types".* FROM "room_types" [0m
+  [1m[35mViewType Load (0.1ms)[0m  SELECT "view_types".* FROM "view_types" 
+  Rendered client/reservations/new.html.haml within layouts/application (8.4ms)
+  Rendered layouts/_header.haml (0.7ms)
+  Rendered layouts/_footer.haml (0.3ms)
+Completed 200 OK in 62.2ms (Views: 58.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/new_reservation" for 127.0.0.1 at 2019-01-29 09:42:04 -0500
+Processing by Client::ReservationsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mRole Load (0.2ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 2
+  [1m[36mRoomType Load (0.1ms)[0m  [1mSELECT "room_types".* FROM "room_types" [0m
+  [1m[35mViewType Load (0.1ms)[0m  SELECT "view_types".* FROM "view_types" 
+  Rendered client/reservations/new.html.haml within layouts/application (8.2ms)
+  Rendered layouts/_header.haml (0.7ms)
+  Rendered layouts/_footer.haml (0.3ms)
+Completed 200 OK in 44.5ms (Views: 39.7ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/new_reservation" for 127.0.0.1 at 2019-01-29 09:42:30 -0500
+Processing by Client::ReservationsController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mRole Load (0.1ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 2
+  [1m[36mRoomType Load (0.2ms)[0m  [1mSELECT "room_types".* FROM "room_types" [0m
+  [1m[35mViewType Load (0.1ms)[0m  SELECT "view_types".* FROM "view_types" 
+  Rendered client/reservations/new.html.haml within layouts/application (9.2ms)
+  Rendered layouts/_header.haml (0.8ms)
+  Rendered layouts/_footer.haml (0.4ms)
+Completed 200 OK in 67.6ms (Views: 63.7ms | ActiveRecord: 0.6ms)
+Connecting to database specified by database.yml
+
+
+Started GET "/new_reservation" for 127.0.0.1 at 2019-01-29 09:43:47 -0500
+Processing by Client::ReservationsController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mRole Load (0.1ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 2
+  [1m[36mRoomType Load (0.1ms)[0m  [1mSELECT "room_types".* FROM "room_types" [0m
+  [1m[35mViewType Load (0.1ms)[0m  SELECT "view_types".* FROM "view_types" 
+  Rendered client/reservations/new.html.haml within layouts/application (34.2ms)
+  Rendered layouts/_header.haml (2.8ms)
+  Rendered layouts/_footer.haml (2.0ms)
+Completed 200 OK in 313.1ms (Views: 187.8ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-01-29 09:46:12 -0500
+Processing by PagesGeneraleController#home as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  Rendered shared/_reservation_form.haml (0.9ms)
+  Rendered pages_generale/home.html.haml within layouts/application (6.7ms)
+  [1m[35mRole Load (0.2ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 2
+  Rendered layouts/_header.haml (2.8ms)
+  Rendered layouts/_footer.haml (0.5ms)
+Completed 200 OK in 53.1ms (Views: 51.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/new_reservation" for 127.0.0.1 at 2019-01-29 09:46:36 -0500
+Processing by Client::ReservationsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mRole Load (0.2ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 2
+  [1m[36mRoomType Load (0.2ms)[0m  [1mSELECT "room_types".* FROM "room_types" [0m
+  [1m[35mViewType Load (0.1ms)[0m  SELECT "view_types".* FROM "view_types" 
+  Rendered client/reservations/new.html.haml within layouts/application (4.3ms)
+  Rendered layouts/_header.haml (1.0ms)
+  Rendered layouts/_footer.haml (0.4ms)
+Completed 200 OK in 76.6ms (Views: 71.4ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/my_profile" for 127.0.0.1 at 2019-01-29 09:46:37 -0500
+Processing by Client::ProfilesController#edit as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mRole Load (0.4ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 2
+  [1m[36mReservation Load (0.2ms)[0m  [1mSELECT "reservations".* FROM "reservations" WHERE "reservations"."user_id" = 2[0m
+  Rendered client/profiles/edit.html.haml within layouts/application (6.5ms)
+  Rendered layouts/_header.haml (1.1ms)
+  Rendered layouts/_footer.haml (0.4ms)
+Completed 200 OK in 80.1ms (Views: 47.6ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/my_profile" for 127.0.0.1 at 2019-01-29 09:46:43 -0500
+Processing by Client::ProfilesController#edit as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mRole Load (0.1ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 2[0m
+  [1m[35mReservation Load (0.2ms)[0m  SELECT "reservations".* FROM "reservations" WHERE "reservations"."user_id" = 2
+  Rendered client/profiles/edit.html.haml within layouts/application (3.7ms)
+  Rendered layouts/_header.haml (1.0ms)
+  Rendered layouts/_footer.haml (0.4ms)
+Completed 200 OK in 72.9ms (Views: 69.0ms | ActiveRecord: 0.6ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2019-01-29 09:46:44 -0500
+Processing by Users::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"BSWtZkKgHftpCVpktgk1k7wfiUmKzV42iwjzrYHPXeU="}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 109.5ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-01-29 09:46:44 -0500
+Processing by PagesGeneraleController#home as HTML
+  Rendered pages_generale/home.html.haml within layouts/application (0.6ms)
+  Rendered layouts/_header.haml (0.5ms)
+  Rendered layouts/_footer.haml (0.3ms)
+Completed 200 OK in 25.4ms (Views: 25.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-01-29 09:47:45 -0500
+Processing by PagesGeneraleController#home as HTML
+  Rendered pages_generale/home.html.haml within layouts/application (0.8ms)
+  Rendered layouts/_header.haml (0.6ms)
+  Rendered layouts/_footer.haml (0.3ms)
+Completed 200 OK in 1562.6ms (Views: 1562.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2019-01-29 09:48:02 -0500
+Processing by Users::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (1.7ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (7.2ms)
+  Rendered layouts/_header.haml (0.9ms)
+  Rendered layouts/_footer.haml (0.4ms)
+Completed 200 OK in 81.6ms (Views: 77.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2019-01-29 09:48:04 -0500
+Processing by Users::RegistrationsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.4ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (4.5ms)
+  Rendered layouts/_header.haml (0.8ms)
+  Rendered layouts/_footer.haml (0.5ms)
+Completed 200 OK in 71.0ms (Views: 69.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2019-01-29 09:48:06 -0500
+Processing by Users::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.5ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (4.3ms)
+  Rendered layouts/_header.haml (0.9ms)
+  Rendered layouts/_footer.haml (0.4ms)
+Completed 200 OK in 78.5ms (Views: 77.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2019-01-29 09:48:58 -0500
+Processing by Users::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.5ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (3.6ms)
+  Rendered layouts/_header.haml (0.6ms)
+  Rendered layouts/_footer.haml (0.3ms)
+Completed 200 OK in 1505.0ms (Views: 1504.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2019-01-29 09:49:09 -0500
+Processing by Users::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.5ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (4.3ms)
+  Rendered layouts/_header.haml (1.0ms)
+  Rendered layouts/_footer.haml (0.5ms)
+Completed 200 OK in 54.5ms (Views: 53.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2019-01-29 09:49:14 -0500
+Processing by Users::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"0ze8CmmiIiPBf8X89KBJR5PWXX7e0frWGA3bOnk0xBQ=", "user"=>{"email"=>"admin@gestion.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."email" = 'admin@gestion.com' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  UPDATE "users" SET "last_sign_in_at" = '2019-01-28 22:19:35.414672', "current_sign_in_at" = '2019-01-29 14:49:14.348944', "sign_in_count" = 8, "updated_at" = '2019-01-29 14:49:14.349891' WHERE "users"."id" = 1
+  [1m[36m (46.4ms)[0m  [1mcommit transaction[0m
+  [1m[35mRole Load (0.2ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "reservations" WHERE "reservations"."user_id" = 1[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 216.2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-01-29 09:49:14 -0500
+Processing by PagesGeneraleController#home as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  Rendered shared/_reservation_form.haml (0.1ms)
+  Rendered pages_generale/home.html.haml within layouts/application (1.8ms)
+  [1m[36mRole Load (0.1ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1[0m
+  Rendered layouts/_header.haml (2.7ms)
+  Rendered layouts/_footer.haml (0.4ms)
+Completed 200 OK in 36.7ms (Views: 36.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/gestion/view_types" for 127.0.0.1 at 2019-01-29 09:49:16 -0500
+Processing by Gestion::ViewTypesController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mRole Load (0.2ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1[0m
+  [1m[35mViewType Load (0.1ms)[0m  SELECT "view_types".* FROM "view_types" 
+  Rendered gestion/view_types/index.html.haml within layouts/application (4.7ms)
+  Rendered layouts/_header.haml (1.3ms)
+  Rendered layouts/_footer.haml (0.4ms)
+Completed 200 OK in 84.9ms (Views: 67.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/gestion/room_types" for 127.0.0.1 at 2019-01-29 09:49:20 -0500
+Processing by Gestion::RoomTypesController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mRole Load (0.1ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1
+  [1m[36mRoomType Load (0.1ms)[0m  [1mSELECT "room_types".* FROM "room_types" [0m
+  Rendered gestion/room_types/index.html.haml within layouts/application (4.3ms)
+  Rendered layouts/_header.haml (26.8ms)
+  Rendered layouts/_footer.haml (0.5ms)
+Completed 200 OK in 85.8ms (Views: 69.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/gestion/rooms" for 127.0.0.1 at 2019-01-29 09:49:22 -0500
+Processing by Gestion::RoomsController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mRole Load (0.1ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1[0m
+  [1m[35mRoom Load (0.8ms)[0m  SELECT "rooms".* FROM "rooms" ORDER BY rooms.room_no ASC
+  Rendered gestion/rooms/index.haml within layouts/application (18.6ms)
+  Rendered layouts/_header.haml (1.2ms)
+  Rendered layouts/_footer.haml (0.4ms)
+Completed 200 OK in 99.4ms (Views: 80.0ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/gestion/room_types" for 127.0.0.1 at 2019-01-29 09:49:28 -0500
+Processing by Gestion::RoomTypesController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mRole Load (0.2ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1
+  [1m[36mRoomType Load (0.1ms)[0m  [1mSELECT "room_types".* FROM "room_types" [0m
+  Rendered gestion/room_types/index.html.haml within layouts/application (1.7ms)
+  Rendered layouts/_header.haml (1.4ms)
+  Rendered layouts/_footer.haml (0.5ms)
+Completed 200 OK in 83.4ms (Views: 66.6ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/gestion/room_types" for 127.0.0.1 at 2019-01-29 09:49:41 -0500
+Processing by Gestion::RoomTypesController#create as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Y1ploecOWt4mm8D1ZLLIep38UcWiYdXBNAM6NQyD9E4=", "room_type"=>{"room_type"=>"Shack"}, "commit"=>"Add"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mRole Load (0.1ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "room_types" ("created_at", "room_type", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", Tue, 29 Jan 2019 14:49:41 UTC +00:00], ["room_type", "Shack"], ["updated_at", Tue, 29 Jan 2019 14:49:41 UTC +00:00]]
+  [1m[35m (103.4ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "room_types" [0m
+  [1m[35mRoomType Load (0.2ms)[0m  SELECT "room_types".* FROM "room_types" WHERE "room_types"."id" = ? LIMIT 1  [["id", 6]]
+  Rendered gestion/room_types/_create.js.erb (2.6ms)
+Completed 200 OK in 124.0ms (Views: 3.7ms | ActiveRecord: 104.5ms)
+
+
+Started GET "/gestion/room_types" for 127.0.0.1 at 2019-01-29 09:49:44 -0500
+Processing by Gestion::RoomTypesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mRole Load (0.2ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1
+  [1m[36mRoomType Load (0.2ms)[0m  [1mSELECT "room_types".* FROM "room_types" [0m
+  Rendered gestion/room_types/index.html.haml within layouts/application (2.1ms)
+  Rendered layouts/_header.haml (1.3ms)
+  Rendered layouts/_footer.haml (0.4ms)
+Completed 200 OK in 96.1ms (Views: 77.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/gestion/room_types" for 127.0.0.1 at 2019-01-29 09:49:47 -0500
+Processing by Gestion::RoomTypesController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mRole Load (0.2ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1[0m
+  [1m[35mRoomType Load (0.2ms)[0m  SELECT "room_types".* FROM "room_types" 
+  Rendered gestion/room_types/index.html.haml within layouts/application (1.5ms)
+  Rendered layouts/_header.haml (1.3ms)
+  Rendered layouts/_footer.haml (0.5ms)
+Completed 200 OK in 83.3ms (Views: 66.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/gestion/rooms" for 127.0.0.1 at 2019-01-29 09:51:07 -0500
+Processing by Gestion::RoomsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mRole Load (0.2ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1
+  [1m[36mRoom Load (0.9ms)[0m  [1mSELECT "rooms".* FROM "rooms" ORDER BY rooms.room_no ASC[0m
+  Rendered gestion/rooms/index.haml within layouts/application (8.3ms)
+  Rendered layouts/_header.haml (1.3ms)
+  Rendered layouts/_footer.haml (0.4ms)
+Completed 200 OK in 59.8ms (Views: 43.9ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/gestion/reservations" for 127.0.0.1 at 2019-01-29 09:51:34 -0500
+Processing by Gestion::ReservationsController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mRole Load (0.2ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1[0m
+  [1m[35mReservation Load (0.2ms)[0m  SELECT "reservations".* FROM "reservations" 
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  Rendered gestion/reservations/index.haml within layouts/application (10.7ms)
+  Rendered layouts/_header.haml (1.3ms)
+  Rendered layouts/_footer.haml (0.4ms)
+Completed 200 OK in 65.6ms (Views: 47.5ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/gestion/reservations" for 127.0.0.1 at 2019-01-29 10:03:54 -0500
+Processing by Gestion::ReservationsController#index as HTML
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mRole Load (0.3ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1[0m
+  [1m[35mReservation Load (0.2ms)[0m  SELECT "reservations".* FROM "reservations" 
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  Rendered gestion/reservations/index.haml within layouts/application (9.2ms)
+  Rendered layouts/_header.haml (1.4ms)
+  Rendered layouts/_footer.haml (0.4ms)
+Completed 200 OK in 68.6ms (Views: 46.0ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/gestion/rooms" for 127.0.0.1 at 2019-01-29 10:03:56 -0500
+Processing by Gestion::RoomsController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mRole Load (0.2ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1[0m
+  [1m[35mRoom Load (1.4ms)[0m  SELECT "rooms".* FROM "rooms" ORDER BY rooms.room_no ASC
+  Rendered gestion/rooms/index.haml within layouts/application (25.6ms)
+  Rendered layouts/_header.haml (1.3ms)
+  Rendered layouts/_footer.haml (0.4ms)
+Completed 200 OK in 81.6ms (Views: 62.4ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/gestion/rooms" for 127.0.0.1 at 2019-01-29 10:05:34 -0500
+Processing by Gestion::RoomsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mRole Load (0.1ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1
+  [1m[36mRoom Load (0.6ms)[0m  [1mSELECT "rooms".* FROM "rooms" ORDER BY rooms.room_no ASC[0m
+  Rendered gestion/rooms/index.haml within layouts/application (5.8ms)
+  Rendered layouts/_header.haml (0.9ms)
+  Rendered layouts/_footer.haml (0.3ms)
+Completed 200 OK in 1431.9ms (Views: 1418.4ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/gestion/rooms" for 127.0.0.1 at 2019-01-29 10:05:49 -0500
+Processing by Gestion::RoomsController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mRole Load (0.1ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1[0m
+  [1m[35mRoom Load (0.7ms)[0m  SELECT "rooms".* FROM "rooms" ORDER BY rooms.room_no ASC
+  Rendered gestion/rooms/index.haml within layouts/application (8.1ms)
+  Rendered layouts/_header.haml (1.0ms)
+  Rendered layouts/_footer.haml (0.3ms)
+Completed 200 OK in 1432.2ms (Views: 1418.8ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/gestion/rooms" for 127.0.0.1 at 2019-01-29 10:06:41 -0500
+Processing by Gestion::RoomsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mRole Load (0.1ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1
+  [1m[36mRoom Load (0.8ms)[0m  [1mSELECT "rooms".* FROM "rooms" ORDER BY rooms.room_no ASC[0m
+  Rendered gestion/rooms/index.haml within layouts/application (9.7ms)
+  Rendered layouts/_header.haml (0.9ms)
+  Rendered layouts/_footer.haml (0.3ms)
+Completed 200 OK in 1399.9ms (Views: 1385.3ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/gestion/rooms" for 127.0.0.1 at 2019-01-29 10:07:39 -0500
+Processing by Gestion::RoomsController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mRole Load (0.2ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1[0m
+  [1m[35mRoom Load (0.8ms)[0m  SELECT "rooms".* FROM "rooms" ORDER BY rooms.room_no ASC
+  Rendered gestion/rooms/index.haml within layouts/application (9.0ms)
+  Rendered layouts/_header.haml (0.9ms)
+  Rendered layouts/_footer.haml (0.3ms)
+Completed 200 OK in 1418.7ms (Views: 1401.1ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/gestion/rooms" for 127.0.0.1 at 2019-01-29 10:07:58 -0500
+Processing by Gestion::RoomsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mRole Load (0.1ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1
+  [1m[36mRoom Load (0.7ms)[0m  [1mSELECT "rooms".* FROM "rooms" ORDER BY rooms.room_no ASC[0m
+  Rendered gestion/rooms/index.haml within layouts/application (7.1ms)
+  Rendered layouts/_header.haml (0.9ms)
+  Rendered layouts/_footer.haml (0.8ms)
+Completed 200 OK in 1383.8ms (Views: 1370.4ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/gestion/rooms" for 127.0.0.1 at 2019-01-29 10:08:42 -0500
+Processing by Gestion::RoomsController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mRole Load (0.2ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1[0m
+  [1m[35mRoom Load (0.8ms)[0m  SELECT "rooms".* FROM "rooms" ORDER BY rooms.room_no ASC
+  Rendered gestion/rooms/index.haml within layouts/application (8.4ms)
+  Rendered layouts/_header.haml (0.9ms)
+  Rendered layouts/_footer.haml (0.3ms)
+Completed 200 OK in 1441.8ms (Views: 1423.3ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/gestion/rooms" for 127.0.0.1 at 2019-01-29 10:09:13 -0500
+Processing by Gestion::RoomsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mRole Load (0.2ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1
+  [1m[36mRoom Load (0.9ms)[0m  [1mSELECT "rooms".* FROM "rooms" ORDER BY rooms.room_no ASC[0m
+  Rendered gestion/rooms/index.haml within layouts/application (8.1ms)
+  Rendered layouts/_header.haml (0.9ms)
+  Rendered layouts/_footer.haml (0.3ms)
+Completed 200 OK in 1383.0ms (Views: 1368.6ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/gestion/rooms" for 127.0.0.1 at 2019-01-29 10:10:56 -0500
+Processing by Gestion::RoomsController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mRole Load (0.1ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1[0m
+  [1m[35mRoom Load (0.8ms)[0m  SELECT "rooms".* FROM "rooms" ORDER BY rooms.room_no ASC
+  Rendered gestion/rooms/index.haml within layouts/application (9.2ms)
+  Rendered layouts/_header.haml (1.2ms)
+  Rendered layouts/_footer.haml (0.4ms)
+Completed 200 OK in 54.8ms (Views: 40.8ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/gestion/rooms" for 127.0.0.1 at 2019-01-29 10:11:32 -0500
+Processing by Gestion::RoomsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mRole Load (0.1ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1
+  [1m[36mRoom Load (1.2ms)[0m  [1mSELECT "rooms".* FROM "rooms" ORDER BY rooms.room_no ASC[0m
+  Rendered gestion/rooms/index.haml within layouts/application (10.2ms)
+  Rendered layouts/_header.haml (1.2ms)
+  Rendered layouts/_footer.haml (0.4ms)
+Completed 200 OK in 87.7ms (Views: 71.2ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/gestion/rooms" for 127.0.0.1 at 2019-01-29 10:12:28 -0500
+Processing by Gestion::RoomsController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mRole Load (0.1ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1[0m
+  [1m[35mRoom Load (0.9ms)[0m  SELECT "rooms".* FROM "rooms" ORDER BY rooms.room_no ASC
+  Rendered gestion/rooms/index.haml within layouts/application (9.5ms)
+  Rendered layouts/_header.haml (1.0ms)
+  Rendered layouts/_footer.haml (0.3ms)
+Completed 200 OK in 1424.6ms (Views: 1408.4ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/gestion/rooms" for 127.0.0.1 at 2019-01-29 10:13:15 -0500
+Processing by Gestion::RoomsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mRole Load (0.1ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1
+  [1m[36mRoom Load (0.7ms)[0m  [1mSELECT "rooms".* FROM "rooms" ORDER BY rooms.room_no ASC[0m
+  Rendered gestion/rooms/index.haml within layouts/application (8.7ms)
+  Rendered layouts/_header.haml (0.9ms)
+  Rendered layouts/_footer.haml (0.3ms)
+Completed 200 OK in 1356.9ms (Views: 1343.5ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/gestion/rooms" for 127.0.0.1 at 2019-01-29 10:13:40 -0500
+Processing by Gestion::RoomsController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mRole Load (0.2ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1[0m
+  [1m[35mRoom Load (1.0ms)[0m  SELECT "rooms".* FROM "rooms" ORDER BY rooms.room_no ASC
+  Rendered gestion/rooms/index.haml within layouts/application (11.7ms)
+  Rendered layouts/_header.haml (1.4ms)
+  Rendered layouts/_footer.haml (0.4ms)
+Completed 200 OK in 98.2ms (Views: 79.8ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/gestion/rooms" for 127.0.0.1 at 2019-01-29 10:14:20 -0500
+Processing by Gestion::RoomsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mRole Load (0.1ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1
+  [1m[36mRoom Load (0.8ms)[0m  [1mSELECT "rooms".* FROM "rooms" ORDER BY rooms.room_no ASC[0m
+  Rendered gestion/rooms/index.haml within layouts/application (9.7ms)
+  Rendered layouts/_header.haml (1.3ms)
+  Rendered layouts/_footer.haml (0.4ms)
+Completed 200 OK in 86.9ms (Views: 71.5ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/gestion/reservations" for 127.0.0.1 at 2019-01-29 10:26:28 -0500
+Processing by Gestion::ReservationsController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mRole Load (0.1ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1[0m
+  [1m[35mReservation Load (0.1ms)[0m  SELECT "reservations".* FROM "reservations" 
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  Rendered gestion/reservations/index.haml within layouts/application (6.7ms)
+  Rendered layouts/_header.haml (1.0ms)
+  Rendered layouts/_footer.haml (0.3ms)
+Completed 200 OK in 118.9ms (Views: 32.6ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/gestion/rooms" for 127.0.0.1 at 2019-01-29 10:26:45 -0500
+
+SyntaxError (/home/francoiswarnant/Workspace/Rails_Projects/Nagano_Comfort_Inn/app/models/room.rb:21: syntax error, unexpected tLPAREN_ARG, expecting keyword_do_LAMBDA or tLAMBEG
+  scope :room_type, -> (room_type_id) { where room_ty...
+                        ^
+/home/francoiswarnant/Workspace/Rails_Projects/Nagano_Comfort_Inn/app/models/room.rb:21: syntax error, unexpected tLAMBEG, expecting keyword_end
+...:room_type, -> (room_type_id) { where room_type_id: room_typ...
+...                               ^
+/home/francoiswarnant/Workspace/Rails_Projects/Nagano_Comfort_Inn/app/models/room.rb:21: syntax error, unexpected '}', expecting keyword_end
+/home/francoiswarnant/Workspace/Rails_Projects/Nagano_Comfort_Inn/app/models/room.rb:22: syntax error, unexpected tLPAREN_ARG, expecting keyword_do_LAMBDA or tLAMBEG
+  scope :room_type, -> (view_type_id) { where view_ty...
+                        ^
+/home/francoiswarnant/Workspace/Rails_Projects/Nagano_Comfort_Inn/app/models/room.rb:22: syntax error, unexpected tLAMBEG, expecting keyword_end
+...:room_type, -> (view_type_id) { where view_type_id: view_typ...
+...                               ^
+/home/francoiswarnant/Workspace/Rails_Projects/Nagano_Comfort_Inn/app/models/room.rb:22: syntax error, unexpected '}', expecting keyword_end):
+  app/controllers/gestion/rooms_controller.rb:2:in `<module:Gestion>'
+  app/controllers/gestion/rooms_controller.rb:1:in `<top (required)>'
+  config/initializers/quiet_assets.rb:9:in `call_with_quiet_assets'
+
+
+  Rendered /home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.5ms)
+  Rendered /home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+  Rendered /home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (10.9ms)
+
+
+Started GET "/gestion/rooms" for 127.0.0.1 at 2019-01-29 10:27:28 -0500
+
+SyntaxError (/home/francoiswarnant/Workspace/Rails_Projects/Nagano_Comfort_Inn/app/models/room.rb:21: syntax error, unexpected tLPAREN_ARG, expecting keyword_do_LAMBDA or tLAMBEG
+  scope :room_type, -> (room_type_id) { where room_ty...
+                        ^
+/home/francoiswarnant/Workspace/Rails_Projects/Nagano_Comfort_Inn/app/models/room.rb:21: syntax error, unexpected tLAMBEG, expecting keyword_end
+...:room_type, -> (room_type_id) { where room_type_id: room_typ...
+...                               ^
+/home/francoiswarnant/Workspace/Rails_Projects/Nagano_Comfort_Inn/app/models/room.rb:21: syntax error, unexpected '}', expecting keyword_end
+/home/francoiswarnant/Workspace/Rails_Projects/Nagano_Comfort_Inn/app/models/room.rb:22: syntax error, unexpected tLPAREN_ARG, expecting keyword_do_LAMBDA or tLAMBEG
+  scope :room_type, -> (view_type_id) { where view_ty...
+                        ^
+/home/francoiswarnant/Workspace/Rails_Projects/Nagano_Comfort_Inn/app/models/room.rb:22: syntax error, unexpected tLAMBEG, expecting keyword_end
+...:room_type, -> (view_type_id) { where view_type_id: view_typ...
+...                               ^
+/home/francoiswarnant/Workspace/Rails_Projects/Nagano_Comfort_Inn/app/models/room.rb:22: syntax error, unexpected '}', expecting keyword_end):
+  app/controllers/gestion/rooms_controller.rb:2:in `<module:Gestion>'
+  app/controllers/gestion/rooms_controller.rb:1:in `<top (required)>'
+  config/initializers/quiet_assets.rb:9:in `call_with_quiet_assets'
+
+
+  Rendered /home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.6ms)
+  Rendered /home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (9.5ms)
+
+
+Started GET "/gestion/rooms" for 127.0.0.1 at 2019-01-29 10:30:49 -0500
+Creating scope :room_type. Overwriting existing method Room.room_type.
+Processing by Gestion::RoomsController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mRole Load (0.1ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1[0m
+  [1m[35mRoom Load (0.6ms)[0m  SELECT "rooms".* FROM "rooms" ORDER BY rooms.room_no ASC
+  Rendered gestion/rooms/index.haml within layouts/application (11.6ms)
+  Rendered layouts/_header.haml (1.0ms)
+  Rendered layouts/_footer.haml (0.3ms)
+Completed 200 OK in 125.4ms (Views: 37.4ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/gestion/reservations" for 127.0.0.1 at 2019-01-29 10:31:59 -0500
+Processing by Gestion::ReservationsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mRole Load (0.1ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1
+  [1m[36mReservation Load (0.2ms)[0m  [1mSELECT "reservations".* FROM "reservations" [0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  Rendered gestion/reservations/index.haml within layouts/application (10.3ms)
+  Rendered layouts/_header.haml (1.2ms)
+  Rendered layouts/_footer.haml (0.4ms)
+Completed 200 OK in 104.9ms (Views: 76.3ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/gestion/view_types" for 127.0.0.1 at 2019-01-29 10:32:02 -0500
+Processing by Gestion::ViewTypesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mRole Load (0.2ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1
+  [1m[36mViewType Load (0.1ms)[0m  [1mSELECT "view_types".* FROM "view_types" [0m
+  Rendered gestion/view_types/index.html.haml within layouts/application (2.7ms)
+  Rendered layouts/_header.haml (1.2ms)
+  Rendered layouts/_footer.haml (0.4ms)
+Completed 200 OK in 90.6ms (Views: 67.0ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/gestion/reservations" for 127.0.0.1 at 2019-01-29 10:32:07 -0500
+Processing by Gestion::ReservationsController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mRole Load (0.2ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1[0m
+  [1m[35mReservation Load (0.3ms)[0m  SELECT "reservations".* FROM "reservations" 
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  Rendered gestion/reservations/index.haml within layouts/application (10.1ms)
+  Rendered layouts/_header.haml (1.5ms)
+  Rendered layouts/_footer.haml (0.4ms)
+Completed 200 OK in 101.9ms (Views: 80.0ms | ActiveRecord: 1.2ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2019-01-29 10:32:12 -0500
+Processing by Users::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"Y1ploecOWt4mm8D1ZLLIep38UcWiYdXBNAM6NQyD9E4="}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+Redirected to http://localhost:3000/
+Completed 302 Found in 5.1ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-01-29 10:32:12 -0500
+Processing by PagesGeneraleController#home as HTML
+  Rendered pages_generale/home.html.haml within layouts/application (0.7ms)
+  Rendered layouts/_header.haml (0.7ms)
+  Rendered layouts/_footer.haml (0.4ms)
+Completed 200 OK in 65.3ms (Views: 64.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2019-01-29 10:32:15 -0500
+Processing by Users::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.5ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (5.4ms)
+  Rendered layouts/_header.haml (0.9ms)
+  Rendered layouts/_footer.haml (0.4ms)
+Completed 200 OK in 85.2ms (Views: 83.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2019-01-29 10:32:20 -0500
+Processing by Users::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Rot1TuWlwNGHmwJ4ahvn4wvMcqgBHs+0P4s5W9fAtpQ=", "user"=>{"email"=>"frank@mail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'frank@mail.com' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = '2019-01-29 01:31:09.093065', "current_sign_in_at" = '2019-01-29 15:32:20.250980', "sign_in_count" = 10, "updated_at" = '2019-01-29 15:32:20.251851' WHERE "users"."id" = 2[0m
+  [1m[35m (52.8ms)[0m  commit transaction
+  [1m[36mRole Load (0.1ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 2[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 166.9ms (ActiveRecord: 53.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-01-29 10:32:20 -0500
+Processing by PagesGeneraleController#home as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  Rendered shared/_reservation_form.haml (0.1ms)
+  Rendered pages_generale/home.html.haml within layouts/application (1.7ms)
+  [1m[36mRole Load (0.1ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 2[0m
+  Rendered layouts/_header.haml (2.2ms)
+  Rendered layouts/_footer.haml (0.4ms)
+Completed 200 OK in 35.3ms (Views: 34.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/new_reservation" for 127.0.0.1 at 2019-01-29 10:32:22 -0500
+Processing by Client::ReservationsController#new as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mRole Load (0.2ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 2[0m
+  [1m[35mRoomType Load (0.1ms)[0m  SELECT "room_types".* FROM "room_types" 
+  [1m[36mViewType Load (0.1ms)[0m  [1mSELECT "view_types".* FROM "view_types" [0m
+  Rendered client/reservations/new.html.haml within layouts/application (12.2ms)
+  Rendered layouts/_header.haml (0.9ms)
+  Rendered layouts/_footer.haml (0.4ms)
+Completed 200 OK in 100.6ms (Views: 79.4ms | ActiveRecord: 1.3ms)
+Connecting to database specified by database.yml
+Creating scope :room_type. Overwriting existing method Room.room_type.
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2019-01-29 10:35:04 -0500
+Processing by Users::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"DUJm/PxuhqkO5qrb4QNPud0F2Wfy1QhsikbMQiSO86Q="}
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+Redirected to http://localhost:3000/
+Completed 302 Found in 57.6ms (ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-01-29 10:35:04 -0500
+Processing by PagesGeneraleController#home as HTML
+  Rendered pages_generale/home.html.haml within layouts/application (0.5ms)
+  Rendered layouts/_header.haml (0.6ms)
+  Rendered layouts/_footer.haml (0.3ms)
+Completed 200 OK in 27.8ms (Views: 27.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2019-01-29 10:35:05 -0500
+Processing by Users::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.5ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (4.6ms)
+  Rendered layouts/_header.haml (0.9ms)
+  Rendered layouts/_footer.haml (0.4ms)
+Completed 200 OK in 49.7ms (Views: 48.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2019-01-29 10:35:09 -0500
+Processing by Users::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"2U+PIiRc/JIg0TCfAT9M63eQljJe6oFoRCQBr66VIqM=", "user"=>{"email"=>"admin@gestion.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'admin@gestion.com' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = '2019-01-29 14:49:14.348944', "current_sign_in_at" = '2019-01-29 15:35:09.946160', "sign_in_count" = 9, "updated_at" = '2019-01-29 15:35:09.946888' WHERE "users"."id" = 1[0m
+  [1m[35m (51.2ms)[0m  commit transaction
+  [1m[36mRole Load (0.1ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "reservations" WHERE "reservations"."user_id" = 1
+Redirected to http://localhost:3000/
+Completed 302 Found in 184.3ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-01-29 10:35:10 -0500
+Processing by PagesGeneraleController#home as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  Rendered shared/_reservation_form.haml (0.0ms)
+  Rendered pages_generale/home.html.haml within layouts/application (1.7ms)
+  [1m[35mRole Load (0.1ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1
+  Rendered layouts/_header.haml (2.5ms)
+  Rendered layouts/_footer.haml (0.4ms)
+Completed 200 OK in 35.1ms (Views: 34.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/gestion/reservations" for 127.0.0.1 at 2019-01-29 10:35:11 -0500
+Processing by Gestion::ReservationsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mRole Load (0.2ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1
+  [1m[36mReservation Load (0.3ms)[0m  [1mSELECT "reservations".* FROM "reservations" [0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  Rendered gestion/reservations/index.haml within layouts/application (9.0ms)
+  Rendered layouts/_header.haml (1.3ms)
+  Rendered layouts/_footer.haml (0.4ms)
+Completed 200 OK in 68.1ms (Views: 44.9ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/gestion/rooms" for 127.0.0.1 at 2019-01-29 10:35:12 -0500
+Creating scope :room_type. Overwriting existing method Room.room_type.
+Processing by Gestion::RoomsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mRole Load (0.1ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1
+  Rendered gestion/rooms/index.haml within layouts/application (0.5ms)
+Completed 500 Internal Server Error in 5.3ms
+
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    1: - @rooms.each do |r|
+    2:   .beauCarre
+    3:     = r.room_no
+    4:   %p
+  app/views/gestion/rooms/index.haml:1:in `_app_views_gestion_rooms_index_haml___2542149875289926288_70282410608560'
+  config/initializers/quiet_assets.rb:9:in `call_with_quiet_assets'
+
+
+  Rendered /home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  Rendered /home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+  Rendered /home/francoiswarnant/.rvm/gems/ruby-1.9.3-p551@Nagano_Inn_R32225/gems/actionpack-3.2.21/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (7.1ms)
+
+
+Started GET "/gestion/rooms" for 127.0.0.1 at 2019-01-29 10:35:24 -0500
+Creating scope :room_type. Overwriting existing method Room.room_type.
+Processing by Gestion::RoomsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mRole Load (0.1ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1
+  [1m[36mRoom Load (0.6ms)[0m  [1mSELECT "rooms".* FROM "rooms" ORDER BY rooms.room_no ASC[0m
+  Rendered gestion/rooms/index.haml within layouts/application (2.6ms)
+  Rendered layouts/_header.haml (1.1ms)
+  Rendered layouts/_footer.haml (0.4ms)
+Completed 200 OK in 121.7ms (Views: 31.7ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/gestion/rooms" for 127.0.0.1 at 2019-01-29 10:36:42 -0500
+Processing by Gestion::RoomsController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mRole Load (0.1ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1[0m
+  [1m[35mRoom Load (0.4ms)[0m  SELECT "rooms".* FROM "rooms" WHERE "rooms"."view_type_id" = 1 ORDER BY rooms.room_no ASC
+  Rendered gestion/rooms/index.haml within layouts/application (10.0ms)
+  Rendered layouts/_header.haml (1.0ms)
+  Rendered layouts/_footer.haml (0.3ms)
+Completed 200 OK in 114.2ms (Views: 36.5ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/gestion/rooms" for 127.0.0.1 at 2019-01-29 10:37:01 -0500
+Processing by Gestion::RoomsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mRole Load (0.1ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1
+  [1m[36mRoom Load (0.4ms)[0m  [1mSELECT "rooms".* FROM "rooms" WHERE "rooms"."view_type_id" = 2 ORDER BY rooms.room_no ASC[0m
+  Rendered gestion/rooms/index.haml within layouts/application (8.8ms)
+  Rendered layouts/_header.haml (1.0ms)
+  Rendered layouts/_footer.haml (0.3ms)
+Completed 200 OK in 108.1ms (Views: 61.9ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/gestion/rooms" for 127.0.0.1 at 2019-01-29 10:37:14 -0500
+Processing by Gestion::RoomsController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mRole Load (0.1ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1[0m
+  [1m[35mRoom Load (0.1ms)[0m  SELECT "rooms".* FROM "rooms" WHERE "rooms"."view_type_id" = 2 AND "rooms"."room_type_id" = 1 ORDER BY rooms.room_no ASC
+  Rendered gestion/rooms/index.haml within layouts/application (1.1ms)
+  Rendered layouts/_header.haml (1.0ms)
+  Rendered layouts/_footer.haml (0.3ms)
+Completed 200 OK in 97.3ms (Views: 26.2ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/gestion/rooms" for 127.0.0.1 at 2019-01-29 10:37:21 -0500
+Processing by Gestion::RoomsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mRole Load (0.1ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1
+  [1m[36mRoom Load (0.2ms)[0m  [1mSELECT "rooms".* FROM "rooms" WHERE "rooms"."view_type_id" = 2 AND "rooms"."room_type_id" = 2 ORDER BY rooms.room_no ASC[0m
+  Rendered gestion/rooms/index.haml within layouts/application (8.0ms)
+  Rendered layouts/_header.haml (1.1ms)
+  Rendered layouts/_footer.haml (0.3ms)
+Completed 200 OK in 114.1ms (Views: 35.4ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/gestion/rooms" for 127.0.0.1 at 2019-01-29 10:58:37 -0500
+Processing by Gestion::RoomsController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mRole Load (0.1ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1[0m
+  [1m[35mRoom Load (0.1ms)[0m  SELECT "rooms".* FROM "rooms" WHERE "rooms"."view_type_id" = 1 AND "rooms"."room_type_id" = 2 ORDER BY rooms.room_no ASC
+  Rendered gestion/rooms/index.haml within layouts/application (1.1ms)
+  Rendered layouts/_header.haml (1.2ms)
+  Rendered layouts/_footer.haml (0.3ms)
+Completed 200 OK in 100.6ms (Views: 55.5ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/gestion/rooms" for 127.0.0.1 at 2019-01-29 10:58:42 -0500
+Processing by Gestion::RoomsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mRole Load (0.2ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1
+  [1m[36mRoom Load (0.2ms)[0m  [1mSELECT "rooms".* FROM "rooms" WHERE "rooms"."view_type_id" = 1 AND "rooms"."room_type_id" = 2 ORDER BY rooms.room_no ASC[0m
+  Rendered gestion/rooms/index.haml within layouts/application (1.0ms)
+  Rendered layouts/_header.haml (1.4ms)
+  Rendered layouts/_footer.haml (0.4ms)
+Completed 200 OK in 47.0ms (Views: 43.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/gestion/room_types" for 127.0.0.1 at 2019-01-29 10:58:43 -0500
+Processing by Gestion::RoomTypesController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mRole Load (0.1ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1[0m
+  [1m[35mRoomType Load (0.1ms)[0m  SELECT "room_types".* FROM "room_types" 
+  Rendered gestion/room_types/index.html.haml within layouts/application (1.8ms)
+  Rendered layouts/_header.haml (1.2ms)
+  Rendered layouts/_footer.haml (0.5ms)
+Completed 200 OK in 45.6ms (Views: 37.8ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/gestion/view_types" for 127.0.0.1 at 2019-01-29 10:58:44 -0500
+Processing by Gestion::ViewTypesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mRole Load (0.1ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1
+  [1m[36mViewType Load (0.1ms)[0m  [1mSELECT "view_types".* FROM "view_types" [0m
+  Rendered gestion/view_types/index.html.haml within layouts/application (2.1ms)
+  Rendered layouts/_header.haml (1.2ms)
+  Rendered layouts/_footer.haml (0.4ms)
+Completed 200 OK in 54.0ms (Views: 44.2ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/gestion/users" for 127.0.0.1 at 2019-01-29 10:58:46 -0500
+Processing by Gestion::UsersController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mRole Load (0.2ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" 
+  Rendered gestion/users/index.haml within layouts/application (3.0ms)
+  Rendered layouts/_header.haml (1.4ms)
+  Rendered layouts/_footer.haml (0.5ms)
+Completed 200 OK in 50.4ms (Views: 46.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/gestion/rooms" for 127.0.0.1 at 2019-01-29 10:58:49 -0500
+Processing by Gestion::RoomsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mRole Load (0.1ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1
+  [1m[36mRoom Load (0.2ms)[0m  [1mSELECT "rooms".* FROM "rooms" WHERE "rooms"."view_type_id" = 1 AND "rooms"."room_type_id" = 2 ORDER BY rooms.room_no ASC[0m
+  Rendered gestion/rooms/index.haml within layouts/application (1.0ms)
+  Rendered layouts/_header.haml (1.5ms)
+  Rendered layouts/_footer.haml (0.4ms)
+Completed 200 OK in 46.0ms (Views: 42.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/gestion/rooms" for 127.0.0.1 at 2019-01-29 10:59:09 -0500
+Processing by Gestion::RoomsController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mRole Load (0.1ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1[0m
+  [1m[35mRoom Load (0.3ms)[0m  SELECT "rooms".* FROM "rooms" WHERE "rooms"."view_type_id" = 1 AND "rooms"."room_type_id" = 1 ORDER BY rooms.room_no ASC
+  Rendered gestion/rooms/index.haml within layouts/application (6.5ms)
+  Rendered layouts/_header.haml (1.0ms)
+  Rendered layouts/_footer.haml (0.3ms)
+Completed 200 OK in 109.8ms (Views: 35.6ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/gestion/room_types" for 127.0.0.1 at 2019-01-29 11:00:57 -0500
+Processing by Gestion::RoomTypesController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mRole Load (0.1ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1
+  [1m[36mRoomType Load (0.1ms)[0m  [1mSELECT "room_types".* FROM "room_types" [0m
+  Rendered gestion/room_types/index.html.haml within layouts/application (1.4ms)
+  Rendered layouts/_header.haml (0.9ms)
+  Rendered layouts/_footer.haml (0.3ms)
+Completed 200 OK in 98.9ms (Views: 53.7ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/gestion/view_types" for 127.0.0.1 at 2019-01-29 11:00:58 -0500
+Processing by Gestion::ViewTypesController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mRole Load (0.1ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1[0m
+  [1m[35mViewType Load (0.1ms)[0m  SELECT "view_types".* FROM "view_types" 
+  Rendered gestion/view_types/index.html.haml within layouts/application (1.8ms)
+  Rendered layouts/_header.haml (1.2ms)
+  Rendered layouts/_footer.haml (0.3ms)
+Completed 200 OK in 72.4ms (Views: 64.0ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/gestion/users" for 127.0.0.1 at 2019-01-29 11:01:31 -0500
+Processing by Gestion::UsersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mRole Load (0.2ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" [0m
+  Rendered gestion/users/index.haml within layouts/application (0.8ms)
+  Rendered layouts/_header.haml (1.0ms)
+  Rendered layouts/_footer.haml (0.3ms)
+Completed 200 OK in 62.0ms (Views: 57.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/gestion/users/1/reservations" for 127.0.0.1 at 2019-01-29 11:01:32 -0500
+Processing by Gestion::ReservationsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mRole Load (0.1ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", "1"]]
+  [1m[36mReservation Load (0.1ms)[0m  [1mSELECT "reservations".* FROM "reservations" WHERE "reservations"."user_id" = 1[0m
+  [1m[35mRoomReservation Load (0.1ms)[0m  SELECT "room_reservations".* FROM "room_reservations" WHERE "room_reservations"."reservation_id" = 2
+  Rendered gestion/reservations/index.haml within layouts/application (0.1ms)
+  Rendered layouts/_header.haml (1.3ms)
+  Rendered layouts/_footer.haml (0.4ms)
+Completed 200 OK in 80.2ms (Views: 63.2ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/gestion/view_types" for 127.0.0.1 at 2019-01-29 11:02:21 -0500
+Processing by Gestion::ViewTypesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mRole Load (0.1ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1
+  [1m[36mViewType Load (0.1ms)[0m  [1mSELECT "view_types".* FROM "view_types" [0m
+  Rendered gestion/view_types/index.html.haml within layouts/application (1.4ms)
+  Rendered layouts/_header.haml (1.2ms)
+  Rendered layouts/_footer.haml (0.3ms)
+Completed 200 OK in 67.5ms (Views: 64.2ms | ActiveRecord: 0.5ms)
