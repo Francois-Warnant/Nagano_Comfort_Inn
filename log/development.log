@@ -9910,3 +9910,187 @@ Processing by PagesGeneraleController#home as HTML
   Rendered layouts/_header.html.haml (2.1ms)
   Rendered layouts/_footer.haml (0.3ms)
 Completed 200 OK in 53.1ms (Views: 52.4ms | ActiveRecord: 0.3ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2019-01-29 16:53:54 -0500
+Processing by Users::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"55HIIHlgunfYAatkiqHPre3opAKNBcMPsgGs8Xn6bXQ="}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+Redirected to http://localhost:3000/
+Completed 302 Found in 8.4ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-01-29 16:53:54 -0500
+Processing by PagesGeneraleController#home as HTML
+  Rendered pages_generale/home.html.haml within layouts/application (2.5ms)
+  Rendered layouts/_header.html.haml (0.7ms)
+  Rendered layouts/_footer.haml (0.3ms)
+Completed 200 OK in 55.8ms (Views: 55.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2019-01-29 16:57:43 -0500
+Processing by Users::RegistrationsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.4ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (4.3ms)
+  Rendered layouts/_header.html.haml (0.8ms)
+  Rendered layouts/_footer.haml (0.4ms)
+Completed 200 OK in 45.2ms (Views: 44.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2019-01-29 16:57:46 -0500
+Processing by Users::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.3ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (3.0ms)
+  Rendered layouts/_header.html.haml (0.7ms)
+  Rendered layouts/_footer.haml (0.3ms)
+Completed 200 OK in 61.4ms (Views: 60.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2019-01-29 16:57:49 -0500
+Processing by Users::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"CLPPQeR8mvNRBl3bFZIJxNelsuu+GZ/8BsW5yTOBpwE=", "user"=>{"email"=>"admin@gestion.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'admin@gestion.com' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = '2019-01-29 21:25:37.441166', "current_sign_in_at" = '2019-01-29 21:57:49.915499', "sign_in_count" = 3, "updated_at" = '2019-01-29 21:57:49.916106' WHERE "users"."id" = 1[0m
+  [1m[35m (115.4ms)[0m  commit transaction
+  [1m[36mRole Load (0.2ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "reservations" WHERE "reservations"."user_id" = 1
+Redirected to http://localhost:3000/
+Completed 302 Found in 255.1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-01-29 16:57:50 -0500
+Processing by PagesGeneraleController#home as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  Rendered pages_generale/home.html.haml within layouts/application (1.2ms)
+  [1m[35mRole Load (0.2ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1
+  Rendered layouts/_header.html.haml (2.5ms)
+  Rendered layouts/_footer.haml (0.3ms)
+Completed 200 OK in 54.2ms (Views: 53.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/gestion/rooms" for 127.0.0.1 at 2019-01-29 16:57:51 -0500
+Processing by Gestion::RoomsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mRole Load (0.1ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "rooms" [0m
+  [1m[35mRoom Load (0.4ms)[0m  SELECT "rooms".* FROM "rooms" ORDER BY rooms.room_no ASC LIMIT 30 OFFSET 0
+  Rendered gestion/rooms/index.haml within layouts/application (16.1ms)
+  Rendered layouts/_header.html.haml (1.2ms)
+  Rendered layouts/_footer.haml (0.4ms)
+Completed 200 OK in 75.8ms (Views: 71.7ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/gestion/room_types" for 127.0.0.1 at 2019-01-29 16:57:53 -0500
+Processing by Gestion::RoomTypesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mRole Load (0.2ms)[0m  SELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1
+  [1m[36mRoomType Load (0.1ms)[0m  [1mSELECT "room_types".* FROM "room_types" [0m
+  Rendered gestion/room_types/index.html.haml within layouts/application (8.4ms)
+  Rendered layouts/_header.html.haml (1.6ms)
+  Rendered layouts/_footer.haml (0.5ms)
+Completed 200 OK in 93.6ms (Views: 59.7ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-01-29 17:03:23 -0500
+Processing by PagesGeneraleController#home as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  Rendered pages_generale/home.html.haml within layouts/application (1.4ms)
+  [1m[36mRole Load (0.1ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 1[0m
+  Rendered layouts/_header.html.haml (2.2ms)
+  Rendered layouts/_footer.haml (0.3ms)
+Completed 200 OK in 54.5ms (Views: 53.8ms | ActiveRecord: 0.4ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/images/rails.png"):
+  config/initializers/quiet_assets.rb:9:in `call_with_quiet_assets'
+
+
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2019-01-29 17:06:13 -0500
+Processing by Users::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"31ebAQZ15LjYiaS41vAFakXexKWbMsfQNY7Kh5Gd29A="}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+Redirected to http://localhost:3000/
+Completed 302 Found in 3.5ms (ActiveRecord: 0.3ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2019-01-29 17:06:33 -0500
+Processing by Users::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"31ebAQZ15LjYiaS41vAFakXexKWbMsfQNY7Kh5Gd29A="}
+Redirected to http://localhost:3000/
+Filter chain halted as :verify_signed_out_user rendered or redirected
+Completed 302 Found in 1.0ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-01-29 17:06:33 -0500
+Processing by PagesGeneraleController#home as HTML
+  Rendered pages_generale/home.html.haml within layouts/application (0.8ms)
+  Rendered layouts/_header.html.haml (0.7ms)
+  Rendered layouts/_footer.haml (0.4ms)
+Completed 200 OK in 63.2ms (Views: 63.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2019-01-29 17:07:56 -0500
+Processing by Users::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.4ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (3.8ms)
+  Rendered layouts/_header.html.haml (0.9ms)
+  Rendered layouts/_footer.haml (0.4ms)
+Completed 200 OK in 50.6ms (Views: 49.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2019-01-29 17:08:02 -0500
+Processing by Users::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"khAgR5kqfdcsTalWhl6muLPQmAhL77oNdZmeZ+mM7I4=", "user"=>{"email"=>"frank@mail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'frank@mail.com' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = '2019-01-29 21:37:48.001189', "current_sign_in_at" = '2019-01-29 22:08:03.023948', "sign_in_count" = 4, "updated_at" = '2019-01-29 22:08:03.024581' WHERE "users"."id" = 2[0m
+  [1m[35m (48.9ms)[0m  commit transaction
+  [1m[36mRole Load (0.2ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 2[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 154.8ms (ActiveRecord: 49.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-01-29 17:08:03 -0500
+Processing by PagesGeneraleController#home as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  Rendered pages_generale/home.html.haml within layouts/application (1.3ms)
+  [1m[36mRole Load (0.2ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 2[0m
+  Rendered layouts/_header.html.haml (2.5ms)
+  Rendered layouts/_footer.haml (0.4ms)
+Completed 200 OK in 68.1ms (Views: 67.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/new_reservation" for 127.0.0.1 at 2019-01-29 17:08:04 -0500
+Processing by Client::ReservationsController#new as HTML
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36mRole Load (0.2ms)[0m  [1mSELECT "roles".* FROM "roles" INNER JOIN "assignments" ON "roles"."id" = "assignments"."role_id" WHERE "assignments"."user_id" = 2[0m
+  [1m[35mRoomType Load (0.1ms)[0m  SELECT "room_types".* FROM "room_types" 
+  [1m[36mViewType Load (0.1ms)[0m  [1mSELECT "view_types".* FROM "view_types" [0m
+  Rendered client/reservations/new.html.haml within layouts/application (15.5ms)
+  Rendered layouts/_header.html.haml (0.8ms)
+  Rendered layouts/_footer.haml (0.3ms)
+Completed 200 OK in 95.3ms (Views: 71.4ms | ActiveRecord: 1.4ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2019-01-29 17:20:27 -0500
+Processing by Users::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"mMeR5ne0wPQyjybR+5hZ5E9ftnaQD9b8lwGvhHtkSlw="}
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+Redirected to http://localhost:3000/
+Completed 302 Found in 4.2ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-01-29 17:20:27 -0500
+Processing by PagesGeneraleController#home as HTML
+  Rendered pages_generale/home.html.haml within layouts/application (0.8ms)
+  Rendered layouts/_header.html.haml (0.8ms)
+  Rendered layouts/_footer.haml (0.4ms)
+Completed 200 OK in 66.0ms (Views: 65.7ms | ActiveRecord: 0.0ms)
