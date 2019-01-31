@@ -12,25 +12,36 @@ class Client::ReservationsController < Client::ClientController
   def new
     puts "GENERAL PARAMS : "
     puts params
+    @rooms = []
+    @cpt_steps = init_steps(params)
+    @chosen_rooms = get_rooms_from_params(params, :room)
     @check_in = get_value_from_params(params, :check_in)
     @check_out = get_value_from_params(params, :check_out)
     @nb_rooms = get_value_from_params(params, :nb_rooms)
 
-    @view_types = get_types_from_params(params, :view_types, @nb_rooms)
-    @room_types = get_types_from_params(params, :room_types, @nb_rooms)
+    @view_types = get_types_from_params(params, :view_types)
+    @room_types = get_types_from_params(params, :room_types)
 
-    @chosen_rooms_ids = add_room(params)
-    @chosen_rooms = Room.find(@chosen_rooms_ids)
+    #@chosen_rooms_ids = add_room(params)
+    #@chosen_rooms = Room.find(@chosen_rooms_ids)
 
-    if params[:check_in] != nil
-      @rooms = find_possible_rooms(params)
-    else
-      @rooms = Room.all
+    if (@cpt_steps >= 3) #CONSTANTE!
+      @nb_rooms.times do |i|
+        @rooms.push(find_possible_rooms(@check_in, @check_out, @view_types[i], @room_types[i]))
+      end
     end
+
+    #if params[:check_in] != nil
+    #  @rooms = find_possible_rooms(params)
+    #else
+    #  @rooms = Room.all
+    #end
 
     respond_to do |format|
       format.html { }
-      format.js {render partial: "create"}
+      format.js {
+        render partial: "new", cpt_steps: @cpt_steps, nb_rooms: @nb_rooms
+      }
     end
   end
 
@@ -83,6 +94,16 @@ class Client::ReservationsController < Client::ClientController
 
   private
 
+    def init_steps(params)
+      cpt = 0
+
+      if params[:cpt_steps] != nil
+        cpt = params[:cpt_steps].to_i + 1
+      end
+
+      cpt
+    end
+
     def add_room(params)
       rooms = []
 
@@ -104,7 +125,7 @@ class Client::ReservationsController < Client::ClientController
       if params[key.to_sym] != nil
         if key == :check_in || key == :check_out
           info = params[key.to_sym].to_date
-        elsif (key == :nb_rooms || key == :room_type || key == :view_type)
+        elsif key == :nb_rooms || key == :room_type || key == :view_type
           info = params[key.to_sym].to_i
         else
           info = params[key.to_sym]
@@ -122,25 +143,39 @@ class Client::ReservationsController < Client::ClientController
       info
     end
 
-  def get_types_from_params(params, key, nb_rooms)
-    info = []
-    types = params[:types]
+    def get_types_from_params(params, key) # faire passer par get_value_from_params
+      info = []
+      types = params[:types]
 
-    if types != nil
-      types.each do |t|
-        temp = t[1]
-        if key == :room_types
-          info.push (temp[:room_type].to_i)
-        elsif key == :view_types
-          info.push (temp[:view_type].to_i)
+      if types != nil
+        types.each do |t|
+          temp = t[1]
+          if key == :room_types
+            info.push (temp[:room_type].to_i)
+          elsif key == :view_types
+            info.push (temp[:view_type].to_i)
+          end
         end
       end
-    else
-      # si le type est nul
+
+      info
     end
 
+  def get_rooms_from_params(params, key) # faire passer par get_value_from_params
+    info = []
+    rooms = params[:rooms]
+
+    if rooms != nil
+      rooms.each do |t|
+        temp = t[1]
+        info.push (temp[key.to_sym].to_i)
+      end
+    end
+    puts info
     info
   end
+
+
 
     def find_rooms(rooms)
       missing_room = false
@@ -162,15 +197,13 @@ class Client::ReservationsController < Client::ClientController
     end
 
     # Devra retourner un array de chambres disponibles pour la sélection
-    def find_possible_rooms(params) # version prototype test
+    def find_possible_rooms(check_in, check_out, view_type, room_type)
       possible_rooms = []
       possible_rooms_date = []
-      room_type = params[:room_type]
-      view_type = params[:view_type]
 
       # convertir les params en dates
-      arrival = DateTime.parse(params[:check_in])
-      depart = DateTime.parse(params[:check_out])
+      arrival = check_in
+      depart = check_out
 
       # Touver toutes les chambres ayant le bon ViewType et RoomType
       possible_rooms = Room.view_types(view_type).room_types(room_type)

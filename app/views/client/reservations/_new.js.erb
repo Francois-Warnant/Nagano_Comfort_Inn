@@ -1,0 +1,19 @@
+<% if @cpt_steps == 1 %>
+  $("#form_selection").append("<%= escape_javascript(render partial: 'client/reservations/reservation_second_step', locals: {nb_rooms: @nb_rooms}) %>");
+
+<% elsif @cpt_steps == 2 %>
+  $("#form_selection").append("<%= escape_javascript(render partial: 'client/reservations/reservation_third_step', locals: {nb_rooms: @nb_rooms}) %>");
+
+<% elsif @cpt_steps == 3 %>
+  $("#form_selection").append("<%= escape_javascript(render partial: 'client/reservations/reservation_fourth_step', locals: {nb_rooms: @nb_rooms}) %>");
+
+<% elsif @cpt_steps == 16 %>
+  $("#form_selection").append("<%= escape_javascript(render partial: 'client/reservations/reservation_second_step', locals: {nb_rooms: @nb_rooms}) %>");
+
+<% else %>
+  $("#form_selection").empty();
+  $("#form_selection").append("<%= escape_javascript(render partial: 'client/reservations/reservation_first_step', locals: {nb_rooms: @nb_rooms}) %>");
+  $("#form_selection").append("<%= escape_javascript(render partial: 'client/reservations/reservation_second_step', locals: {nb_rooms: @nb_rooms}) %>");
+  $("#form_selection").append("<%= escape_javascript(render partial: 'client/reservations/reservation_third_step', locals: {nb_rooms: @nb_rooms}) %>");
+  $("#form_selection").append("<%= escape_javascript(render partial: 'client/reservations/reservation_fourth_step', locals: {nb_rooms: @nb_rooms}) %>")
+<% end %>

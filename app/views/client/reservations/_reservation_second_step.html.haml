@@ -1,4 +1,4 @@
-.container.form-section
+.container.form-section#step_2
   %h4.form-section-title
     STEP #2 : How many rooms
 
@@ -8,4 +8,5 @@
         %td{style: "border: none"}
           %b NUMBER OF ROOMS :
           = select_tag "nb_rooms", options_for_select(1..30, @nb_rooms)
-  = submit_tag "NEXT", class: "btn btn-default form-btn"
+          = hidden_field_tag :cpt_steps, @cpt_steps
+  = submit_tag "NEXT", class: "btn btn-default form-btn", id: "btn-second-step", onclick: "refreshNbRooms()"

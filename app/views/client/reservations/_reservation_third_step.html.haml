@@ -1,4 +1,4 @@
-.container.form-section
+.container.form-section#step_3
   %h4.form-section-title
     STEP #3 : What type of rooms
 
@@ -18,4 +18,5 @@
             %b WINDOW VIEW :
             = select_tag "types["+i.to_s+"]view_type", options_for_select(ViewType.all.map{|x| [x.view_type,  x.id]},
               get_selected_initialised_value(@view_types, i))
-  = submit_tag "NEXT", class: "btn btn-default form-btn"
+            = hidden_field_tag :cpt_steps, @cpt_steps
+  = submit_tag "NEXT", class: "btn btn-default form-btn", id: "btn-third-step"

@@ -1,4 +1,4 @@
-.container.form-section
+.container.form-section#step_4
   %h4.form-section-title
     STEP #4 : Choose your rooms
 
@@ -12,5 +12,6 @@
               = (i+1).to_s
           %td{style: "border: none"}
             %b DOOR NUMBER :
-            = select_tag "rooms["+i.to_s+"]room", options_for_select(Room.all.map{|x| [x.room_no,  x.id]})
+            = select_tag "rooms["+i.to_s+"]room", options_for_select(@rooms[i].map{|x| [x.room_no,  x.id]})
+            = hidden_field_tag :cpt_steps, @cpt_steps
   = submit_tag "NEXT", class: "btn btn-default form-btn"

@@ -1,15 +1,10 @@
 %body
   %h3 Making a reservation?
-  = form_tag(new_reservation_path, id: "form_selection") do |form|
-    = render partial: "client/reservations/reservation_first_step", locals: {form: form}
+  = form_tag(new_reservation_path, id: "form_selection", remote: true) do
+    = hidden_field_tag :cpt_steps, @cpt_steps
+    = render partial: "client/reservations/reservation_first_step"
 
-    = render partial: "client/reservations/reservation_second_step", locals: {form: form}
-
-    = render partial: "client/reservations/reservation_third_step", locals: {form: form, nb_rooms: @nb_rooms}
-
-    = render partial: "client/reservations/reservation_fourth_step", locals: {form: form, nb_rooms: @nb_rooms}
-
-  = submit_tag "CONFIRM", class: "btn btn-default form-btn hidden"
+  = submit_tag "CONFIRM", class: "btn btn-default form-btn hidden", onclick: "changeFormTarget()"
 
 
 
@@ -26,4 +21,18 @@
     $("#check_out").datepicker({
       format: 'yyyy-mm-dd'
     });
+  }
+
+  changeFormTarget = function() {
+    $("#form_selection")[0].action = "/client/reservations"
+    $("#form_selection").submit()
+  }
+
+  refreshNbRooms = function() {
+    $("#btn-second-step")[0].value = "CHANGE"
+  }
+
+  hidebutton = function(cpt_steps) {
+    $("#btn-first-step").remove() // verif dates valides!!
+    $("#form_selection").submit()
   }
