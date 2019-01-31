@@ -30,28 +30,11 @@
 .room_section.reserved
   %h5 Your Rooms :
   - if @chosen_rooms != nil
-    %ul.room_list
-      - @chosen_rooms.each do |r|
-        %li.room_show
-          .room_image
-            = image_tag(get_room_type_from_room(r).downcase + ".jpg", alt: get_room_type_from_room(r), size: "180x120")
-          .room_info
-            = r.room_no
+    = render partial: "client/reservations/room_list", locals: {rooms: @chosen_rooms}
 
 .room_section.search_result
   %h5 Search Results :
-  %ul.room_list
-    - @rooms.each do |r|
-      %li.room_show
-        .room_image
-          = image_tag(get_room_type_from_room(r).downcase + ".jpg", alt: get_room_type_from_room(r), size: "180x120")
-        .room_info
-          = r.room_no
-
-        = form_tag(new_reservation_path) do
-          = hidden_field_tag :added_room, r.id
-          = hidden_field_tag :search_params, params
-          = submit_tag "ADD ROOM"
+  = render partial: "client/reservations/room_list", locals: {rooms: @rooms}
 
 
 %br

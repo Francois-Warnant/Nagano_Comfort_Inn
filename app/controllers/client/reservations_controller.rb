@@ -13,9 +13,10 @@ class Client::ReservationsController < Client::ClientController
     puts params
     @reservation = current_user.reservations.build({nb_rooms: 1})
     @room_reservation = @reservation.room_reservations.build()
-    @check_in = get_date_from_params(params, :check_in)
-    @check_out = get_date_from_params(params, :check_in)
-    @chosen_rooms = add_room(params)
+    @check_in = nil#get_date_from_params(params, :check_in)
+    @check_out = nil#get_date_from_params(params, :check_in)
+    @chosen_rooms_ids = add_room(params)
+    @chosen_rooms = Room.find(@chosen_rooms_ids)
 
     if params[:check_in] != nil
       @rooms = find_possible_rooms(params)
@@ -84,11 +85,12 @@ class Client::ReservationsController < Client::ClientController
       rooms = []
 
       if params[:chosen_rooms] != nil
-        rooms = params[:chosen_rooms].split(",")
+        rooms = params[:chosen_rooms].split(", ")
       end
 
       if params[:added_room] != nil
-        rooms += params[:added_room].split(",")
+        rooms.push(params[:added_room].split(","))
+        puts rooms
       end
 
       return rooms
@@ -101,8 +103,8 @@ class Client::ReservationsController < Client::ClientController
       if params[key.to_sym] != nil
         date = params[key.to_sym].to_date
 
-      elsif search_params[0] != nil
-        if search_params[key] != nil
+      elsif search_params[key.to_sym] != nil
+        if search_params[key.to_sym] != nil
           date = search_params[key.to_sym]
         end
       end

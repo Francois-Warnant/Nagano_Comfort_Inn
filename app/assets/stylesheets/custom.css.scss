@@ -269,6 +269,7 @@ $grayMediumLight: #eaeaea;
 
 .room_list {
   list-style: none;
+  padding: 0px;
 }
 
 .room_show {
@@ -277,4 +278,5 @@ $grayMediumLight: #eaeaea;
   margin: 20px 50px 0px 50px;
   border: 1px solid white;
   border-radius: 5px;
+  text-align: left;
 }

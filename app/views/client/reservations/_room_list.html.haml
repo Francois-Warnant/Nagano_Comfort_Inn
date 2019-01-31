@@ -1,0 +1,16 @@
+%ul.room_list
+  - rooms.each do |r|
+    %li.room_show
+      .room_image
+        = image_tag(get_room_type_from_room(r).downcase + ".jpg", alt: get_room_type_from_room(r), size: "180x120")
+      .room_info
+        = r.room_no
+
+      = form_tag(new_reservation_path) do
+        = hidden_field_tag :added_room, r.id
+        = hidden_field_tag :check_in, params[:check_in]
+        = hidden_field_tag :check_out, params[:check_out]
+        = hidden_field_tag :view_type, params[:view_type]
+        = hidden_field_tag :room_type, params[:room_type]
+        = hidden_field_tag :chosen_rooms, @chosen_rooms_ids
+        = submit_tag "ADD ROOM"
