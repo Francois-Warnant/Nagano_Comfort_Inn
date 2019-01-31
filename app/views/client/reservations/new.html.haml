@@ -1,44 +1,15 @@
 %body
-  = form_tag(new_reservation_path) do
-    #ReservationFormContent
-      .container.room_search#ajout_chambre
-        .roomNo#no FIND A ROOM?
-        %table.table.table-borderless
-          %tr
-            %td{style: "border: none"}
-              %b CHECK-IN :
-              = text_field_tag "check_in", @check_in, placeholder: Date.today, required: true, autocomplete: :off
-            %td{style: "border: none"}
-              %b CHECK-OUT :
-              = text_field_tag "check_out", @check_out, placeholder: Date.today + 3.days, required: true, autocomplete: :off
-          %tr
-            %td{style: "border: none"}
-              %b TYPE :
-              = select_tag "room_type", options_for_select(RoomType.all.map{|x| [x.room_type,  x.id]})
-            %td{style: "border: none"}
-              %b VIEW :
-              = select_tag "view_type", options_for_select(ViewType.all.map{|x| [x.view_type,  x.id]})
-              = hidden_field_tag :chosen_rooms, @chosen_rooms
+  %h3 Making a reservation?
+  = form_tag(new_reservation_path, id: "form_selection") do |form|
+    = render partial: "client/reservations/reservation_first_step", locals: {form: form}
 
+    = render partial: "client/reservations/reservation_second_step", locals: {form: form}
 
-        = submit_tag "FIND", class: "btn btn-default btn-edit-room"
+    = render partial: "client/reservations/reservation_third_step", locals: {form: form, nb_rooms: @nb_rooms}
 
-    %br
+    = render partial: "client/reservations/reservation_fourth_step", locals: {form: form, nb_rooms: @nb_rooms}
 
-    #hidden{style: "display: none"} RENDER HERE
-
-.room_section.reserved
-  %h5 Your Rooms :
-  - if @chosen_rooms != nil
-    = render partial: "client/reservations/room_list", locals: {rooms: @chosen_rooms}
-
-.room_section.search_result
-  %h5 Search Results :
-  = render partial: "client/reservations/room_list", locals: {rooms: @rooms}
-
-
-%br
-%br
+  = submit_tag "CONFIRM", class: "btn btn-default form-btn hidden"
 
 
 
@@ -55,37 +26,4 @@
     $("#check_out").datepicker({
       format: 'yyyy-mm-dd'
     });
-  }
-
-  add_new_room_search = function() {
-    div = $('#ajout_chambre').clone()
-    div = change_attr(div)
-    $('#ReservationFormContent').append(div)
-    setDatePicker()
-  }
-
-  change_attr = function(div) {
-    view_type = div.find('#rooms_'+ 0 +'view_type')
-    room_type = div.find('#rooms_'+ 0 +'room_type')
-    check_in = div.find('#rooms_'+ 0 +'check_in')
-    check_out = div.find('#rooms_'+ 0 +'check_out')
-    no = div.find('#no')
-    nb_rooms++
-
-    view_type.attr("name", "rooms[" + nb_rooms + "]view_type")
-    view_type.attr("id", "rooms_"+ nb_rooms +"view_type")
-
-    room_type.attr("name", "rooms[" + nb_rooms + "]room_type")
-    room_type.attr("id", "rooms_"+ nb_rooms +"room_type")
-
-    check_in.attr("name", "rooms[" + nb_rooms + "]check_in")
-    check_in.attr("id", "rooms_"+ nb_rooms +"check_in")
-    check_in[0].value=""
-
-    check_out.attr("name", "rooms[" + nb_rooms + "]check_out")
-    check_out.attr("id", "rooms_"+ nb_rooms +"check_out")
-    check_out[0].value=""
-
-    no[0].innerHTML= "ROOM NO. " +  (nb_rooms + 1)
-    return div
   }

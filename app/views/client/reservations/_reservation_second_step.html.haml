@@ -1,0 +1,11 @@
+.container.form-section
+  %h4.form-section-title
+    STEP #2 : How many rooms
+
+  .form-section-content
+    %table.table.table-borderless
+      %tr
+        %td{style: "border: none"}
+          %b NUMBER OF ROOMS :
+          = select_tag "nb_rooms", options_for_select(1..30, @nb_rooms)
+  = submit_tag "NEXT", class: "btn btn-default form-btn"

@@ -1,0 +1,16 @@
+.container.form-section
+  %h4.form-section-title
+    STEP #4 : Choose your rooms
+
+  - @nb_rooms.times do |i|
+    .form-section-content
+      %table.table.table-borderless
+        %tr
+          %td{style: "border: none"}
+            %b
+              ROOM #
+              = (i+1).to_s
+          %td{style: "border: none"}
+            %b DOOR NUMBER :
+            = select_tag "rooms["+i.to_s+"]room", options_for_select(Room.all.map{|x| [x.room_no,  x.id]})
+  = submit_tag "NEXT", class: "btn btn-default form-btn"

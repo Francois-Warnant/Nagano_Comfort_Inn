@@ -16,5 +16,5 @@
 //= require bootstrap.min.js
 //= require bootstrap-datepicker
 // require bootstrap/modal
-// require turbolinks
+//= require turbolinks
 //= require_tree .

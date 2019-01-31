@@ -280,3 +280,21 @@ $grayMediumLight: #eaeaea;
   border-radius: 5px;
   text-align: left;
 }
+
+.form-section {
+  text-align: left;
+}
+
+.form-section-title {
+  border-bottom: 1px solid white;
+}
+
+.form-section-content {
+  background-color: rgba(160, 160, 160, 0.95);
+}
+
+.form-btn {
+  display: inline-block;
+  float: right;
+}
+
