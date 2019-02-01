@@ -1,10 +1,13 @@
 %body
-  %h3 Making a reservation?
+  %h3 ALL YOUR BASES ARE BELONG TO US!?
   = form_tag(new_reservation_path, id: "form_selection", remote: true) do
     = hidden_field_tag :cpt_steps, @cpt_steps
     = render partial: "client/reservations/reservation_first_step"
 
-  = submit_tag "CONFIRM", class: "btn btn-default form-btn hidden", onclick: "changeFormTarget()"
+    .container
+      = submit_tag "NEXT", class: "btn btn-default form-btn", id: "btn-next-step"
+  .container
+    = submit_tag "CONFIRM", class: "btn btn-default form-btn hidden", onclick: "changeFormTarget()"
 
 
 
@@ -21,6 +24,10 @@
     $("#check_out").datepicker({
       format: 'yyyy-mm-dd'
     });
+  }
+
+  showNextStep = function() {
+    $("#form_selection").submit()
   }
 
   changeFormTarget = function() {

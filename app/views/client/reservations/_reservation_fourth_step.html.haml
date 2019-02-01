@@ -14,4 +14,3 @@
             %b DOOR NUMBER :
             = select_tag "rooms["+i.to_s+"]room", options_for_select(@rooms[i].map{|x| [x.room_no,  x.id]})
             = hidden_field_tag :cpt_steps, @cpt_steps
-  = submit_tag "NEXT", class: "btn btn-default form-btn"

@@ -19,4 +19,3 @@
             = select_tag "types["+i.to_s+"]view_type", options_for_select(ViewType.all.map{|x| [x.view_type,  x.id]},
               get_selected_initialised_value(@view_types, i))
             = hidden_field_tag :cpt_steps, @cpt_steps
-  = submit_tag "NEXT", class: "btn btn-default form-btn", id: "btn-third-step"
