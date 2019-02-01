@@ -13,11 +13,14 @@ class Client::ReservationsController < Client::ClientController
     puts "GENERAL PARAMS : "
     puts params
     @rooms = []
+
     @cpt_steps = init_steps(params)
+
     @chosen_rooms = get_rooms_from_params(params, :room)
     @check_in = get_value_from_params(params, :check_in)
     @check_out = get_value_from_params(params, :check_out)
     @nb_rooms = get_value_from_params(params, :nb_rooms)
+    @demands = get_value_from_params(params, :demands)
 
     @view_types = get_types_from_params(params, :view_types)
     @room_types = get_types_from_params(params, :room_types)
@@ -94,31 +97,27 @@ class Client::ReservationsController < Client::ClientController
 
   private
 
-    def init_steps(params)
+    def init_steps(params) # faire validation + messages de gestion
       cpt = 0
 
       if params[:cpt_steps] != nil
         cpt = params[:cpt_steps].to_i + 1
+
+        if params[:types] != nil
+          nb_types = get_types_from_params(params, :view_types).count
+          nb_rooms = params[:nb_rooms].to_i
+
+          if nb_rooms > nb_types
+            cpt = 2 #constante!!!
+          end
+        end
       end
 
       cpt
     end
 
-    def add_room(params)
-      rooms = []
 
-      if params[:chosen_rooms] != nil
-        rooms = params[:chosen_rooms].split(", ")
-      end
-
-      if params[:added_room] != nil
-        rooms.push(params[:added_room].split(","))
-        puts rooms
-      end
-
-      return rooms
-    end
-
+      ################# regrouper ####################
     def get_value_from_params(params, key)
       info = nil
 
@@ -171,11 +170,11 @@ class Client::ReservationsController < Client::ClientController
         info.push (temp[key.to_sym].to_i)
       end
     end
-    puts info
+
     info
   end
 
-
+#########################################################
 
     def find_rooms(rooms)
       missing_room = false

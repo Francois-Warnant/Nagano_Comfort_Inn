@@ -5,3 +5,13 @@
 @addRoomToReservation = (element) ->
   element.style.color = "white"
 
+
+
+@setDatePicker = () ->
+  $("#check_in").datepicker(
+    format: 'yyyy-mm-dd'
+  )
+  $("#check_out").datepicker(
+    format: 'yyyy-mm-dd'
+  )
+
