@@ -10,7 +10,7 @@ class Client::ReservationsController < Client::ClientController
   end
 
   def new
-    puts "GENERAL PARAMS : "
+    puts "NEW PARAMS : "
     puts params
     @rooms = []
 
@@ -49,24 +49,24 @@ class Client::ReservationsController < Client::ClientController
   end
 
   def create
-    rooms = params[:rooms]
-    chosen_rooms = find_rooms(rooms)
+    puts "CREATE PARAMS : "
+    puts params
+    chosen_rooms = get_rooms_from_params(params, :room)
 
     respond_to do |format|
 
       if chosen_rooms != nil
-        @reservation = current_user.reservations.build({nb_rooms: chosen_rooms.count})
+        @reservation = current_user.reservations.build({nb_rooms: chosen_rooms.count, client_demands: params[:demands]})
 
-        chosen_rooms.each do |room_params|
-          room =  room_params[:chosen_room]
-          @reservation.room_reservations.build(room_id: room.id, start_date: room_params[:start_date], end_date: room_params[:end_date])
+        chosen_rooms.each do |r|
+          @reservation.room_reservations.build(room_id: r, start_date: params[:check_in], end_date: params[:check_out])
         end
 
         if @reservation.save
           format.html { redirect_to my_reservation_path(id: @reservation), notice: 'NEW RESERVATION ADDED' }
-          format.js
+          format.js { redirect_to my_reservation_path(id: @reservation), notice: 'NEW RESERVATION ADDED' }
         else
-          format.html { render my_profile_path }
+          format.html { render my_reservations_path }
           format.js
         end
 

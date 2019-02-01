@@ -3,8 +3,8 @@
     STEP #5 : Any special demands? (NO PROSTITUTES!)
 
   .form-section-content
-    %table.table.table-borderless
+    %table.table.row-reservation-form
       %tr
         %td{style: "border: none"}
           %b DEMANDS :
-          = text_area_tag "demands", @demands, placeholder: "...", autocomplete: :off
+          = text_area_tag "demands", @demands, placeholder: "...", autocomplete: :off, class: "form-control", id: "demands"

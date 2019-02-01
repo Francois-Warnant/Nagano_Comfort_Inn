@@ -4,18 +4,18 @@
 
   - @nb_rooms.times do |i|
     .form-section-content
-      %table.table.table-borderless
+      %table.table.row-reservation-form
         %tr
-          %td{style: "border: none"}
+          %td#row-title-form{style: "border: none"}
             %b
               ROOM #
               = (i+1).to_s
           %td{style: "border: none"}
             %b TYPE :
             = select_tag "types["+i.to_s+"]room_type", options_for_select(RoomType.all.map{|x| [x.room_type,  x.id]},
-              get_selected_initialised_value(@room_types, i))
+              get_selected_initialised_value(@room_types, i)), class: "form-control dropdown-types"
           %td{style: "border: none"}
             %b WINDOW VIEW :
             = select_tag "types["+i.to_s+"]view_type", options_for_select(ViewType.all.map{|x| [x.view_type,  x.id]},
-              get_selected_initialised_value(@view_types, i))
+              get_selected_initialised_value(@view_types, i)), class: "form-control dropdown-types"
             = hidden_field_tag :cpt_steps, @cpt_steps

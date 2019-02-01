@@ -3,9 +3,9 @@
     STEP #2 : How many rooms
 
   .form-section-content
-    %table.table.table-borderless
+    %table.table.row-reservation-form
       %tr
         %td{style: "border: none"}
           %b NUMBER OF ROOMS :
-          = select_tag "nb_rooms", options_for_select(1..30, @nb_rooms)
+          = select_tag "nb_rooms", options_for_select(1..30, @nb_rooms), class: "form-control"
           = hidden_field_tag :cpt_steps, @cpt_steps
