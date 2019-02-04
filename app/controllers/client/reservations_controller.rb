@@ -13,6 +13,7 @@ class Client::ReservationsController < Client::ClientController
     puts "NEW PARAMS : "
     puts params
 
+    @errors = {}
     @rooms = []
     @cpt_steps = init_steps(params)
     @chosen_rooms = get_rooms_from_params(params, :room)
@@ -24,7 +25,9 @@ class Client::ReservationsController < Client::ClientController
     @view_types = get_types_from_params(params, :view_types)
     @room_types = get_types_from_params(params, :room_types)
 
-    if (@cpt_steps >= 3) #CONSTANTE!
+    @errors[:dates] = validate_dates(@check_in, @check_out) #APPROFONDIR
+
+    if (@cpt_steps >= 3) #CONSTANTE! // faire methode
       @nb_rooms.times do |i|
         @rooms.push(find_possible_rooms(@check_in, @check_out, @view_types[i], @room_types[i]))
       end
@@ -41,6 +44,7 @@ class Client::ReservationsController < Client::ClientController
   def create
     puts "CREATE PARAMS : "
     puts params
+
     chosen_rooms = params[:rooms].split(" ")
 
     respond_to do |format|
@@ -53,10 +57,10 @@ class Client::ReservationsController < Client::ClientController
         end
 
         if @reservation.save
-          format.html { redirect_to my_profile_path(notice: 'NEW RESERVATION ADDED') }
-          format.js {  }
+          format.html { redirect_to home_path(notice: 'NEW RESERVATION ADDED') }
+          format.js {}
         else
-          format.html { render my_reservations_path }
+          format.html { render home_path(notice: 'ERROR! RESERVATION CANCELLED!') }
           format.js
         end
 
@@ -83,8 +87,6 @@ class Client::ReservationsController < Client::ClientController
   # # # #
   # Private methods
   # # # #
-
-
   private
 
     def init_steps(params) # faire validation + messages de gestion
@@ -184,7 +186,7 @@ class Client::ReservationsController < Client::ClientController
       end
     end
 
-    # Devra retourner un array de chambres disponibles pour la sélection
+    # IMPLEMENTER LA SELECTION SELON CHAMBRES DEJA CHOISIE
     def find_possible_rooms(check_in, check_out, view_type, room_type)
       possible_rooms = []
       possible_rooms_date = []
@@ -235,6 +237,22 @@ class Client::ReservationsController < Client::ClientController
       end
 
       is_valid
+    end
+
+    def validate_dates(check_in, check_out) 
+      is_valid = false
+      current = Date.current
+
+      if check_in != nil && check_out != nil
+
+        if check_in >= current && current < check_out && check_in < check_out
+          is_valid = true
+        end
+      end
+
+      is_valid
+      puts "VALIDATION DATES!"
+      puts is_valid
     end
 
 end

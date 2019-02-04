@@ -2,7 +2,7 @@
   %h4.form-section-title
     FINAL STEP : CONFIRM RESERVATION?
 
-  .form-section-content
+  .form-section-content.confirmation-form
     .container  
       = form_tag(client_reservations_path, id: "form_confirmation") do 
         = hidden_field_tag :rooms, @chosen_rooms
@@ -10,4 +10,4 @@
         = hidden_field_tag :check_out, @check_out
         = hidden_field_tag :nb_rooms, @nb_rooms
         = hidden_field_tag :demands, @demands
-        = submit_tag "RESERVE!", class: "btn btn-default form-btn"
+        = submit_tag "RESERVE!", class: "btn btn-default form-btn-confirm"

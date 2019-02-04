@@ -322,6 +322,14 @@ $grayMediumLight: #eaeaea;
   margin-bottom: 10px;
 }
 
+.form-btn-confirm {
+  display: inline-block;
+  float: right;
+  width: 150px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
 .form-control {
   width: 120px;
   margin: 0;
@@ -348,4 +356,8 @@ $grayMediumLight: #eaeaea;
 .reservation-show {
   background-color: rgba(160, 160, 160, 0.95);
   text-align: center;
+}
+
+.confirmation-form {
+  background-color: rgba(150, 150, 150, 0.50);
 }

@@ -25,7 +25,7 @@ NaganoComfortInn::Application.routes.draw do
 
   root to: 'pages_generale#home'
 
-  match '/my_profile', to: 'client/profiles#show'
+  match '/home', to: 'client/profiles#show'
   match '/new_reservation', to: 'client/reservations#new'
   match '/my_reservation', to: 'client/reservations/room_reservations#index'
   match '/my_reservations', to: 'client/reservations#index'

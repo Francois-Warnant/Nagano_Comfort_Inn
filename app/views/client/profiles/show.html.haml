@@ -1,6 +1,6 @@
 %body
   %h2.profile-header
-    WELCOME
+    WELCOME!
     = current_user.email
     !
 
@@ -17,7 +17,7 @@
           = link_to "MAKE A RESERVATION", new_reservation_path, class: "btn btn-default"
     
 
-  .container.form-section
+  .container{style: "text-align: left"}
     %h4.profile-section-title
       YOUR RECENT RESERVATIONS : 
   .container.profile-section

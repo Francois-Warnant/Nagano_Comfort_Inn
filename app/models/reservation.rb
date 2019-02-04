@@ -22,8 +22,6 @@ class Reservation < ActiveRecord::Base
   default_scope order: 'reservations.id DESC'
 
 
-
-
   def reserve_room!(room)
     room_reservations.create!(room_id: room.id)
   end
