@@ -53,8 +53,8 @@ class Client::ReservationsController < Client::ClientController
         end
 
         if @reservation.save
-          format.html { redirect_to my_reservation_path(id: @reservation), notice: 'NEW RESERVATION ADDED' }
-          format.js { redirect_to my_reservation_path(id: @reservation), notice: 'NEW RESERVATION ADDED' }
+          format.html { redirect_to my_profile_path(notice: 'NEW RESERVATION ADDED') }
+          format.js {  }
         else
           format.html { render my_reservations_path }
           format.js
@@ -95,20 +95,11 @@ class Client::ReservationsController < Client::ClientController
 
         if params[:commit] == "NEXT"
           cpt += 1
-        else
-          cpt -= 1
+        elsif params[:commit] == "BACK"
+          if cpt > 0
+            cpt -= 1
+          end
         end
-        puts "cpt"
-        puts cpt
-
-        #if params[:types] != nil
-         # nb_types = get_types_from_params(params, :view_types).count
-          #nb_rooms = params[:nb_rooms].to_i
-
-          #if nb_rooms > nb_types
-           # cpt = 2 #constante!!!
-          #end
-        #end
       end
 
       cpt

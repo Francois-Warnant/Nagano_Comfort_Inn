@@ -1,12 +1,11 @@
 %body
-  #test
-    %h3 MAKING A RESERVATION?
-    = form_tag(new_reservation_path, id: "form_selection", remote: true) do
-      = hidden_field_tag :cpt_steps, @cpt_steps
-      = render partial: "client/reservations/reservation_first_step"
+  %h2.profile-header MAKING A RESERVATION?
+  = form_tag(new_reservation_path, id: "form_selection", remote: true) do
+    = hidden_field_tag :cpt_steps, @cpt_steps
+    = render partial: "client/reservations/reservation_first_step"
 
-      .container
-        = submit_tag "NEXT", class: "btn btn-default form-btn", id: "btn-next-step"
+    .container
+      = submit_tag "NEXT", class: "btn btn-default form-btn", id: "btn-next-step"
 
 
 

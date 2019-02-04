@@ -19,6 +19,8 @@ class Reservation < ActiveRecord::Base
 
   validates :user_id, presence: true
 
+  default_scope order: 'reservations.id DESC'
+
 
 
 

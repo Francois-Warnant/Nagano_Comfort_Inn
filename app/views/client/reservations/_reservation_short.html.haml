@@ -1,0 +1,12 @@
+.reservation-show
+  .roomNo#no
+    - no = @user.reservations.count - index
+    = link_to "RESERVATION #" + (no).to_s, my_reservation_path(id: reservation.id)
+  %table.table.table-borderless
+    %tr
+      %td{style: "border: none"}
+        %b CHECK-IN :
+        = reservation.room_reservations.first.start_date.to_date
+      %td{style: "border: none"}
+        %b CHECK-OUT :
+        = reservation.room_reservations.first.end_date.to_date

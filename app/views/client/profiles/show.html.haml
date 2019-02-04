@@ -1,0 +1,31 @@
+%body
+  %h2.profile-header
+    WELCOME
+    = current_user.email
+    !
+
+  .container.form-section
+    %h4.profile-section-title
+      DO YOU WANT TO : 
+    %table.table.row-reservation-form{style: "text-align: center"}
+      %tr
+        %td{style: "border: none"}
+          = link_to "MAKE A RESERVATION", new_reservation_path, class: "btn btn-default"
+        %td{style: "border: none"}
+          = link_to "MAKE A RESERVATION", new_reservation_path, class: "btn btn-default"
+        %td{style: "border: none"}
+          = link_to "MAKE A RESERVATION", new_reservation_path, class: "btn btn-default"
+    
+
+  .container.form-section
+    %h4.profile-section-title
+      YOUR RECENT RESERVATIONS : 
+  .container.profile-section
+    - nb_reservation =  @user.reservations.count;
+    - @user.reservations.each_with_index do |r, i|
+      = render partial: "client/reservations/reservation_short", locals: {reservation: r, index: i}
+
+  .container.form-section
+    %h4.profile-section-title
+      OTHER
+  .container.profile-section
