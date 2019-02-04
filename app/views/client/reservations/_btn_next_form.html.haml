@@ -1,2 +1,4 @@
 .container
-  = submit_tag "NEXT", class: "btn btn-default form-btn", id: "btn-next-step"
+  = submit_tag "BACK", class: "btn btn-default form-btn-back", id: "btn-back-step"
+  - if @cpt_steps < 5
+    = submit_tag "NEXT", class: "btn btn-default form-btn", id: "btn-next-step"

@@ -12,5 +12,5 @@
               = (i+1).to_s
           %td{style: "border: none"}
             %b DOOR NUMBER :
-            = select_tag "rooms["+i.to_s+"]room", options_for_select(@rooms[i].map{|x| [x.room_no,  x.id]}), class: "form-control"
+            = select_tag "rooms["+i.to_s+"]room", options_for_select(@rooms[i].map{|x| [x.room_no,  x.id]}, get_selected_initialised_value(@chosen_rooms, i)), class: "form-control"
             = hidden_field_tag :cpt_steps, @cpt_steps

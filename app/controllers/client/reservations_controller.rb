@@ -12,10 +12,9 @@ class Client::ReservationsController < Client::ClientController
   def new
     puts "NEW PARAMS : "
     puts params
+
     @rooms = []
-
     @cpt_steps = init_steps(params)
-
     @chosen_rooms = get_rooms_from_params(params, :room)
     @check_in = get_value_from_params(params, :check_in)
     @check_out = get_value_from_params(params, :check_out)
@@ -25,20 +24,11 @@ class Client::ReservationsController < Client::ClientController
     @view_types = get_types_from_params(params, :view_types)
     @room_types = get_types_from_params(params, :room_types)
 
-    #@chosen_rooms_ids = add_room(params)
-    #@chosen_rooms = Room.find(@chosen_rooms_ids)
-
     if (@cpt_steps >= 3) #CONSTANTE!
       @nb_rooms.times do |i|
         @rooms.push(find_possible_rooms(@check_in, @check_out, @view_types[i], @room_types[i]))
       end
     end
-
-    #if params[:check_in] != nil
-    #  @rooms = find_possible_rooms(params)
-    #else
-    #  @rooms = Room.all
-    #end
 
     respond_to do |format|
       format.html { }
@@ -51,7 +41,7 @@ class Client::ReservationsController < Client::ClientController
   def create
     puts "CREATE PARAMS : "
     puts params
-    chosen_rooms = get_rooms_from_params(params, :room)
+    chosen_rooms = params[:rooms].split(" ")
 
     respond_to do |format|
 
@@ -84,7 +74,7 @@ class Client::ReservationsController < Client::ClientController
 
   end
 
-  def set_user  # duplicate // should be centralized
+  def set_user 
     @user = current_user
   end
 
@@ -101,16 +91,24 @@ class Client::ReservationsController < Client::ClientController
       cpt = 0
 
       if params[:cpt_steps] != nil
-        cpt = params[:cpt_steps].to_i + 1
+        cpt = params[:cpt_steps].to_i
 
-        if params[:types] != nil
-          nb_types = get_types_from_params(params, :view_types).count
-          nb_rooms = params[:nb_rooms].to_i
-
-          if nb_rooms > nb_types
-            cpt = 2 #constante!!!
-          end
+        if params[:commit] == "NEXT"
+          cpt += 1
+        else
+          cpt -= 1
         end
+        puts "cpt"
+        puts cpt
+
+        #if params[:types] != nil
+         # nb_types = get_types_from_params(params, :view_types).count
+          #nb_rooms = params[:nb_rooms].to_i
+
+          #if nb_rooms > nb_types
+           # cpt = 2 #constante!!!
+          #end
+        #end
       end
 
       cpt

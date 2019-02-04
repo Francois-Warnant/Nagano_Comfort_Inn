@@ -296,6 +296,15 @@ $grayMediumLight: #eaeaea;
 .form-btn {
   display: inline-block;
   float: right;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.form-btn-back {
+  display: inline-block;
+  float: left;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .form-control {

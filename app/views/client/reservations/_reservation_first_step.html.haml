@@ -11,3 +11,4 @@
         %td{style: "border: none"}
           %b CHECK-OUT :
           = text_field_tag "check_out", @check_out, placeholder: Date.today + 3.days, required: true, autocomplete: :off, class: "form-control"
+          = hidden_field_tag :cpt_steps, @cpt_steps

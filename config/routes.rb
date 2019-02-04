@@ -17,7 +17,7 @@ NaganoComfortInn::Application.routes.draw do
     resources :profiles, only: [:show, :edit, :update]
 
     resources :reservations, only: [:index, :create, :new, :edit, :update] do
-      resources :room_reservations, only: [:edit, :index, :update], controller: "reservations/room_reservations"
+      resources :room_reservations, only: [:edit, :index, :update, :create], controller: "reservations/room_reservations"
     end
   end
 
@@ -25,6 +25,7 @@ NaganoComfortInn::Application.routes.draw do
 
   root to: 'pages_generale#home'
 
+  match '/my_profile_path', to: 'client/profiles#show'
   match '/new_reservation', to: 'client/reservations#new'
   match '/my_reservation', to: 'client/reservations/room_reservations#index'
   match '/my_reservations', to: 'client/reservations#index'

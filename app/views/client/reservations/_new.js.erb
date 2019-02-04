@@ -22,4 +22,9 @@ form.empty();
 <% end %>
 
 form.append("<%= escape_javascript(render partial: 'client/reservations/btn_next_form') %>");
+
+<% if @cpt_steps >= 5 %>
+  form.append("<%= escape_javascript(render partial: 'client/reservations/reservation_confirmation_form') %>");
+<% end %>
+
 setDatePicker()
